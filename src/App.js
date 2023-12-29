@@ -1,5 +1,5 @@
-import './App.css';
-import { AppRouter } from './AppRouter';
+import "./App.css";
+import { AppRouter } from "./AppRouter";
 
 export const App = () => {
   return (
@@ -7,4 +7,4 @@ export const App = () => {
       <AppRouter />
     </div>
   );
-}
+};
