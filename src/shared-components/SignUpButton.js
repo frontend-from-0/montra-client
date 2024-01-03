@@ -27,17 +27,18 @@ const SignUpButton = () => {
       '"Segoe UI Symbol"',
     ].join(","),
     "&:hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
+      backgroundColor: "#EEE5FF",
+      borderColor: "#EEE5FF",
       boxShadow: "none",
+      color: "#7B61FF",
     },
     "&:active": {
       boxShadow: "none",
-      backgroundColor: "#0062cc",
-      borderColor: "#005cbf",
+      backgroundColor: "#EEE5FF",
+      borderColor: "#EEE5FF",
     },
     "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+      boxShadow: "0 0 0 0.2rem #7F3DFF",
     },
   });
 

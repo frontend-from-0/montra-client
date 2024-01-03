@@ -28,17 +28,18 @@ const LoginButton = () => {
       '"Segoe UI Symbol"',
     ].join(","),
     "&:hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
+      backgroundColor: "#7F3DFF",
+      borderColor: "#7F3DFF",
       boxShadow: "none",
+      color: "#fff",
     },
     "&:active": {
       boxShadow: "none",
-      backgroundColor: "#0062cc",
-      borderColor: "#005cbf",
+      backgroundColor: "#7F3DFF",
+      borderColor: "#7F3DFF",
     },
     "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+      boxShadow: "0 0 0 0.2rem #EEE5FF",
     },
   });
   return (
