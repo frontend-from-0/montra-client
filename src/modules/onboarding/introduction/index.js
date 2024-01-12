@@ -6,11 +6,10 @@ import "./introduction.css";
 import Slider from "./Slider";
 
 export const Introduction = () => {
+  // TODO: Make Paper div a shared component once needed somewhere else
   return (
-    <div>
-      <div className="introduction">
-        <Slider />
-      </div>
+    <div className="paper">
+      <Slider />
       <Stack spacing={2} direction="column">
         <SignUpButton />
         <LoginButton />

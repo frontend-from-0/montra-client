@@ -1,21 +1,20 @@
 import { Typography } from "@mui/material";
-import React from "react";
+import { Title1 } from "../../../../shared-components/Title1";
+import "./styles.css";
 
-const SliderContent = ({ activeIndex, imageSlider }) => {
+export const SliderContent = ({ activeIndex, sliderData }) => {
   return (
-    <section>
-      {imageSlider.map((slide, index) => (
+    <>
+      {sliderData.map((slide, index) => (
         <div
           key={index}
           className={index === activeIndex ? "slides active" : "inactive"}
         >
           <img src={slide.image} alt="" />
-          <Typography variant="h3">{slide.title}</Typography>
+          <Title1>{slide.title}</Title1>
           <Typography variant="body1">{slide.description}</Typography>
         </div>
       ))}
-    </section>
+    </>
   );
 };
-
-export default SliderContent;

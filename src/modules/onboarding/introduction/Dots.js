@@ -1,9 +1,9 @@
 import React from "react";
 
-const Dots = ({ activeIndex, onClick, imageSlider }) => {
+const Dots = ({ activeIndex, onClick, sliderData }) => {
   return (
     <div className="all-dots">
-      {imageSlider.map((slide, index) => (
+      {sliderData.map((slide, index) => (
         <span
           key={index}
           className={`${activeIndex === index ? "dot active-dot" : "dot"}`}
