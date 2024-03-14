@@ -2,12 +2,13 @@
 .slider-container {
     display: flex;
     flex-direction: column;
-    position: relative;
-    /* height: 560px; */
+    justify-content: space-between;
+    position: relative;   
+    flex: 1; 
 }
 
 .active {
-    display: inline-block;
+    display: flex;
 }
 
 .inactive {
@@ -15,9 +16,11 @@
 }
 
 .all-dots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    position: absolute;
     display: flex;
     align-items: center;
     top: 48%;
