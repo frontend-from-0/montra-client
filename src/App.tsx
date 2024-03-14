@@ -1,7 +1,7 @@
 import './App.css';
 import { AppRouter } from './AppRouter';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './theme';
+import { theme } from './styles/theme';
 
 export const App = () => {
   return (
