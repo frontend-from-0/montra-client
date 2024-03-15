@@ -8,9 +8,7 @@ export const App = () => {
   return (
     <Container maxWidth='sm'>
       <ThemeProvider theme={theme}>
-        <div style={{ backgroundColor: 'red' }}>
-          <AppRouter />
-        </div>
+        <AppRouter />
       </ThemeProvider>
     </Container>
   );
