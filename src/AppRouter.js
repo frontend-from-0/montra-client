@@ -1,3 +1,4 @@
+import { Expense } from './modules/expense/Expense';
 import { Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -34,8 +35,8 @@ export const AppRouter = () => {
         </Route>
         <Route index element={<div>Launch screen</div>} />
       </Route>
-      <Route path='expence'>
-        <Route path='new' element={<div>Introduction</div>} />
+      <Route path='/expense'>
+        <Route path='new' element={<Expense />} />
 
         <Route index element={<div>Launch screen</div>} />
       </Route>
