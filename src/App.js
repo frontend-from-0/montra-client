@@ -1,14 +1,14 @@
-import { ThemeProvider } from "@mui/material";
-import "./App.css";
+import { ThemeProvider } from "@mui/material/styles";
 import { AppRouter } from "./AppRouter";
-import theme from "./shared-components/theme";
+import { theme } from "./styles/theme";
+import { Container } from "@mui/material";
 
 export const App = () => {
   return (
-    <div className="App">
+    <Container maxWidth="sm">
       <ThemeProvider theme={theme}>
         <AppRouter />
       </ThemeProvider>
-    </div>
+    </Container>
   );
 };
