@@ -2,13 +2,16 @@ import './App.css';
 import { AppRouter } from './AppRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './styles/theme';
+import Container from '@mui/material/Container/Container';
 
 export const App = () => {
   return (
-    <div className='App'>
+    <Container maxWidth='sm'>
       <ThemeProvider theme={theme}>
-        <AppRouter />
+        <div style={{ backgroundColor: 'red' }}>
+          <AppRouter />
+        </div>
       </ThemeProvider>
-    </div>
+    </Container>
   );
 };
