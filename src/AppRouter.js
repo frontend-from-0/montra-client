@@ -1,5 +1,5 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const AppRouter = () => {
   return (
@@ -34,6 +34,15 @@ export const AppRouter = () => {
         </Route>
         <Route index element={<div>Launch screen</div>} />
       </Route>
+      <Route path='expence'>
+        <Route path='new' element={<div>Introduction</div>} />
+
+        <Route index element={<div>Launch screen</div>} />
+      </Route>
+      <Route
+        path='/'
+        element={<Link to='/expense/new'>Add new expense</Link>}
+      />
     </Routes>
   );
 };
