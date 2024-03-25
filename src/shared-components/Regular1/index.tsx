@@ -5,7 +5,10 @@ interface Regular1Props {
 
 export const Regular1 = ({ children }: Regular1Props) => {
   return (
-    <Typography variant='body1' sx={{ opacity: '50%', textAlign: 'center' }}>
+    <Typography
+      variant='body1'
+      sx={{ opacity: '50%', textAlign: 'center', margin: '10px' }}
+    >
       {children}
     </Typography>
   );
