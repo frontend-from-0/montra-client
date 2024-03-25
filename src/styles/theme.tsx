@@ -7,12 +7,8 @@ export const theme = createTheme({
       lineHeight: '34px',
       fontSize: '32px',
       fontWeight: 700,
-      textAlign: 'center',
-      margin: '10px',
     },
     body1: {
-      textAlign: 'center',
-      opacity: '50%',
       margin: '10px',
     },
   },

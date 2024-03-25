@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SliderContent } from './SliderContent';
 import { sliderData } from './sliderData';
-import Dots from './Dots';
+import Indicators from './Indicators';
 import './Slider.css';
 
 const Slider = () => {
@@ -9,7 +9,7 @@ const Slider = () => {
   return (
     <div className='slider-container'>
       <SliderContent activeIndex={activeIndex} sliderData={sliderData} />
-      <Dots
+      <Indicators
         activeIndex={activeIndex}
         sliderData={sliderData}
         onClick={(activeIndex) => setActiveIndex(activeIndex)}

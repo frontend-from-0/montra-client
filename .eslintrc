@@ -4,6 +4,7 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error", {
+      "endOfLine": "auto",
       "semi": true,
       "singleQuote": true,
       "jsxSingleQuote": true,

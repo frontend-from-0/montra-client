@@ -14,7 +14,7 @@
   display: none;
 }
 
-.all-dots {
+.all-indicators {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -27,7 +27,7 @@
   z-index: 100;
 }
 
-.dot {
+.indicator {
   cursor: pointer;
   height: 0.6rem;
   width: 0.6rem;
@@ -37,8 +37,8 @@
   display: inline-block;
 }
 
-.active-dot,
-.dot:hover {
+.active-indicator,
+.indicator:hover {
   background-color: #7f3dff;
   height: 1rem;
   width: 1rem;
