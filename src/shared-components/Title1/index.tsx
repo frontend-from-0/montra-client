@@ -6,7 +6,10 @@ interface Title1Props {
 
 export const Title1 = ({ children }: Title1Props) => {
   return (
-    <Typography variant='h2' sx={{ textAlign: 'center', margin: '10px' }}>
+    <Typography
+      variant='h2'
+      sx={{ textAlign: 'center', margin: (theme) => theme.spacing(2) }}
+    >
       {children}
     </Typography>
   );
