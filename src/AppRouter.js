@@ -1,12 +1,12 @@
 import { Expense } from './modules/expense/Expense';
 import { Routes, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Introduction } from './modules/onboarding/introduction';
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path='onboarding'>
-        <Route path='introduction' element={<div>Introduction</div>} />
+        <Route path='introduction' element={<Introduction />} />
         <Route path='sign-up' element={<div>Sign Up Page</div>} />
         <Route
           path='sign-up/verification'
