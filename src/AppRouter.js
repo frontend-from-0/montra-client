@@ -1,4 +1,4 @@
-import React from 'react';
+import { Expense } from './modules/expense/Expense';
 import { Routes, Route } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
 
@@ -35,6 +35,15 @@ export const AppRouter = () => {
         </Route>
         <Route index element={<div>Launch screen</div>} />
       </Route>
+      <Route path='/expense'>
+        <Route path='new' element={<Expense />} />
+
+        <Route index element={<div>Launch screen</div>} />
+      </Route>
+      <Route
+        path='/'
+        element={<Link to='/expense/new'>Add new expense</Link>}
+      />
     </Routes>
   );
 };
