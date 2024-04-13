@@ -1,8 +1,8 @@
-import Typography from '@mui/material/Typography';
 import { Stack, Button } from '@mui/material';
 import { Paper } from '../../shared-components/Paper/Paper';
 import { styled, Theme } from '@mui/material/styles';
 import { InfoBar } from '../../shared-components/InfoBar';
+import { Header } from './Header';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -14,6 +14,7 @@ const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
 
 const StyledDivUpperSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
+  flexDirection: 'column',
   backgroundColor: '#FD3C4A',
   minHeight: '300px',
 }));
@@ -32,6 +33,7 @@ export const Expense = () => {
       <StyledDiv>
         <StyledDivUpperSide>
           <InfoBar />
+          <Header />
         </StyledDivUpperSide>
         <StyledDivBottomSide></StyledDivBottomSide>
         {/* <StyledDiv2>saffet</StyledDiv2> */}
