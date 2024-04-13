@@ -20,7 +20,7 @@ const StyledDivUpperSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
 
 const StyledDivBottomSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
-  backgroundColor: '#F9F6EE',
+  backgroundColor: '#FAF9F6',
   minHeight: '600px',
   marginBottom: '0',
   borderRadius: '32px 32px 0 0',
