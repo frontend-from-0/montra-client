@@ -1,5 +1,5 @@
 import { Expense } from './modules/expense/Expense';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
 
 export const AppRouter = () => {
