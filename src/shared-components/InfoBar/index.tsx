@@ -9,7 +9,6 @@ const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: '10px 30px',
-  width: '100%',
   height: '30px',
 }));
 
