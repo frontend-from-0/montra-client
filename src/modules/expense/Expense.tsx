@@ -4,6 +4,7 @@ import { styled, Theme } from '@mui/material/styles';
 import { InfoBar } from '../../shared-components/InfoBar';
 import { Header } from './Header';
 import { PriceSection } from './PriceSection';
+import { Form } from './Form';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -37,7 +38,9 @@ export const Expense = () => {
           <Header />
           <PriceSection />
         </StyledDivUpperSide>
-        <StyledDivBottomSide></StyledDivBottomSide>
+        <StyledDivBottomSide>
+          <Form />
+        </StyledDivBottomSide>
       </StyledDiv>
     </Paper>
   );
