@@ -5,20 +5,23 @@ const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flex: 'end',
   flexDirection: 'column',
-  margin: '100px 30px 0 30px',
+  margin: '80px 30px 0 30px',
 }));
 
 const StyledDivPrice = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flex: 'end',
   flexDirection: 'column',
+  gap: '12px',
 }));
 
 export const PriceSection = () => {
   return (
     <StyledDiv className='styledDiv'>
       <StyledDivPrice className='StyledDivPrice'>
-        <Typography sx={{ color: '#D3D3D3', fontWeight: '600' }}>
+        <Typography
+          sx={{ color: '#D3D3D3', fontWeight: '600', opacity: '64%' }}
+        >
           How much?
         </Typography>
         <Typography variant='h3' sx={{ fontWeight: 'bold', color: 'white' }}>
