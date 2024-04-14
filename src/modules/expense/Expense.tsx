@@ -3,6 +3,7 @@ import { Paper } from '../../shared-components/Paper/Paper';
 import { styled, Theme } from '@mui/material/styles';
 import { InfoBar } from '../../shared-components/InfoBar';
 import { Header } from './Header';
+import { PriceSection } from './PriceSection';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -34,27 +35,9 @@ export const Expense = () => {
         <StyledDivUpperSide>
           <InfoBar />
           <Header />
+          <PriceSection />
         </StyledDivUpperSide>
         <StyledDivBottomSide></StyledDivBottomSide>
-        {/* <StyledDiv2>saffet</StyledDiv2> */}
-        {/* <Stack spacing={2} direction='column'>
-          <Button
-            color='primary'
-            variant='contained'
-            size='large'
-            disableElevation
-          >
-            Sign Up
-          </Button>
-          <Button
-            color='secondary'
-            variant='contained'
-            size='large'
-            disableElevation
-          >
-            Login
-          </Button>
-        </Stack> */}
       </StyledDiv>
     </Paper>
   );
