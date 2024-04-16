@@ -6,7 +6,7 @@ import Container from '@mui/material/Container/Container';
 
 export const App = () => {
   return (
-    <Container maxWidth='sm'>
+    <Container sx={{ width: '460px' }}>
       <ThemeProvider theme={theme}>
         <AppRouter />
       </ThemeProvider>
