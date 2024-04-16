@@ -17,8 +17,8 @@ const StyledDivPrice = styled(`div`)(({ theme }: { theme: Theme }) => ({
 
 export const PriceSection = () => {
   return (
-    <StyledDiv className='styledDiv'>
-      <StyledDivPrice className='StyledDivPrice'>
+    <StyledDiv>
+      <StyledDivPrice>
         <Typography
           sx={{ color: '#D3D3D3', fontWeight: '600', opacity: '64%' }}
         >
