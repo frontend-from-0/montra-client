@@ -1,6 +1,7 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled, Theme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { colors } from 'src/styles/colors';
 
 const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -17,7 +18,7 @@ export const Header = () => {
       <Typography variant='h5' sx={{ color: 'white' }}>
         Expense
       </Typography>
-      <Typography style={{ color: '#FD3C4A' }}>s</Typography>
+      <Typography style={{ color: colors.red[100] }}>s</Typography>
     </StyledDivHeader>
   );
 };
