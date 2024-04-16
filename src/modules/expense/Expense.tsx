@@ -7,6 +7,7 @@ import { PriceSection } from './PriceSection';
 import { Form } from './Form';
 import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
+import { Title3 } from '../../shared-components/Title3';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -35,7 +36,7 @@ export const Expense = () => {
     <StyledDiv>
       <StyledDivUpperSide>
         <InfoBar />
-        <Header />
+        <Title3>Expense</Title3>
         <PriceSection />
       </StyledDivUpperSide>
       <StyledDivBottomSide>

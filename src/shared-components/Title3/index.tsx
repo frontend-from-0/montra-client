@@ -11,16 +11,18 @@ const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
   marginTop: '20px',
 }));
 
-export const Header = () => {
+interface Title3Props {
+  children: string | JSX.Element;
+}
+
+export const Title3 = ({ children }: Title3Props) => {
   return (
     <StyledDivHeader>
       <ArrowBackIcon fontSize='large' sx={{ color: 'white' }} />
       <Typography variant='h5' sx={{ color: 'white' }}>
-        Expense
+        {children}
       </Typography>
       <Typography style={{ color: colors.red[100] }}>s</Typography>
     </StyledDivHeader>
   );
 };
-
-//No longer requisite
