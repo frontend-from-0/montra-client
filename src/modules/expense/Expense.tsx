@@ -32,17 +32,15 @@ const StyledDivBottomSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
 
 export const Expense = () => {
   return (
-    <Paper>
-      <StyledDiv>
-        <StyledDivUpperSide>
-          <InfoBar />
-          <Header />
-          <PriceSection />
-        </StyledDivUpperSide>
-        <StyledDivBottomSide>
-          <Form />
-        </StyledDivBottomSide>
-      </StyledDiv>
-    </Paper>
+    <StyledDiv>
+      <StyledDivUpperSide>
+        <InfoBar />
+        <Header />
+        <PriceSection />
+      </StyledDivUpperSide>
+      <StyledDivBottomSide>
+        <Form />
+      </StyledDivBottomSide>
+    </StyledDiv>
   );
 };
