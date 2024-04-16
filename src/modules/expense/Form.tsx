@@ -55,7 +55,6 @@ export const Form = () => {
   return (
     <StyledDiv
       sx={{
-        minWidth: 120,
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
