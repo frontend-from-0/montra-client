@@ -5,26 +5,27 @@ import { InfoBar } from '../../shared-components/InfoBar';
 import { Header } from './Header';
 import { PriceSection } from './PriceSection';
 import { Form } from './Form';
+import { theme } from 'src/styles/theme';
+import { colors } from 'src/styles/colors';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   minHeight: `calc(100vh - ${theme.spacing(3)})`,
-  backgroundColor: '#FD3C4A',
+  backgroundColor: colors.red[100],
 }));
 
 const StyledDivUpperSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: '#FD3C4A',
+  backgroundColor: colors.red[100],
   minHeight: '300px',
 }));
 
 const StyledDivBottomSide = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
-  backgroundColor: '#FAF9F6',
-  minHeight: '600px',
+  backgroundColor: colors.light[100],
   marginBottom: '0',
   borderRadius: '32px 32px 0 0',
 }));
