@@ -166,8 +166,8 @@ export const Form = () => {
           >
             <Button
               onClick={() => {
-                setShowContinueButton(true);
-                setShowAttachmentComponent(!showContinueButton);
+                setShowContinueButton(!showContinueButton);
+                setShowAttachmentComponent(false);
               }}
               sx={{
                 width: '100%',
