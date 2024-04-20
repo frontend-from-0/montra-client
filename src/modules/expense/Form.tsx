@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -13,23 +13,23 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import Stack from '@mui/material/Stack';
-import Paper from '@mui/material/Paper';
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import InsertDriveFileRoundedIcon from '@mui/icons-material/InsertDriveFileRounded';
-import { Typography } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 
-const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
+const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
+  flexDirection: 'column',
   width: '100%',
+  gap: theme.spacing(2),
+  padding: `${theme.spacing(3)} ${theme.spacing(2)} ${theme.spacing(2)}`,
 }));
 
-const StyledDivAttachmentArea = styled(`div`)(
-  ({ theme }: { theme: Theme }) => ({
-    display: 'flex',
-    width: '100%',
-  }),
-);
+const StyledAttachmentArea = styled(Stack)({
+  backgroundColor: colors.light[60],
+  borderRadius: `16px 16px 0 0`,
+});
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,13 +37,12 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
     },
   },
 };
 
 export const Form = () => {
-  //const theme = useTheme();
+  const theme = useTheme();
   const [category, setCategory] = React.useState<string[]>([]);
   const [textValue, setTextValue] = React.useState<string>('');
   const [selectedWallet, setSelectedWallet] = React.useState<string>('');
@@ -67,14 +66,8 @@ export const Form = () => {
   };
 
   return (
-    <StyledDiv
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}
-    >
-      <FormControl sx={{ width: '375px', margin: ' 20px auto' }}>
+    <StyledForm>
+      <FormControl fullWidth>
         <InputLabel id='select-category'>Category</InputLabel>
         <Select
           labelId='select-category'
@@ -106,121 +99,103 @@ export const Form = () => {
             </MenuItem>
           ))}
         </Select>
-        <TextField
-          label='Description'
-          value={textValue}
-          onChange={handleChangeText}
-          variant='outlined'
-          sx={{ marginTop: '20px' }}
-        />
-        <FormControl sx={{ marginTop: '20px' }}>
-          <InputLabel id='select-option'>Wallet</InputLabel>
-          <Select
-            labelId='select-option'
-            id='simple-select-option'
-            value={selectedWallet}
-            onChange={handleChangeOption}
-            input={<OutlinedInput id='select-single-option' label='Option' />}
-          >
-            <MenuItem value='Paypal'>Paypal</MenuItem>
-            <MenuItem value='Google Pay'>Google Pay</MenuItem>
-            <MenuItem value='Apple Pay'>Apple Pay</MenuItem>
-          </Select>
-          <Button
-            onClick={() => setShowAttachmentComponent(!showAttachmentComponent)}
-            component='label'
-            sx={{
-              backgroundColor: 'white',
-              border: '1px dashed gray',
-              height: '56px',
-              marginTop: '20px',
-              color: colors.dark[50],
-            }}
-          >
-            <AttachFileIcon sx={{ marginRight: '10px' }}></AttachFileIcon>
-            Add attachment
-            {/* <input type='' hidden /> */}
-          </Button>
-        </FormControl>
-        {showContinueButton && <Button>Continue</Button>}
       </FormControl>
-      {showAttachmentComponent && (
-        <StyledDivAttachmentArea
-          style={{
-            width: '100%',
-            height: '171px',
-            backgroundColor: colors.light[60],
-            borderRadius: '24px 24px 0 0',
-          }}
+
+      <TextField
+        label='Description'
+        value={textValue}
+        onChange={handleChangeText}
+        variant='outlined'
+      />
+      <FormControl>
+        <InputLabel id='select-option'>Wallet</InputLabel>
+        <Select
+          labelId='select-option'
+          id='simple-select-option'
+          value={selectedWallet}
+          onChange={handleChangeOption}
+          input={<OutlinedInput id='select-single-option' label='Option' />}
         >
-          <Stack
-            direction='row'
-            spacing={2}
-            padding={3}
+          <MenuItem value='Paypal'>Paypal</MenuItem>
+          <MenuItem value='Google Pay'>Google Pay</MenuItem>
+          <MenuItem value='Apple Pay'>Apple Pay</MenuItem>
+        </Select>
+      </FormControl>
+      <Button
+        onClick={() => setShowAttachmentComponent(!showAttachmentComponent)}
+        component='label'
+        sx={{
+          backgroundColor: colors.light[100],
+          border: `1px dashed ${colors.dark[25]}`,
+          color: colors.dark[50],
+        }}
+      >
+        <AttachFileIcon sx={{ marginRight: '10px' }}></AttachFileIcon>
+        Add attachment
+        {/* <input type='' hidden /> */}
+      </Button>
+      {showContinueButton && <Button>Continue</Button>}
+      {showAttachmentComponent && (
+        <StyledAttachmentArea
+          direction='row'
+          spacing={2}
+          padding={3}
+          justifyContent='space-evenly'
+        >
+          <Button
+            onClick={() => {
+              setShowContinueButton(!showContinueButton);
+              setShowAttachmentComponent(false);
+            }}
             sx={{
-              width: '100%',
+              padding: theme.spacing(2),
+              boxShadow: 'none',
+              flex: 1,
               display: 'flex',
-              justifyContent: 'space-evenly',
-              marginTop: '30px',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: colors.violet[20],
+              textTransform: 'none',
             }}
           >
-            <Button
-              onClick={() => {
-                setShowContinueButton(!showContinueButton);
-                setShowAttachmentComponent(false);
-              }}
-              sx={{
-                width: '100%',
-                boxShadow: 'none',
-                height: '91px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: colors.violet[20],
-                textTransform: 'none',
-              }}
-            >
-              <CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />
-              <Typography sx={{ color: colors.violet[100] }}>Camera</Typography>
-            </Button>
-            <Button
-              sx={{
-                width: '100%',
-                boxShadow: 'none',
-                height: '91px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: colors.violet[20],
-                textTransform: 'none',
-              }}
-            >
-              <ImageRoundedIcon sx={{ color: colors.violet[100] }} />
-              <Typography sx={{ color: colors.violet[100] }}>Image</Typography>
-            </Button>
-            <Button
-              sx={{
-                width: '100%',
-                boxShadow: 'none',
-                height: '91px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: colors.violet[20],
-                textTransform: 'none',
-              }}
-            >
-              <InsertDriveFileRoundedIcon sx={{ color: colors.violet[100] }} />
-              <Typography sx={{ color: colors.violet[100] }}>
-                Document
-              </Typography>
-            </Button>
-          </Stack>
-        </StyledDivAttachmentArea>
+            <CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />
+            <Typography sx={{ color: colors.violet[100] }}>Camera</Typography>
+          </Button>
+          <Button
+            sx={{
+              padding: theme.spacing(2),
+              boxShadow: 'none',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: colors.violet[20],
+              textTransform: 'none',
+            }}
+          >
+            <ImageRoundedIcon sx={{ color: colors.violet[100] }} />
+            <Typography sx={{ color: colors.violet[100] }}>Image</Typography>
+          </Button>
+          <Button
+            sx={{
+              padding: theme.spacing(2),
+              boxShadow: 'none',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: colors.violet[20],
+              textTransform: 'none',
+            }}
+          >
+            <InsertDriveFileRoundedIcon sx={{ color: colors.violet[100] }} />
+            <Typography sx={{ color: colors.violet[100] }}>Document</Typography>
+          </Button>
+        </StyledAttachmentArea>
       )}
-    </StyledDiv>
+    </StyledForm>
   );
 };
