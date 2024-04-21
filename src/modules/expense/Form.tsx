@@ -17,6 +17,7 @@ import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import InsertDriveFileRoundedIcon from '@mui/icons-material/InsertDriveFileRounded';
 import { Typography, useTheme } from '@mui/material';
+import { AttachmentOptionsButtons } from '../../shared-components/Button';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -143,66 +144,32 @@ export const Form = () => {
           padding={3}
           justifyContent='space-evenly'
         >
-          <Button
-            onClick={() => {
+          <AttachmentOptionsButtons
+            icon={<CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />}
+            text='Camera'
+            onClickHandler={() => {
               setShowContinueButton(!showContinueButton);
               setShowAttachmentComponent(false);
             }}
-            sx={{
-              padding: theme.spacing(2),
-              boxShadow: 'none',
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: colors.violet[20],
-              textTransform: 'none',
-            }}
-          >
-            <CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />
-            <Typography sx={{ color: colors.violet[100] }}>Camera</Typography>
-          </Button>
-          <Button
-            onClick={() => {
+          />
+          <AttachmentOptionsButtons
+            icon={<ImageRoundedIcon sx={{ color: colors.violet[100] }} />}
+            text='Image'
+            onClickHandler={() => {
               setShowContinueButton(!showContinueButton);
               setShowAttachmentComponent(false);
             }}
-            sx={{
-              padding: theme.spacing(2),
-              boxShadow: 'none',
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: colors.violet[20],
-              textTransform: 'none',
-            }}
-          >
-            <ImageRoundedIcon sx={{ color: colors.violet[100] }} />
-            <Typography sx={{ color: colors.violet[100] }}>Image</Typography>
-          </Button>
-          <Button
-            onClick={() => {
+          />
+          <AttachmentOptionsButtons
+            icon={
+              <InsertDriveFileRoundedIcon sx={{ color: colors.violet[100] }} />
+            }
+            text='Document'
+            onClickHandler={() => {
               setShowContinueButton(!showContinueButton);
               setShowAttachmentComponent(false);
             }}
-            sx={{
-              padding: theme.spacing(2),
-              boxShadow: 'none',
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: colors.violet[20],
-              textTransform: 'none',
-            }}
-          >
-            <InsertDriveFileRoundedIcon sx={{ color: colors.violet[100] }} />
-            <Typography sx={{ color: colors.violet[100] }}>Document</Typography>
-          </Button>
+          />
         </StyledAttachmentArea>
       )}
     </StyledForm>
