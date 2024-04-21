@@ -16,8 +16,10 @@ import Stack from '@mui/material/Stack';
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import InsertDriveFileRoundedIcon from '@mui/icons-material/InsertDriveFileRounded';
-import { Typography, useTheme } from '@mui/material';
 import { AttachmentOptionsButtons } from '../../shared-components/Button';
+import Switch from '@mui/material/Switch';
+import { Typography } from '@mui/material';
+import { theme } from 'src/styles/theme';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -25,6 +27,18 @@ const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   width: '100%',
   gap: theme.spacing(2),
   padding: `${theme.spacing(3)} ${theme.spacing(2)} ${theme.spacing(2)}`,
+}));
+
+const StyledDiv = styled(`div`)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: theme.spacing(2),
+}));
+
+const StyledDivRepeatSection = styled(`div`)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
 }));
 
 const StyledAttachmentArea = styled(Stack)({
@@ -43,13 +57,14 @@ const MenuProps = {
 };
 
 export const Form = () => {
-  const theme = useTheme();
   const [category, setCategory] = React.useState<string[]>([]);
   const [textValue, setTextValue] = React.useState<string>('');
   const [selectedWallet, setSelectedWallet] = React.useState<string>('');
   const [showAttachmentComponent, setShowAttachmentComponent] =
     React.useState(false);
   const [showContinueButton, setShowContinueButton] = React.useState(false);
+  const [switchChecked, setSwitchChecked] = React.useState(false);
+  const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
 
   const handleChangeCategory = (event: SelectChangeEvent<typeof category>) => {
     const {
@@ -64,6 +79,15 @@ export const Form = () => {
 
   const handleChangeOption = (event: SelectChangeEvent) => {
     setSelectedWallet(event.target.value as string);
+  };
+
+  const handleSwitchChecked = () => {
+    setSwitchChecked(!switchChecked);
+  };
+
+  const handleContinueButton = () => {
+    setToggleContinueButton(!toggleContinueButton);
+    setShowContinueButton(!showContinueButton);
   };
 
   return (
@@ -134,8 +158,37 @@ export const Form = () => {
         Add attachment
         {/* <input type='' hidden /> */}
       </Button>
+      <StyledDiv>
+        <StyledDivRepeatSection>
+          <Typography
+            variant='body1'
+            fontWeight={500}
+            sx={{ color: colors.dark[25] }}
+          >
+            Repeat
+          </Typography>
+          <Typography sx={{ color: colors.light[20] }}>
+            {switchChecked
+              ? 'Repeat transaction, set your own time'
+              : 'Repeat transaction'}
+          </Typography>
+        </StyledDivRepeatSection>
+        <Switch checked={switchChecked} onChange={handleSwitchChecked} />
+      </StyledDiv>
 
-      {showContinueButton && <Button>Continue</Button>}
+      {showContinueButton && (
+        <Button
+          onClick={handleContinueButton}
+          variant='contained'
+          sx={{
+            padding: theme.spacing(2),
+            textTransform: 'none',
+            fontSize: '16px',
+          }}
+        >
+          Continue
+        </Button>
+      )}
 
       {showAttachmentComponent && (
         <StyledAttachmentArea
@@ -172,6 +225,8 @@ export const Form = () => {
           />
         </StyledAttachmentArea>
       )}
+
+      {toggleContinueButton && switchChecked && <p>saffet</p>}
     </StyledForm>
   );
 };
