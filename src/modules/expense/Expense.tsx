@@ -1,11 +1,7 @@
-import { Stack, Button } from '@mui/material';
-import { Paper } from '../../shared-components/Paper/Paper';
 import { styled, Theme } from '@mui/material/styles';
 import { InfoBar } from '../../shared-components/InfoBar';
-import { Header } from './Header';
 import { PriceSection } from './PriceSection';
 import { Form } from './Form';
-import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
 import { Title3 } from '../../shared-components/Title3';
 
