@@ -20,6 +20,8 @@ import { AttachmentOptionsButtons } from '../../shared-components/Button';
 import Switch from '@mui/material/Switch';
 import { Typography } from '@mui/material';
 import { theme } from 'src/styles/theme';
+import Modal from '@mui/material/Modal';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -46,8 +48,30 @@ const StyledAttachmentArea = styled(Stack)({
   borderRadius: `16px 16px 0 0`,
 });
 
+const StyledRepeatOptionsSection = styled(Stack)({
+  backgroundColor: colors.light[60],
+  borderRadius: `16px 16px 0 0`,
+  padding: theme.spacing(2),
+  gap: theme.spacing(2),
+});
+
+const popupStyle = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 300,
+  bgcolor: 'background.paper',
+  p: 4,
+  display: 'flex',
+  flexDirection: 'column',
+  borderRadius: `16px 16px 16px 16px`,
+};
+
 const ITEM_HEIGHT = 48;
+
 const ITEM_PADDING_TOP = 8;
+
 const MenuProps = {
   PaperProps: {
     style: {
@@ -65,6 +89,11 @@ export const Form = () => {
   const [showContinueButton, setShowContinueButton] = React.useState(false);
   const [switchChecked, setSwitchChecked] = React.useState(false);
   const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
+  const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
+  const [showPopup, setShowPopup] = React.useState(false);
+
+  const handlePopupOpen = () => setShowPopup(true);
+  const handlePopupClose = () => setShowPopup(false);
 
   const handleChangeCategory = (event: SelectChangeEvent<typeof category>) => {
     const {
@@ -88,6 +117,11 @@ export const Form = () => {
   const handleContinueButton = () => {
     setToggleContinueButton(!toggleContinueButton);
     setShowContinueButton(!showContinueButton);
+    setShowPopup(true);
+  };
+
+  const handleFrequency = (event: SelectChangeEvent) => {
+    setSelectedFrequency(event.target.value as string);
   };
 
   return (
@@ -225,8 +259,72 @@ export const Form = () => {
           />
         </StyledAttachmentArea>
       )}
-
-      {toggleContinueButton && switchChecked && <p>saffet</p>}
+      {toggleContinueButton && !switchChecked && (
+        <Modal
+          open={showPopup}
+          onClose={handlePopupClose}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Box sx={popupStyle}>
+            <CheckCircleIcon
+              fontSize='large'
+              sx={{ margin: 'auto', color: colors.violet[80] }}
+            />
+            <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+              Transaction has been succesfully added
+            </Typography>
+          </Box>
+        </Modal>
+      )}
+      {toggleContinueButton && switchChecked && (
+        <StyledRepeatOptionsSection>
+          <FormControl>
+            <InputLabel id='select-option'>Frequency</InputLabel>
+            <Select
+              labelId='select-frequency'
+              id='simple-select-frequency'
+              value={selectedWallet}
+              onChange={handleChangeOption}
+              input={
+                <OutlinedInput id='select-single-frequency' label='frequency' />
+              }
+            >
+              <MenuItem value='Daily'>Daily</MenuItem>
+              <MenuItem value='Weekly'>Weekly</MenuItem>
+              <MenuItem value='Monthly'>Monthly</MenuItem>
+              <MenuItem value='Yearly'>Yearly</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl>
+            <InputLabel id='select-end-after'>Wallet</InputLabel>
+            <Select
+              labelId='select-end-after'
+              id='simple-select-end-after'
+              value={selectedWallet}
+              onChange={handleChangeOption}
+              input={
+                <OutlinedInput id='select-single-end-after' label='end-after' />
+              }
+            >
+              <MenuItem value='Paypal'>Paypal</MenuItem>
+              <MenuItem value='Google Pay'>Google Pay</MenuItem>
+              <MenuItem value='Apple Pay'>Apple Pay</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            //onClick={handleNextButton}
+            variant='contained'
+            sx={{
+              padding: theme.spacing(2),
+              textTransform: 'none',
+              fontSize: '16px',
+            }}
+          >
+            Next
+          </Button>
+        </StyledRepeatOptionsSection>
+      )}
     </StyledForm>
   );
 };
