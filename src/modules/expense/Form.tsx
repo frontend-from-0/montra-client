@@ -22,6 +22,10 @@ import { Typography } from '@mui/material';
 import { theme } from 'src/styles/theme';
 import Modal from '@mui/material/Modal';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs, { Dayjs } from 'dayjs';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -35,7 +39,7 @@ const StyledDiv = styled(`div`)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: theme.spacing(2),
+  padding: theme.spacing(1),
 }));
 
 const StyledDivRepeatSection = styled(`div`)(() => ({
@@ -49,6 +53,20 @@ const StyledAttachmentArea = styled(Stack)({
 });
 
 const StyledRepeatOptionsSection = styled(Stack)({
+  backgroundColor: colors.light[60],
+  borderRadius: `16px 16px 0 0`,
+  padding: theme.spacing(2),
+  gap: theme.spacing(2),
+});
+
+const StyledRepeatDetailsSection = styled(Stack)({
+  backgroundColor: colors.light[60],
+  borderRadius: `16px 16px 0 0`,
+  padding: theme.spacing(2),
+  gap: theme.spacing(2),
+});
+
+const SummarizeSection = styled(Stack)({
   backgroundColor: colors.light[60],
   borderRadius: `16px 16px 0 0`,
   padding: theme.spacing(2),
@@ -90,7 +108,11 @@ export const Form = () => {
   const [switchChecked, setSwitchChecked] = React.useState(false);
   const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
   const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
+  const [selectedEndAfter, setSelectedEndAfter] = React.useState<string>('');
   const [showPopup, setShowPopup] = React.useState(false);
+  const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
+  const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
+  const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
 
   const handlePopupOpen = () => setShowPopup(true);
   const handlePopupClose = () => setShowPopup(false);
@@ -106,7 +128,7 @@ export const Form = () => {
     setTextValue(event.target.value);
   };
 
-  const handleChangeOption = (event: SelectChangeEvent) => {
+  const handleChangeWalletOption = (event: SelectChangeEvent) => {
     setSelectedWallet(event.target.value as string);
   };
 
@@ -120,8 +142,28 @@ export const Form = () => {
     setShowPopup(true);
   };
 
-  const handleFrequency = (event: SelectChangeEvent) => {
+  const handleChangeFrequency = (event: SelectChangeEvent) => {
     setSelectedFrequency(event.target.value as string);
+  };
+
+  const handleChangeEndAfter = (event: SelectChangeEvent) => {
+    setSelectedEndAfter(event.target.value as string);
+  };
+
+  const handleFirstStepNextButton = () => {
+    setToggleContinueButton(false);
+    setShowRepeatDetails(true);
+  };
+
+  const handleSecondStepNextButton = () => {
+    setShowRepeatDetails(false);
+    //New continue button and summarize component will be added here.
+    setShowSummarizeSection(true);
+  };
+
+  const handleRepeatSectionContinueButton = () => {
+    handlePopupOpen();
+    setTimeout(() => handlePopupOpen(), 0);
   };
 
   return (
@@ -171,7 +213,7 @@ export const Form = () => {
           labelId='select-option'
           id='simple-select-option'
           value={selectedWallet}
-          onChange={handleChangeOption}
+          onChange={handleChangeWalletOption}
           input={<OutlinedInput id='select-single-option' label='Option' />}
         >
           <MenuItem value='Paypal'>Paypal</MenuItem>
@@ -209,7 +251,6 @@ export const Form = () => {
         </StyledDivRepeatSection>
         <Switch checked={switchChecked} onChange={handleSwitchChecked} />
       </StyledDiv>
-
       {showContinueButton && (
         <Button
           onClick={handleContinueButton}
@@ -223,7 +264,6 @@ export const Form = () => {
           Continue
         </Button>
       )}
-
       {showAttachmentComponent && (
         <StyledAttachmentArea
           direction='row'
@@ -280,12 +320,12 @@ export const Form = () => {
       {toggleContinueButton && switchChecked && (
         <StyledRepeatOptionsSection>
           <FormControl>
-            <InputLabel id='select-option'>Frequency</InputLabel>
+            <InputLabel id='select-frequency'>Frequency</InputLabel>
             <Select
               labelId='select-frequency'
               id='simple-select-frequency'
-              value={selectedWallet}
-              onChange={handleChangeOption}
+              value={selectedFrequency}
+              onChange={handleChangeFrequency}
               input={
                 <OutlinedInput id='select-single-frequency' label='frequency' />
               }
@@ -297,23 +337,21 @@ export const Form = () => {
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel id='select-end-after'>Wallet</InputLabel>
+            <InputLabel id='select-end-after'>End After</InputLabel>
             <Select
               labelId='select-end-after'
               id='simple-select-end-after'
-              value={selectedWallet}
-              onChange={handleChangeOption}
+              value={selectedEndAfter}
+              onChange={handleChangeEndAfter}
               input={
                 <OutlinedInput id='select-single-end-after' label='end-after' />
               }
             >
-              <MenuItem value='Paypal'>Paypal</MenuItem>
-              <MenuItem value='Google Pay'>Google Pay</MenuItem>
-              <MenuItem value='Apple Pay'>Apple Pay</MenuItem>
+              <MenuItem value='Date'>Date</MenuItem>
             </Select>
           </FormControl>
           <Button
-            //onClick={handleNextButton}
+            onClick={handleFirstStepNextButton}
             variant='contained'
             sx={{
               padding: theme.spacing(2),
@@ -324,6 +362,122 @@ export const Form = () => {
             Next
           </Button>
         </StyledRepeatOptionsSection>
+      )}
+      {showRepeatDetails && (
+        <StyledRepeatDetailsSection>
+          <Stack>
+            <FormControl>
+              <InputLabel id='select-frequency'>Frequency</InputLabel>
+              <Select
+                labelId='select-frequency'
+                id='simple-select-frequency'
+                value={selectedFrequency}
+                onChange={handleChangeFrequency}
+                input={
+                  <OutlinedInput
+                    id='select-single-frequency'
+                    label='frequency'
+                  />
+                }
+              >
+                <MenuItem value='Yearly'>Yearly</MenuItem>
+                <MenuItem value='Weekly'>Weekly</MenuItem>
+                <MenuItem value='Monthly'>Monthly</MenuItem>
+                <MenuItem value='Yearly'>Yearly</MenuItem>
+              </Select>
+            </FormControl>
+          </Stack>
+          <Stack
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              gap: theme.spacing(2),
+            }}
+          >
+            <FormControl sx={{ width: '50%' }}>
+              <InputLabel id='select-end-after'>End After</InputLabel>
+              <Select
+                labelId='select-end-after'
+                id='simple-select-end-after'
+                value={selectedEndAfter}
+                onChange={handleChangeEndAfter}
+                input={
+                  <OutlinedInput
+                    id='select-single-end-after'
+                    label='end-after'
+                  />
+                }
+              >
+                <MenuItem value='Date'>Date</MenuItem>
+              </Select>
+            </FormControl>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                sx={{ width: '50%' }}
+                value={date}
+                onChange={(newDate) => setDate(newDate)}
+              />
+            </LocalizationProvider>
+          </Stack>
+          <Button
+            onClick={handleSecondStepNextButton}
+            variant='contained'
+            sx={{
+              padding: theme.spacing(2),
+              textTransform: 'none',
+              fontSize: '16px',
+            }}
+          >
+            Next
+          </Button>
+        </StyledRepeatDetailsSection>
+      )}
+      {showSummarizeSection && (
+        <>
+          <StyledDiv>
+            <Stack>
+              <Typography
+                variant='body1'
+                fontWeight={500}
+                sx={{ color: colors.dark[25] }}
+              >
+                Frequency
+              </Typography>
+              <Typography sx={{ color: colors.light[20] }}>
+                {selectedFrequency
+                  ? `${selectedFrequency}`
+                  : 'Frequency not selected'}
+              </Typography>
+            </Stack>
+            <Stack>
+              <Typography
+                variant='body1'
+                fontWeight={500}
+                sx={{ color: colors.dark[25] }}
+              >
+                End After
+              </Typography>
+              <Typography sx={{ color: colors.light[20] }}>
+                {date ? `${date.format('DD MMMM YYYY')}` : 'No date selected'}
+              </Typography>
+            </Stack>
+            edit
+          </StyledDiv>
+          <Button
+            onClick={() => {
+              handleRepeatSectionContinueButton(); // Use setTimeout to ensure proper execution order
+            }}
+            variant='contained'
+            sx={{
+              padding: theme.spacing(2),
+              textTransform: 'none',
+              fontSize: '16px',
+            }}
+          >
+            Continue
+          </Button>
+        </>
       )}
     </StyledForm>
   );
