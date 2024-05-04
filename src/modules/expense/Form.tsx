@@ -113,6 +113,8 @@ export const Form = () => {
   const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
   const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
   const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
+  const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
+    React.useState(false);
 
   const handlePopupOpen = () => setShowPopup(true);
   const handlePopupClose = () => setShowPopup(false);
@@ -163,7 +165,11 @@ export const Form = () => {
 
   const handleRepeatSectionContinueButton = () => {
     handlePopupOpen();
-    setTimeout(() => handlePopupOpen(), 0);
+  };
+
+  const handleEditButton = () => {
+    setShowRepeatDetails(true);
+    setShowSummarizeSection(false);
   };
 
   return (
@@ -462,11 +468,27 @@ export const Form = () => {
                 {date ? `${date.format('DD MMMM YYYY')}` : 'No date selected'}
               </Typography>
             </Stack>
-            edit
+            <Button
+              onClick={() => {
+                handleEditButton();
+              }}
+              variant='contained'
+              sx={{
+                textTransform: 'none',
+                fontSize: '16px',
+                backgroundColor: colors.violet[20],
+                color: colors.violet[100],
+                boxShadow: 'none',
+                borderRadius: '40px',
+              }}
+            >
+              Edit
+            </Button>
           </StyledDiv>
           <Button
             onClick={() => {
-              handleRepeatSectionContinueButton(); // Use setTimeout to ensure proper execution order
+              handleRepeatSectionContinueButton();
+              setRepeatSectionContinueButton(true);
             }}
             variant='contained'
             sx={{
@@ -478,6 +500,24 @@ export const Form = () => {
             Continue
           </Button>
         </>
+      )}
+      {repeatSectionContinueButton && (
+        <Modal
+          open={showPopup}
+          onClose={handlePopupClose}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+        >
+          <Box sx={popupStyle}>
+            <CheckCircleIcon
+              fontSize='large'
+              sx={{ margin: 'auto', color: colors.violet[80] }}
+            />
+            <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+              Transaction has been succesfully added
+            </Typography>
+          </Box>
+        </Modal>
       )}
     </StyledForm>
   );
