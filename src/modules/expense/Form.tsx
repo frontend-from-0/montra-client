@@ -18,7 +18,6 @@ import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import InsertDriveFileRoundedIcon from '@mui/icons-material/InsertDriveFileRounded';
 import { AttachmentOptionsButtons } from '../../shared-components/Button';
 import Switch from '@mui/material/Switch';
-import { Typography } from '@mui/material';
 import { theme } from 'src/styles/theme';
 import Modal from '@mui/material/Modal';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -26,6 +25,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
+import { Regular1 } from '../../shared-components/Regular1';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -83,7 +83,7 @@ const popupStyle = {
   p: 4,
   display: 'flex',
   flexDirection: 'column',
-  borderRadius: `16px 16px 16px 16px`,
+  borderRadius: `16px`,
 };
 
 const ITEM_HEIGHT = 48;
@@ -115,6 +115,8 @@ export const Form = () => {
   const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
   const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
     React.useState(false);
+
+  const frequencyOptions = ['Yearly', 'Weekly', 'Monthly', 'Yearly'];
 
   const handlePopupOpen = () => setShowPopup(true);
   const handlePopupClose = () => setShowPopup(false);
@@ -242,18 +244,18 @@ export const Form = () => {
       </Button>
       <StyledDiv>
         <StyledDivRepeatSection>
-          <Typography
-            variant='body1'
-            fontWeight={500}
-            sx={{ color: colors.dark[25] }}
+          <Regular1
+          // variant='body1'
+          // fontWeight={500}
+          // sx={{ color: colors.dark[25] }}
           >
             Repeat
-          </Typography>
-          <Typography sx={{ color: colors.light[20] }}>
+          </Regular1>
+          <Regular1 sx={{ color: colors.light[20] }}>
             {switchChecked
               ? 'Repeat transaction, set your own time'
               : 'Repeat transaction'}
-          </Typography>
+          </Regular1>
         </StyledDivRepeatSection>
         <Switch checked={switchChecked} onChange={handleSwitchChecked} />
       </StyledDiv>
@@ -317,9 +319,9 @@ export const Form = () => {
               fontSize='large'
               sx={{ margin: 'auto', color: colors.violet[80] }}
             />
-            <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+            <Regular1 id='modal-modal-description' sx={{ mt: 2 }}>
               Transaction has been succesfully added
-            </Typography>
+            </Regular1>
           </Box>
         </Modal>
       )}
@@ -336,10 +338,11 @@ export const Form = () => {
                 <OutlinedInput id='select-single-frequency' label='frequency' />
               }
             >
-              <MenuItem value='Daily'>Daily</MenuItem>
-              <MenuItem value='Weekly'>Weekly</MenuItem>
-              <MenuItem value='Monthly'>Monthly</MenuItem>
-              <MenuItem value='Yearly'>Yearly</MenuItem>
+              {frequencyOptions.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl>
@@ -386,10 +389,11 @@ export const Form = () => {
                   />
                 }
               >
-                <MenuItem value='Yearly'>Yearly</MenuItem>
-                <MenuItem value='Weekly'>Weekly</MenuItem>
-                <MenuItem value='Monthly'>Monthly</MenuItem>
-                <MenuItem value='Yearly'>Yearly</MenuItem>
+                {frequencyOptions.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
           </Stack>
@@ -443,30 +447,20 @@ export const Form = () => {
         <>
           <StyledDiv>
             <Stack>
-              <Typography
-                variant='body1'
-                fontWeight={500}
-                sx={{ color: colors.dark[25] }}
-              >
+              <Regular1 sx={{ color: colors.dark[25], fontWeight: '500' }}>
                 Frequency
-              </Typography>
-              <Typography sx={{ color: colors.light[20] }}>
+              </Regular1>
+              <Regular1 sx={{ color: colors.light[20] }}>
                 {selectedFrequency
                   ? `${selectedFrequency}`
                   : 'Frequency not selected'}
-              </Typography>
+              </Regular1>
             </Stack>
             <Stack>
-              <Typography
-                variant='body1'
-                fontWeight={500}
-                sx={{ color: colors.dark[25] }}
-              >
-                End After
-              </Typography>
-              <Typography sx={{ color: colors.light[20] }}>
+              <Regular1 sx={{ color: colors.dark[25] }}>End After</Regular1>
+              <Regular1 sx={{ color: colors.light[20] }}>
                 {date ? `${date.format('DD MMMM YYYY')}` : 'No date selected'}
-              </Typography>
+              </Regular1>
             </Stack>
             <Button
               onClick={() => {
@@ -513,9 +507,9 @@ export const Form = () => {
               fontSize='large'
               sx={{ margin: 'auto', color: colors.violet[80] }}
             />
-            <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+            <Regular1 id='modal-modal-description' sx={{ mt: 2 }}>
               Transaction has been succesfully added
-            </Typography>
+            </Regular1>
           </Box>
         </Modal>
       )}

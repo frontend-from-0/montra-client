@@ -1,16 +1,16 @@
 import { styled, Theme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 import Input from '@mui/material/Input';
 import { colors } from 'src/styles/colors';
 import React from 'react';
+import { Title1 } from '../../shared-components/Title1';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flex: 'end',
   flexDirection: 'column',
-  margin: '80px 30px 0 30px',
+  margin: `${theme.spacing(10)} ${theme.spacing(4)} 0 ${theme.spacing(4)}`,
 }));
 
 const StyledDivPrice = styled(`div`)(({ theme }: { theme: Theme }) => ({
@@ -30,11 +30,11 @@ export const PriceSection = () => {
   return (
     <StyledDiv>
       <StyledDivPrice>
-        <Typography
-          sx={{ color: colors.light[80], fontWeight: '600', opacity: '64%' }}
+        <Title1
+          sx={{ color: colors.light[40], fontWeight: '400', opacity: '64%' }}
         >
           How much?
-        </Typography>
+        </Title1>
         <FormControl sx={{ fontSize: '1000px' }} variant='standard'>
           <Input
             value={amount}
@@ -48,7 +48,7 @@ export const PriceSection = () => {
             id='standard-adornment-amount'
             startAdornment={
               <InputAdornment position='start'>
-                <Typography
+                <Title1
                   sx={{
                     fontSize: '50px',
                     color: colors.light[100],
@@ -56,7 +56,7 @@ export const PriceSection = () => {
                   }}
                 >
                   $
-                </Typography>
+                </Title1>
               </InputAdornment>
             }
           />

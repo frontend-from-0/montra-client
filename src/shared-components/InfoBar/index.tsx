@@ -8,7 +8,7 @@ const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  margin: '10px 30px',
+  margin: `${theme.spacing(1)} ${theme.spacing(4)}`,
   height: '30px',
 }));
 

@@ -8,7 +8,7 @@ const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
   width: '100%',
   alignItems: 'center',
   justifyContent: 'space-around',
-  marginTop: '20px',
+  marginTop: `${theme.spacing(3)}`,
 }));
 
 interface Title3Props {

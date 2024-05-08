@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { colors } from 'src/styles/colors';
 
 export const DateTime = () => {
   var [date, setDate] = useState(new Date());
@@ -14,7 +15,7 @@ export const DateTime = () => {
 
   return (
     <div>
-      <p style={{ color: 'white' }}>{time}</p>
+      <p style={{ color: `${colors.light[60]}` }}>{time}</p>
     </div>
   );
 };
