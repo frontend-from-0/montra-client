@@ -17,6 +17,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from '@mui/material/Link';
 import ArrowBack from '@mui/icons-material/ArrowBack';
+import { Title2 } from '../../../shared-components/Title2';
+import '../signup/style.css';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -43,7 +45,7 @@ export const SignUp = () => {
   return (
     <Paper>
       <StyledDiv>
-        <Stack direction='row' alignItems='center' spacing={1} sx={{ mb: 2 }}>
+        <Stack direction='row' alignItems='center' spacing={15} sx={{ mb: 2 }}>
           <IconButton
             aria-label='introduction'
             component='a'
@@ -51,9 +53,7 @@ export const SignUp = () => {
           >
             <ArrowBack />
           </IconButton>
-          <Typography variant='h5' component='h1'>
-            Sign Up
-          </Typography>
+          <Title2>Sign Up</Title2>
         </Stack>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2} direction='column'>
