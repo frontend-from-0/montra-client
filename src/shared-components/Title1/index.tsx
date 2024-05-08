@@ -1,15 +1,15 @@
-import { Typography } from '@mui/material';
+import { Typography, SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
 
 interface Title1Props {
   children: string | JSX.Element;
+  style?: React.CSSProperties;
+  sx?: SxProps<Theme>;
 }
 
-export const Title1 = ({ children }: Title1Props) => {
+export const Title1 = ({ children, style = {}, sx }: Title1Props) => {
   return (
-    <Typography
-      variant='h2'
-      sx={{ textAlign: 'center', margin: (theme) => theme.spacing(2) }}
-    >
+    <Typography style={style} variant='h2' sx={sx}>
       {children}
     </Typography>
   );

@@ -5,7 +5,7 @@ export const Paper = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
 
   return (
-    <MUIPaper square elevation={0} sx={{ padding: theme.spacing(2) }}>
+    <MUIPaper square elevation={0}>
       {children}
     </MUIPaper>
   );
