@@ -19,16 +19,18 @@ import Link from '@mui/material/Link';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import { Title2 } from '../../../shared-components/Title2';
 import '../signup/style.css';
+import { useNavigate } from 'react-router-dom';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
   minHeight: `calc(100vh - ${theme.spacing(3)})`,
 }));
 
 export const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -42,15 +44,15 @@ export const SignUp = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+
+  const handleBack = () => {
+    navigate('/onboarding/introduction');
+  };
   return (
     <Paper>
       <StyledDiv>
-        <Stack direction='row' alignItems='center' spacing={15} sx={{ mb: 2 }}>
-          <IconButton
-            aria-label='introduction'
-            component='a'
-            href='/onboarding/introduction'
-          >
+        <Stack direction='row' alignItems='center' spacing={15} sx={{ mb: 8 }}>
+          <IconButton aria-label='introduction' onClick={handleBack}>
             <ArrowBack />
           </IconButton>
           <Title2>Sign Up</Title2>
