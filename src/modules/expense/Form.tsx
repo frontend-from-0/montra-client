@@ -26,6 +26,24 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { Regular1 } from '../../shared-components/Regular1';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store/store';
+import {
+  setCategory,
+  setTextValue,
+  setSelectedWallet,
+  setShowAttachmentComponent,
+  setShowContinueButton,
+  setSwitchChecked,
+  setToggleContinueButton,
+  setSelectedFrequency,
+  setSelectedEndAfter,
+  setShowPopup,
+  setShowRepeatDetails,
+  setDate,
+  setShowSummarizeSection,
+  setRepeatSectionContinueButton,
+} from '../expense/expenseFormSlice';
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -99,22 +117,41 @@ const MenuProps = {
 };
 
 export const Form = () => {
-  const [category, setCategory] = React.useState<string[]>([]);
-  const [textValue, setTextValue] = React.useState<string>('');
-  const [selectedWallet, setSelectedWallet] = React.useState<string>('');
-  const [showAttachmentComponent, setShowAttachmentComponent] =
-    React.useState(false);
-  const [showContinueButton, setShowContinueButton] = React.useState(false);
-  const [switchChecked, setSwitchChecked] = React.useState(false);
-  const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
-  const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
-  const [selectedEndAfter, setSelectedEndAfter] = React.useState<string>('');
-  const [showPopup, setShowPopup] = React.useState(false);
-  const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
-  const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
-  const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
-  const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
-    React.useState(false);
+  // const [category, setCategory] = React.useState<string[]>([]);
+  // const [textValue, setTextValue] = React.useState<string>('');
+  // const [selectedWallet, setSelectedWallet] = React.useState<string>('');
+  // const [showAttachmentComponent, setShowAttachmentComponent] =
+  //   React.useState(false);
+  // const [showContinueButton, setShowContinueButton] = React.useState(false);
+  // const [switchChecked, setSwitchChecked] = React.useState(false);
+  // const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
+  // const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
+  // const [selectedEndAfter, setSelectedEndAfter] = React.useState<string>('');
+  // const [showPopup, setShowPopup] = React.useState(false);
+  // const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
+  // const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
+  // const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
+  // const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
+  //   React.useState(false);
+
+  const {
+    category,
+    textValue,
+    selectedWallet,
+    showAttachmentComponent,
+    showContinueButton,
+    switchChecked,
+    toggleContinueButton,
+    selectedFrequency,
+    selectedEndAfter,
+    showPopup,
+    showRepeatDetails,
+    date,
+    showSummarizeSection,
+    repeatSectionContinueButton,
+  } = useSelector((state: RootState) => state.expenseForm);
+
+  const dispatch = useDispatch();
 
   const frequencyOptions = ['Yearly', 'Weekly', 'Monthly', 'Yearly'];
 
@@ -125,44 +162,49 @@ export const Form = () => {
     const {
       target: { value },
     } = event;
-    setCategory(typeof value === 'string' ? value.split(',') : value);
+    //setCategory(typeof value === 'string' ? value.split(',') : value);
+    dispatch(setCategory(event.target.value as string[]));
   };
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTextValue(event.target.value);
+    dispatch(setTextValue(event.target.value));
   };
 
   const handleChangeWalletOption = (event: SelectChangeEvent) => {
-    setSelectedWallet(event.target.value as string);
+    dispatch(setSelectedWallet(event.target.value as string));
+  };
+
+  const handleAttachmentComponent = () => {
+    dispatch(setShowAttachmentComponent(!showAttachmentComponent));
   };
 
   const handleSwitchChecked = () => {
-    setSwitchChecked(!switchChecked);
+    dispatch(setSwitchChecked(!switchChecked));
   };
 
   const handleContinueButton = () => {
-    setToggleContinueButton(!toggleContinueButton);
-    setShowContinueButton(!showContinueButton);
-    setShowPopup(true);
+    dispatch(setToggleContinueButton(!toggleContinueButton));
+    dispatch(setShowContinueButton(!showContinueButton));
+    dispatch(setShowPopup(true));
   };
 
   const handleChangeFrequency = (event: SelectChangeEvent) => {
-    setSelectedFrequency(event.target.value as string);
+    dispatch(setSelectedFrequency(event.target.value as string));
   };
 
   const handleChangeEndAfter = (event: SelectChangeEvent) => {
-    setSelectedEndAfter(event.target.value as string);
+    dispatch(setSelectedEndAfter(event.target.value as string));
   };
 
   const handleFirstStepNextButton = () => {
-    setToggleContinueButton(false);
-    setShowRepeatDetails(true);
+    dispatch(setToggleContinueButton(false));
+    dispatch(setShowRepeatDetails(true));
   };
 
   const handleSecondStepNextButton = () => {
-    setShowRepeatDetails(false);
+    dispatch(setShowRepeatDetails(false));
     //New continue button and summarize component will be added here.
-    setShowSummarizeSection(true);
+    dispatch(setShowSummarizeSection(true));
   };
 
   const handleRepeatSectionContinueButton = () => {
@@ -170,8 +212,8 @@ export const Form = () => {
   };
 
   const handleEditButton = () => {
-    setShowRepeatDetails(true);
-    setShowSummarizeSection(false);
+    dispatch(setShowRepeatDetails(true));
+    dispatch(setShowSummarizeSection(false));
   };
 
   return (
@@ -230,7 +272,7 @@ export const Form = () => {
         </Select>
       </FormControl>
       <Button
-        onClick={() => setShowAttachmentComponent(!showAttachmentComponent)}
+        onClick={handleAttachmentComponent}
         component='label'
         sx={{
           backgroundColor: colors.light[100],
@@ -283,16 +325,16 @@ export const Form = () => {
             icon={<CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />}
             text='Camera'
             onClickHandler={() => {
-              setShowContinueButton(!showContinueButton);
-              setShowAttachmentComponent(false);
+              dispatch(setShowContinueButton(!showContinueButton));
+              dispatch(setShowAttachmentComponent(false));
             }}
           />
           <AttachmentOptionsButtons
             icon={<ImageRoundedIcon sx={{ color: colors.violet[100] }} />}
             text='Image'
             onClickHandler={() => {
-              setShowContinueButton(!showContinueButton);
-              setShowAttachmentComponent(false);
+              dispatch(setShowContinueButton(!showContinueButton));
+              dispatch(setShowAttachmentComponent(false));
             }}
           />
           <AttachmentOptionsButtons
@@ -301,8 +343,8 @@ export const Form = () => {
             }
             text='Document'
             onClickHandler={() => {
-              setShowContinueButton(!showContinueButton);
-              setShowAttachmentComponent(false);
+              dispatch(setShowContinueButton(!showContinueButton));
+              dispatch(setShowAttachmentComponent(false));
             }}
           />
         </StyledAttachmentArea>
@@ -482,7 +524,7 @@ export const Form = () => {
           <Button
             onClick={() => {
               handleRepeatSectionContinueButton();
-              setRepeatSectionContinueButton(true);
+              dispatch(setRepeatSectionContinueButton(true));
             }}
             variant='contained'
             sx={{
