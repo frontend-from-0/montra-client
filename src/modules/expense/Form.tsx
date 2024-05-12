@@ -7,7 +7,6 @@ import { styled, Theme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
-import { categories } from './ExpenseCategories';
 import { colors } from 'src/styles/colors';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -27,7 +26,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { Regular1 } from '../../shared-components/Regular1';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/store';
 import {
   setCategory,
   setTextValue,
@@ -44,6 +42,27 @@ import {
   setShowSummarizeSection,
   setRepeatSectionContinueButton,
 } from '../expense/expenseFormSlice';
+import { Category } from 'src/types/Category';
+import { PaymentFrequency } from 'src/types/PaymentFrequency';
+
+interface RootState {
+  newExpense: {
+    category: Category[];
+    textValue: string;
+    selectedWallet: string;
+    showAttachmentComponent: boolean;
+    showContinueButton: boolean;
+    switchChecked: boolean;
+    toggleContinueButton: boolean;
+    selectedFrequency: string;
+    endAfter: string;
+    showPopup: boolean;
+    showRepeatDetails: boolean;
+    date: Dayjs | null;
+    showSummarizeSection: boolean;
+    repeatSectionContinueButton: boolean;
+  };
+}
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -117,23 +136,6 @@ const MenuProps = {
 };
 
 export const Form = () => {
-  // const [category, setCategory] = React.useState<string[]>([]);
-  // const [textValue, setTextValue] = React.useState<string>('');
-  // const [selectedWallet, setSelectedWallet] = React.useState<string>('');
-  // const [showAttachmentComponent, setShowAttachmentComponent] =
-  //   React.useState(false);
-  // const [showContinueButton, setShowContinueButton] = React.useState(false);
-  // const [switchChecked, setSwitchChecked] = React.useState(false);
-  // const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
-  // const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
-  // const [selectedEndAfter, setSelectedEndAfter] = React.useState<string>('');
-  // const [showPopup, setShowPopup] = React.useState(false);
-  // const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
-  // const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
-  // const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
-  // const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
-  //   React.useState(false);
-
   const {
     category,
     textValue,
@@ -143,17 +145,15 @@ export const Form = () => {
     switchChecked,
     toggleContinueButton,
     selectedFrequency,
-    selectedEndAfter,
+    endAfter,
     showPopup,
     showRepeatDetails,
     date,
     showSummarizeSection,
     repeatSectionContinueButton,
-  } = useSelector((state: RootState) => state.expenseForm);
+  } = useSelector((state: RootState) => state.newExpense);
 
   const dispatch = useDispatch();
-
-  const frequencyOptions = ['Yearly', 'Weekly', 'Monthly', 'Yearly'];
 
   const handlePopupOpen = () => setShowPopup(true);
   const handlePopupClose = () => setShowPopup(false);
@@ -244,7 +244,7 @@ export const Form = () => {
           )}
           MenuProps={MenuProps}
         >
-          {categories.map((category) => (
+          {Object.values(Category).map((category) => (
             <MenuItem key={category} value={category}>
               {category}
             </MenuItem>
@@ -380,9 +380,9 @@ export const Form = () => {
                 <OutlinedInput id='select-single-frequency' label='frequency' />
               }
             >
-              {frequencyOptions.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              {Object.values(PaymentFrequency).map((frequency) => (
+                <MenuItem key={frequency} value={frequency}>
+                  {frequency}
                 </MenuItem>
               ))}
             </Select>
@@ -392,7 +392,7 @@ export const Form = () => {
             <Select
               labelId='select-end-after'
               id='simple-select-end-after'
-              value={selectedEndAfter}
+              value={endAfter}
               onChange={handleChangeEndAfter}
               input={
                 <OutlinedInput id='select-single-end-after' label='end-after' />
@@ -431,9 +431,9 @@ export const Form = () => {
                   />
                 }
               >
-                {frequencyOptions.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
+                {Object.values(PaymentFrequency).map((frequency) => (
+                  <MenuItem key={frequency} value={frequency}>
+                    {frequency}
                   </MenuItem>
                 ))}
               </Select>
@@ -452,7 +452,7 @@ export const Form = () => {
               <Select
                 labelId='select-end-after'
                 id='simple-select-end-after'
-                value={selectedEndAfter}
+                value={endAfter}
                 onChange={handleChangeEndAfter}
                 input={
                   <OutlinedInput
