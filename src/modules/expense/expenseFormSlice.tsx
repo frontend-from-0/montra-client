@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import dayjs, { Dayjs } from 'dayjs';
 
 export const expenseFormSlice = createSlice({
-  name: 'expenseForm',
+  name: 'newExpense',
   initialState: {
     category: [],
     textValue: '',
@@ -13,10 +13,10 @@ export const expenseFormSlice = createSlice({
     switchChecked: false,
     toggleContinueButton: false,
     selectedFrequency: '',
-    selectedEndAfter: '',
+    endAfter: '',
     showPopup: false,
     showRepeatDetails: false,
-    date: dayjs('2022-04-17'),
+    date: dayjs(),
     showSummarizeSection: false,
     repeatSectionContinueButton: false,
   },
@@ -46,7 +46,7 @@ export const expenseFormSlice = createSlice({
       state.selectedFrequency = action.payload;
     },
     setSelectedEndAfter: (state, action) => {
-      state.selectedEndAfter = action.payload;
+      state.endAfter = action.payload;
     },
     setShowPopup: (state, action) => {
       state.showPopup = action.payload;
