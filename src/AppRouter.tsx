@@ -40,9 +40,19 @@ export const AppRouter = () => {
 
         <Route index element={<div>Launch screen</div>} />
       </Route>
+      {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
       <Route
         path='/'
-        element={<Link to='/expense/new'>Add new expense</Link>}
+        element={
+          <>
+            <div>
+              <Link to='/onboarding/introduction'>Onboarding introduction</Link>
+            </div>
+            <div>
+              <Link to='/expense/new'>Add new expense</Link>
+            </div>
+          </>
+        }
       />
     </Routes>
   );
