@@ -1,0 +1,18 @@
+export const categories = [
+  'Housing',
+  'Utilities',
+  'Food',
+  'Transportation',
+  'Healthcare',
+  'Insurance',
+  'Personal',
+  'Spending',
+  'Savings',
+  'Education',
+  'Donation',
+  'Gifts',
+  'Childcare',
+  'Travel',
+  'Subscription',
+  'Loan',
+];
