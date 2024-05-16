@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Paper } from '../../../shared-components/Paper/Paper';
 import { styled, Theme } from '@mui/material/styles';
-import { Regular1 } from '../../../shared-components/Regular1';
+import { Regular1 } from '../../../shared-components/Typography/Regular1';
 import GoogleIcon from '@mui/icons-material/Google';
 import React, { useState } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
