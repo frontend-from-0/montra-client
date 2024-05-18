@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error("Root element not found");
+if (!rootElement) throw new Error('Root element not found');
 
 const root = ReactDOM.createRoot(rootElement);
 
