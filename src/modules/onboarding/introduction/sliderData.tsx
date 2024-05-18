@@ -1,8 +1,18 @@
+//@ts-ignore
 import HandHoldingMoneyIllustration from '../../../assets/illustrations/handHoldingMoney.svg';
+//@ts-ignore
+
 import KnowWhereYourMoneyGoesIllustration from '../../../assets/illustrations/knowWhereYourMoneyGoes.svg';
+//@ts-ignore
 import PlanningAheadIllustration from '../../../assets/illustrations/planningAhead.svg';
 
-export const sliderData = [
+export interface SliderData {
+  title: string;
+  description: string;
+  image: string;
+}
+
+export const sliderData: SliderData[] = [
   {
     title: 'Gain total control of your money',
     description: 'Become your own money manager and make every cent count',
