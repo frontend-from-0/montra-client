@@ -28,8 +28,8 @@ import { Regular1 } from '../../shared-components/Regular1';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setCategory,
-  setTextValue,
-  setSelectedWallet,
+  description,
+  wallet,
   frequency,
   setSelectedEndAfter,
   setDate,
@@ -150,11 +150,11 @@ export const Form = () => {
   };
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setTextValue(event.target.value));
+    dispatch(description(event.target.value));
   };
 
   const handleChangeWalletOption = (event: SelectChangeEvent) => {
-    dispatch(setSelectedWallet(event.target.value as string));
+    dispatch(wallet(event.target.value as string));
   };
 
   const handleAttachmentComponent = () => {

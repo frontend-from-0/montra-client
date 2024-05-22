@@ -6,9 +6,9 @@ export const expenseFormSlice = createSlice({
   name: 'newExpense',
   initialState: {
     category: [],
-    textValue: '',
-    selectedWallet: '',
-    selectedFrequency: '',
+    description: '',
+    wallet: '',
+    frequency: '',
     endAfter: '',
     date: dayjs(),
   },
@@ -16,14 +16,14 @@ export const expenseFormSlice = createSlice({
     setCategory: (state, action) => {
       state.category = action.payload;
     },
-    setTextValue: (state, action) => {
-      state.textValue = action.payload;
+    description: (state, action) => {
+      state.description = action.payload;
     },
-    setSelectedWallet: (state, action) => {
-      state.selectedWallet = action.payload;
+    wallet: (state, action) => {
+      state.wallet = action.payload;
     },
     frequency: (state, action) => {
-      state.selectedFrequency = action.payload;
+      state.frequency = action.payload;
     },
     setSelectedEndAfter: (state, action) => {
       state.endAfter = action.payload;
@@ -36,8 +36,8 @@ export const expenseFormSlice = createSlice({
 
 export const {
   setCategory,
-  setTextValue,
-  setSelectedWallet,
+  description,
+  wallet,
   frequency,
   setSelectedEndAfter,
   setDate,
