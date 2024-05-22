@@ -8,17 +8,9 @@ export const expenseFormSlice = createSlice({
     category: [],
     textValue: '',
     selectedWallet: '',
-    showAttachmentComponent: false,
-    showContinueButton: false,
-    switchChecked: false,
-    toggleContinueButton: false,
     selectedFrequency: '',
     endAfter: '',
-    showPopup: false,
-    showRepeatDetails: false,
     date: dayjs(),
-    showSummarizeSection: false,
-    repeatSectionContinueButton: false,
   },
   reducers: {
     setCategory: (state, action) => {
@@ -30,39 +22,15 @@ export const expenseFormSlice = createSlice({
     setSelectedWallet: (state, action) => {
       state.selectedWallet = action.payload;
     },
-    // setShowAttachmentComponent: (state, action) => {
-    //   state.showAttachmentComponent = action.payload;
-    // },
-    // setShowContinueButton: (state, action) => {
-    //   state.showContinueButton = action.payload;
-    // },
-    // setSwitchChecked: (state, action) => {
-    //   state.switchChecked = action.payload;
-    // },
-    // setToggleContinueButton: (state, action) => {
-    //   state.toggleContinueButton = action.payload;
-    // },
     frequency: (state, action) => {
       state.selectedFrequency = action.payload;
     },
     setSelectedEndAfter: (state, action) => {
       state.endAfter = action.payload;
     },
-    // setShowPopup: (state, action) => {
-    //   state.showPopup = action.payload;
-    // },
-    // setShowRepeatDetails: (state, action) => {
-    //   state.showRepeatDetails = action.payload;
-    // },
     setDate: (state, action) => {
       state.date = action.payload;
     },
-    // setShowSummarizeSection: (state, action) => {
-    //   state.showSummarizeSection = action.payload;
-    // },
-    // setRepeatSectionContinueButton: (state, action) => {
-    //   state.repeatSectionContinueButton = action.payload;
-    // },
   },
 });
 
@@ -70,17 +38,9 @@ export const {
   setCategory,
   setTextValue,
   setSelectedWallet,
-  //setShowAttachmentComponent,
-  //setShowContinueButton,
-  //setSwitchChecked,
-  //setToggleContinueButton,
   frequency,
   setSelectedEndAfter,
-  //setShowPopup,
-  //setShowRepeatDetails,
   setDate,
-  //setShowSummarizeSection,
-  //setRepeatSectionContinueButton,
 } = expenseFormSlice.actions;
 
 export default expenseFormSlice.reducer;

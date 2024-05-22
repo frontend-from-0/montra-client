@@ -30,17 +30,9 @@ import {
   setCategory,
   setTextValue,
   setSelectedWallet,
-  //setShowAttachmentComponent,
-  //setShowContinueButton,
-  //setSwitchChecked,
-  //setToggleContinueButton,
   frequency,
   setSelectedEndAfter,
-  //setShowPopup,
-  //setShowRepeatDetails,
   setDate,
-  //setShowSummarizeSection,
-  //setRepeatSectionContinueButton,
 } from '../expense/expenseFormSlice';
 import { Category } from 'src/types/Category';
 import { PaymentFrequency } from 'src/types/PaymentFrequency';
@@ -140,17 +132,9 @@ export const Form = () => {
     category,
     textValue,
     selectedWallet,
-    //showAttachmentComponent,
-    //showContinueButton,
-    //switchChecked,
-    //toggleContinueButton,
     selectedFrequency,
     endAfter,
-    //showPopup,
-    //showRepeatDetails,
     date,
-    //showSummarizeSection,
-    //repeatSectionContinueButton,
   } = useSelector((state: RootState) => state.newExpense);
 
   const dispatch = useDispatch();
@@ -162,7 +146,6 @@ export const Form = () => {
     const {
       target: { value },
     } = event;
-    //setCategory(typeof value === 'string' ? value.split(',') : value);
     dispatch(setCategory(event.target.value as string[]));
   };
 
@@ -203,7 +186,6 @@ export const Form = () => {
 
   const handleSecondStepNextButton = () => {
     setShowRepeatDetails(false);
-    //New continue button and summarize component will be added here.
     setShowSummarizeSection(true);
   };
 
@@ -292,17 +274,10 @@ export const Form = () => {
       >
         <AttachFileIcon sx={{ marginRight: '10px' }}></AttachFileIcon>
         Add attachment
-        {/* <input type='' hidden /> */}
       </Button>
       <StyledDiv>
         <StyledDivRepeatSection>
-          <Regular1
-          // variant='body1'
-          // fontWeight={500}
-          // sx={{ color: colors.dark[25] }}
-          >
-            Repeat
-          </Regular1>
+          <Regular1>Repeat</Regular1>
           <Regular1 sx={{ color: colors.light[20] }}>
             {switchChecked
               ? 'Repeat transaction, set your own time'
