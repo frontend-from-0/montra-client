@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -30,17 +30,17 @@ import {
   setCategory,
   setTextValue,
   setSelectedWallet,
-  setShowAttachmentComponent,
-  setShowContinueButton,
-  setSwitchChecked,
-  setToggleContinueButton,
-  setSelectedFrequency,
+  //setShowAttachmentComponent,
+  //setShowContinueButton,
+  //setSwitchChecked,
+  //setToggleContinueButton,
+  frequency,
   setSelectedEndAfter,
-  setShowPopup,
-  setShowRepeatDetails,
+  //setShowPopup,
+  //setShowRepeatDetails,
   setDate,
-  setShowSummarizeSection,
-  setRepeatSectionContinueButton,
+  //setShowSummarizeSection,
+  //setRepeatSectionContinueButton,
 } from '../expense/expenseFormSlice';
 import { Category } from 'src/types/Category';
 import { PaymentFrequency } from 'src/types/PaymentFrequency';
@@ -140,17 +140,17 @@ export const Form = () => {
     category,
     textValue,
     selectedWallet,
-    showAttachmentComponent,
-    showContinueButton,
-    switchChecked,
-    toggleContinueButton,
+    //showAttachmentComponent,
+    //showContinueButton,
+    //switchChecked,
+    //toggleContinueButton,
     selectedFrequency,
     endAfter,
-    showPopup,
-    showRepeatDetails,
+    //showPopup,
+    //showRepeatDetails,
     date,
-    showSummarizeSection,
-    repeatSectionContinueButton,
+    //showSummarizeSection,
+    //repeatSectionContinueButton,
   } = useSelector((state: RootState) => state.newExpense);
 
   const dispatch = useDispatch();
@@ -175,21 +175,21 @@ export const Form = () => {
   };
 
   const handleAttachmentComponent = () => {
-    dispatch(setShowAttachmentComponent(!showAttachmentComponent));
+    setShowAttachmentComponent(!showAttachmentComponent);
   };
 
   const handleSwitchChecked = () => {
-    dispatch(setSwitchChecked(!switchChecked));
+    setSwitchChecked(!switchChecked);
   };
 
   const handleContinueButton = () => {
-    dispatch(setToggleContinueButton(!toggleContinueButton));
-    dispatch(setShowContinueButton(!showContinueButton));
-    dispatch(setShowPopup(true));
+    setToggleContinueButton(!toggleContinueButton);
+    setShowContinueButton(!showContinueButton);
+    setShowPopup(true);
   };
 
   const handleChangeFrequency = (event: SelectChangeEvent) => {
-    dispatch(setSelectedFrequency(event.target.value as string));
+    dispatch(frequency(event.target.value as string));
   };
 
   const handleChangeEndAfter = (event: SelectChangeEvent) => {
@@ -197,14 +197,14 @@ export const Form = () => {
   };
 
   const handleFirstStepNextButton = () => {
-    dispatch(setToggleContinueButton(false));
-    dispatch(setShowRepeatDetails(true));
+    setToggleContinueButton(false);
+    setShowRepeatDetails(true);
   };
 
   const handleSecondStepNextButton = () => {
-    dispatch(setShowRepeatDetails(false));
+    setShowRepeatDetails(false);
     //New continue button and summarize component will be added here.
-    dispatch(setShowSummarizeSection(true));
+    setShowSummarizeSection(true);
   };
 
   const handleRepeatSectionContinueButton = () => {
@@ -212,9 +212,19 @@ export const Form = () => {
   };
 
   const handleEditButton = () => {
-    dispatch(setShowRepeatDetails(true));
-    dispatch(setShowSummarizeSection(false));
+    setShowRepeatDetails(true);
+    setShowSummarizeSection(false);
   };
+
+  const [showContinueButton, setShowContinueButton] = useState(false);
+  const [showAttachmentComponent, setShowAttachmentComponent] = useState(false);
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [toggleContinueButton, setToggleContinueButton] = useState(false);
+  const [showRepeatDetails, setShowRepeatDetails] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showSummarizeSection, setShowSummarizeSection] = useState(false);
+  const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
+    useState(false);
 
   return (
     <StyledForm>
@@ -325,16 +335,16 @@ export const Form = () => {
             icon={<CameraAltRoundedIcon sx={{ color: colors.violet[100] }} />}
             text='Camera'
             onClickHandler={() => {
-              dispatch(setShowContinueButton(!showContinueButton));
-              dispatch(setShowAttachmentComponent(false));
+              setShowContinueButton(!showContinueButton);
+              setShowAttachmentComponent(false);
             }}
           />
           <AttachmentOptionsButtons
             icon={<ImageRoundedIcon sx={{ color: colors.violet[100] }} />}
             text='Image'
             onClickHandler={() => {
-              dispatch(setShowContinueButton(!showContinueButton));
-              dispatch(setShowAttachmentComponent(false));
+              setShowContinueButton(!showContinueButton);
+              setShowAttachmentComponent(false);
             }}
           />
           <AttachmentOptionsButtons
@@ -343,8 +353,8 @@ export const Form = () => {
             }
             text='Document'
             onClickHandler={() => {
-              dispatch(setShowContinueButton(!showContinueButton));
-              dispatch(setShowAttachmentComponent(false));
+              setShowContinueButton(!showContinueButton);
+              setShowAttachmentComponent(false);
             }}
           />
         </StyledAttachmentArea>
@@ -524,7 +534,7 @@ export const Form = () => {
           <Button
             onClick={() => {
               handleRepeatSectionContinueButton();
-              dispatch(setRepeatSectionContinueButton(true));
+              setRepeatSectionContinueButton(true);
             }}
             variant='contained'
             sx={{
