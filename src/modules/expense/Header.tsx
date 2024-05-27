@@ -1,8 +1,8 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled, Theme } from '@mui/material/styles';
-import { Title3 } from '@shared-components/Title3';
+import { Title3 } from '@shared-components/Typography/Title3';
 import { colors } from 'src/styles/colors';
-import { Regular1 } from '../../shared-components/Regular1';
+import { Regular1 } from '../../shared-components/Typography/Regular1';
 
 const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',

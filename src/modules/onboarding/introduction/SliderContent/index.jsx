@@ -1,6 +1,6 @@
-import { Title1 } from '../../../../shared-components/Title1';
+import { Title1 } from '../../../../shared-components/Typography/Title1';
 import './styles.css';
-import { Regular1 } from '../../../../shared-components/Regular1';
+import { Regular1 } from '../../../../shared-components/Typography/Regular1';
 
 export const SliderContent = ({ activeIndex, sliderData }) => {
   return (

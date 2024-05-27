@@ -1,9 +1,8 @@
 import { styled, Theme } from '@mui/material/styles';
-import { InfoBar } from '../../shared-components/InfoBar';
 import { PriceSection } from './PriceSection';
 import { Form } from './Form';
 import { colors } from 'src/styles/colors';
-import { Title3 } from '../../shared-components/Title3';
+import { Title3 } from '../../shared-components/Typography/Title3';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -31,7 +30,6 @@ export const Expense = () => {
   return (
     <StyledDiv>
       <StyledDivUpperSide>
-        <InfoBar />
         <Title3>Expense</Title3>
         <PriceSection />
       </StyledDivUpperSide>

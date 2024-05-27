@@ -4,7 +4,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Input from '@mui/material/Input';
 import { colors } from 'src/styles/colors';
 import React from 'react';
-import { Title1 } from '../../shared-components/Title1';
+import { Title1 } from '../../shared-components/Typography/Title1';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
