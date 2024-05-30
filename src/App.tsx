@@ -8,7 +8,7 @@ import { store } from './store/store';
 
 export const App = () => {
   return (
-    <Container sx={{ width: 'sm' }}>
+    <Container component='main' maxWidth='sm'>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <AppRouter />
