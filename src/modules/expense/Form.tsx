@@ -29,9 +29,9 @@ import { useSelector, useDispatch } from 'react-redux';
 //import { Regular1 } from '../../shared-components/Regular1';
 import {
   setCategory,
-  description,
-  wallet,
-  frequency,
+  setDescription,
+  selectedWallet,
+  selectedFrequency,
   setSelectedEndAfter,
   setDate,
 } from '../expense/expenseFormSlice';
@@ -41,19 +41,11 @@ import { PaymentFrequency } from 'src/types/PaymentFrequency';
 interface RootState {
   newExpense: {
     category: Category[];
-    textValue: string;
-    selectedWallet: string;
-    showAttachmentComponent: boolean;
-    showContinueButton: boolean;
-    switchChecked: boolean;
-    toggleContinueButton: boolean;
-    selectedFrequency: string;
+    description: string;
+    wallet: string;
+    frequency: string;
     endAfter: string;
-    showPopup: boolean;
-    showRepeatDetails: boolean;
     date: Dayjs | null;
-    showSummarizeSection: boolean;
-    repeatSectionContinueButton: boolean;
   };
 }
 
@@ -129,14 +121,8 @@ const MenuProps = {
 };
 
 export const Form = () => {
-  const {
-    category,
-    textValue,
-    selectedWallet,
-    selectedFrequency,
-    endAfter,
-    date,
-  } = useSelector((state: RootState) => state.newExpense);
+  const { category, description, wallet, frequency, endAfter, date } =
+    useSelector((state: RootState) => state.newExpense);
 
   const dispatch = useDispatch();
 
@@ -151,11 +137,11 @@ export const Form = () => {
   };
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(description(event.target.value));
+    dispatch(setDescription(event.target.value));
   };
 
   const handleChangeWalletOption = (event: SelectChangeEvent) => {
-    dispatch(wallet(event.target.value as string));
+    dispatch(selectedWallet(event.target.value as string));
   };
 
   const handleAttachmentComponent = () => {
@@ -173,7 +159,7 @@ export const Form = () => {
   };
 
   const handleChangeFrequency = (event: SelectChangeEvent) => {
-    dispatch(frequency(event.target.value as string));
+    dispatch(selectedFrequency(event.target.value as string));
   };
 
   const handleChangeEndAfter = (event: SelectChangeEvent) => {
@@ -246,7 +232,7 @@ export const Form = () => {
       </FormControl>
       <TextField
         label='Description'
-        value={textValue}
+        value={description}
         onChange={handleChangeText}
         variant='outlined'
       />
@@ -255,7 +241,7 @@ export const Form = () => {
         <Select
           labelId='select-option'
           id='simple-select-option'
-          value={selectedWallet}
+          value={wallet}
           onChange={handleChangeWalletOption}
           input={<OutlinedInput id='select-single-option' label='Option' />}
         >
@@ -360,7 +346,7 @@ export const Form = () => {
             <Select
               labelId='select-frequency'
               id='simple-select-frequency'
-              value={selectedFrequency}
+              value={frequency}
               onChange={handleChangeFrequency}
               input={
                 <OutlinedInput id='select-single-frequency' label='frequency' />
@@ -408,7 +394,7 @@ export const Form = () => {
               <Select
                 labelId='select-frequency'
                 id='simple-select-frequency'
-                value={selectedFrequency}
+                value={frequency}
                 onChange={handleChangeFrequency}
                 input={
                   <OutlinedInput

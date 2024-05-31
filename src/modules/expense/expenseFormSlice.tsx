@@ -16,13 +16,13 @@ export const expenseFormSlice = createSlice({
     setCategory: (state, action) => {
       state.category = action.payload;
     },
-    description: (state, action) => {
+    setDescription: (state, action) => {
       state.description = action.payload;
     },
-    wallet: (state, action) => {
+    selectedWallet: (state, action) => {
       state.wallet = action.payload;
     },
-    frequency: (state, action) => {
+    selectedFrequency: (state, action) => {
       state.frequency = action.payload;
     },
     setSelectedEndAfter: (state, action) => {
@@ -36,9 +36,9 @@ export const expenseFormSlice = createSlice({
 
 export const {
   setCategory,
-  description,
-  wallet,
-  frequency,
+  setDescription,
+  selectedWallet,
+  selectedFrequency,
   setSelectedEndAfter,
   setDate,
 } = expenseFormSlice.actions;
