@@ -1,8 +1,7 @@
 import { Expense } from './modules/expense/Expense';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
-import { BottomNavigation } from '@shared-components/BottomNavigation';
-
+import { BottomNavigation } from './shared-components/BottomNavigation';
 export const AppRouter = () => {
   return (
     <Routes>
