@@ -51,9 +51,7 @@ export const AppRouter = () => {
             <div>
               <Link to='/expense/new'>Add new expense</Link>
             </div>
-            <div>
-              <BottomNavigation />
-            </div>
+            <BottomNavigation />
           </>
         }
       />

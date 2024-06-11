@@ -5,68 +5,74 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
 import { colors } from 'src/styles/colors';
+import { theme } from 'src/styles/theme';
+import { MenuOptions, useAppContext } from 'src/context/AppContext';
 
-const StyledDivBottomNavigation = styled(`div`)(({}: {}) => ({
+const StyledDivBottomNavigation = styled('div')(({ theme }) => ({
   display: 'flex',
-  width: '375px',
+  width: '100%',
   height: '70px',
   alignItems: 'center',
   justifyContent: 'space-around',
 }));
 
-const StyledIconButton = styled('div')<{ active: boolean }>(({ active }) => ({
+const StyledIconButton = styled('div')<{ active: boolean }>(
+  ({ theme, active }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    width: '35px',
+    height: '48px',
+    alignItems: 'center',
+    color: active ? theme.palette.primary.main : colors.light[20],
+    cursor: 'pointer',
+  }),
+);
+
+const StyledDivLeftSide = styled('div')({
   display: 'flex',
-  flexDirection: 'column',
-  width: '35px',
-  height: '48px',
-  alignItems: 'center',
-  color: active ? colors.blue[100] : colors.light[20],
-  cursor: 'pointer',
-}));
+  width: '40%',
+  justifyContent: 'space-around',
+});
+const StyledDivMidSide = styled('div')({
+  display: 'flex',
+  width: '20%',
+  justifyContent: 'space-around',
+});
+const StyledDivRightSide = styled('div')({
+  display: 'flex',
+  width: '40%',
+  justifyContent: 'space-around',
+});
 
-export const BottomNavigation = () => {
-  const [activeButton, setActiveButton] = useState<string | null>(null);
-  console.log(activeButton);
+export const BottomNavigation: React.FC = () => {
+  const { activeButton, setActiveButton } = useAppContext();
 
-  const handleButtonClick = (buttonName: string) => {
+  const handleButtonClick = (buttonName: any) => {
     setActiveButton(buttonName);
   };
 
   return (
     <StyledDivBottomNavigation>
-      <div
-        style={{
-          display: 'flex',
-          width: '40%',
-          justifyContent: 'space-around',
-        }}
-      >
+      <StyledDivLeftSide>
         <StyledIconButton
-          active={activeButton === 'home'}
+          active={activeButton === MenuOptions.HOME}
           onClick={() => handleButtonClick('home')}
         >
           <HomeIcon fontSize='large' />
           <Typography fontSize='small'>Home</Typography>
         </StyledIconButton>
         <StyledIconButton
-          active={activeButton === 'transaction'}
+          active={activeButton === MenuOptions.TRANSACTION}
           onClick={() => handleButtonClick('transaction')}
         >
           <SyncAltOutlinedIcon fontSize='large' />
           <Typography fontSize='small'>Transaction</Typography>
         </StyledIconButton>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          width: '20%',
-          justifyContent: 'space-around',
-        }}
-      >
+      </StyledDivLeftSide>
+      <StyledDivMidSide>
         <StyledIconButton
-          active={activeButton === 'addButton'}
+          active={activeButton === MenuOptions.ADDBUTTON}
           onClick={() => handleButtonClick('addButton')}
         >
           <AddCircleIcon
@@ -74,33 +80,27 @@ export const BottomNavigation = () => {
               fontSize: 60,
               position: 'absolute',
               marginTop: '-20px',
-              color: colors.blue[100],
+              color: theme.palette.primary.main,
             }}
           />
         </StyledIconButton>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          width: '40%',
-          justifyContent: 'space-around',
-        }}
-      >
+      </StyledDivMidSide>
+      <StyledDivRightSide>
         <StyledIconButton
-          active={activeButton === 'budget'}
+          active={activeButton === MenuOptions.BUDGET}
           onClick={() => handleButtonClick('budget')}
         >
           <DataSaverOffOutlinedIcon fontSize='large' />
           <Typography fontSize='small'>Budget</Typography>
         </StyledIconButton>
         <StyledIconButton
-          active={activeButton === 'profile'}
+          active={activeButton === MenuOptions.PROFILE}
           onClick={() => handleButtonClick('profile')}
         >
           <AccountCircleOutlinedIcon fontSize='large' />
           <Typography fontSize='small'>Profile</Typography>
         </StyledIconButton>
-      </div>
+      </StyledDivRightSide>
     </StyledDivBottomNavigation>
   );
 };
