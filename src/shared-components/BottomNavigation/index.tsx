@@ -9,13 +9,13 @@ import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 import { MenuOptions, useAppContext } from 'src/context/AppContext';
 
-const StyledDivBottomNavigation = styled('div')(({ theme }) => ({
+const StyledDivBottomNavigation = styled('div')({
   display: 'flex',
   width: '100%',
   height: '70px',
   alignItems: 'center',
   justifyContent: 'space-around',
-}));
+});
 
 const StyledIconButton = styled('div')<{ active: boolean }>(
   ({ theme, active }) => ({
@@ -46,24 +46,24 @@ const StyledDivRightSide = styled('div')({
 });
 
 export const BottomNavigation: React.FC = () => {
-  const { activeButton, setActiveButton } = useAppContext();
+  const { activeTab, setActiveTab } = useAppContext();
 
   const handleButtonClick = (buttonName: any) => {
-    setActiveButton(buttonName);
+    setActiveTab(buttonName);
   };
 
   return (
     <StyledDivBottomNavigation>
       <StyledDivLeftSide>
         <StyledIconButton
-          active={activeButton === MenuOptions.HOME}
+          active={activeTab === MenuOptions.HOME}
           onClick={() => handleButtonClick('home')}
         >
           <HomeIcon fontSize='large' />
           <Typography fontSize='small'>Home</Typography>
         </StyledIconButton>
         <StyledIconButton
-          active={activeButton === MenuOptions.TRANSACTION}
+          active={activeTab === MenuOptions.TRANSACTION}
           onClick={() => handleButtonClick('transaction')}
         >
           <SyncAltOutlinedIcon fontSize='large' />
@@ -72,7 +72,7 @@ export const BottomNavigation: React.FC = () => {
       </StyledDivLeftSide>
       <StyledDivMidSide>
         <StyledIconButton
-          active={activeButton === MenuOptions.ADDBUTTON}
+          active={activeTab === MenuOptions.ADDBUTTON}
           onClick={() => handleButtonClick('addButton')}
         >
           <AddCircleIcon
@@ -87,14 +87,14 @@ export const BottomNavigation: React.FC = () => {
       </StyledDivMidSide>
       <StyledDivRightSide>
         <StyledIconButton
-          active={activeButton === MenuOptions.BUDGET}
+          active={activeTab === MenuOptions.BUDGET}
           onClick={() => handleButtonClick('budget')}
         >
           <DataSaverOffOutlinedIcon fontSize='large' />
           <Typography fontSize='small'>Budget</Typography>
         </StyledIconButton>
         <StyledIconButton
-          active={activeButton === MenuOptions.PROFILE}
+          active={activeTab === MenuOptions.PROFILE}
           onClick={() => handleButtonClick('profile')}
         >
           <AccountCircleOutlinedIcon fontSize='large' />

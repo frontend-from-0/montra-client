@@ -7,6 +7,6 @@ export enum MenuOptions {
 }
 
 export interface AppContextType {
-  activeButton: MenuOptions | null;
-  setActiveButton: (option: MenuOptions) => void;
+  activeTab: MenuOptions | null;
+  setActiveTab: (option: MenuOptions) => void;
 }

@@ -6,10 +6,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [activeButton, setActiveButton] = useState<MenuOptions | null>(null);
+  const [activeTab, setActiveTab] = useState<MenuOptions | null>(null);
 
   return (
-    <AppContext.Provider value={{ activeButton, setActiveButton }}>
+    <AppContext.Provider value={{ activeTab, setActiveTab }}>
       {children}
     </AppContext.Provider>
   );
