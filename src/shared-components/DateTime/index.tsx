@@ -15,7 +15,7 @@ export const DateTime = () => {
 
   return (
     <div>
-      <p style={{ color: `${colors.light[60]}` }}>{time}</p>
+      <p style={{ color: `${colors.dark[50]}` }}>{time}</p>
     </div>
   );
 };
