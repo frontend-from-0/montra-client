@@ -8,12 +8,11 @@ import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import BatteryFullIcon from '@mui/icons-material/BatteryFull';
 import personImage from "../../assets/illustrations/05.png";
 import { useState } from 'react';
-import { ArrowDropDown, CenterFocusStrong } from '@mui/icons-material';
+import { ArrowDropDown } from '@mui/icons-material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const StyledPageContentDiv = styled('div')({
     overflow: 'auto',
@@ -44,8 +43,8 @@ export const Homepage = () => {
 
     return (
         <Stack
-            justifyContent='space-between'
-            sx={{ minHeight: '100vh', position: 'relative' }}
+
+            sx={{ minHeight: '100vh', position: 'relative', width: "375px" }}
         >
             <StyledRectangle>
 
@@ -124,7 +123,7 @@ export const Homepage = () => {
                             justifyContent="center"
                             marginLeft="16px"
                         >
-                            <ExpandMoreIcon />
+                            <ArrowDownwardIcon />
                             <CameraAltIcon />
 
                         </Box>
@@ -139,12 +138,36 @@ export const Homepage = () => {
                         borderRadius="28px"
                         bgcolor="#FD3C4A"
                         marginRight="16px"
+                        display="flex"
+                        flexDirection="row"
+                        alignItems="center"
                     >
+
+                        <Box
+                            width="44px"
+                            height="44px"
+                            borderRadius="16px"
+                            bgcolor="#fff"
+                            color="#FD3C4A"
+                            display="flex"
+                            flexDirection="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            marginLeft="16px"
+                        >
+                            <ArrowUpwardIcon />
+                            <CameraAltIcon />
+
+                        </Box>
+                        <Box color="#fff" marginLeft="8px">
+                            <Typography sx={{ fontSize: "14px" }}>Expenses</Typography>
+                            <Typography sx={{ fontSize: "22px", fontWeight: "600" }}>$1200</Typography>
+                        </Box>
 
                     </Box>
                 </Box>
 
-                <StyledPageContentDiv>
+                {/* <StyledPageContentDiv>
                     <div>
                         <Link to='/onboarding/introduction'>
                             Onboarding introduction
@@ -153,8 +176,65 @@ export const Homepage = () => {
                     <div>
                         <Link to='/expense/new'>Add new expense</Link>
                     </div>
-                </StyledPageContentDiv>
+                </StyledPageContentDiv> */}
             </StyledRectangle>
+
+            <Box padding="8px">
+                <Typography
+                    width="375px"
+                    height="48px"
+                    fontSize="18px"
+                    fontWeight="600"
+                    variant='h6'
+                    lineHeight="21.78px"
+                    textAlign="left">Spend Frequency</Typography>
+            </Box>
+
+            <Box width="375px" height="185.5px">
+
+            </Box>
+
+            <Box display="flex" flexDirection="row">
+                <Typography
+                    fontWeight="500"
+                    fontSize="14px"
+                    lineHeight="18px"
+                    textAlign="center"
+                    padding="8px 24px"
+                    color="#FCAC12"
+                    bgcolor="#FCEED4"
+                    borderRadius="16px"
+                >Today</Typography>
+                <Typography
+                    fontWeight="500"
+                    fontSize="14px"
+                    lineHeight="18px"
+                    textAlign="center"
+                    padding="8px 24px"
+                    color="#91919F"
+                >Week</Typography>
+                <Typography
+                    fontWeight="500"
+                    fontSize="14px"
+                    lineHeight="18px"
+                    textAlign="center"
+                    padding="8px 24px"
+                    color="#91919F"
+                >Month</Typography>
+                <Typography
+                    fontWeight="500"
+                    fontSize="14px"
+                    lineHeight="18px"
+                    textAlign="center"
+                    padding="8px 24px"
+                    color="#91919F"
+                >Year</Typography>
+            </Box>
+
+            <Box padding="8px" display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
+                <Typography fontWeight="600" fontSize="18px" lineHeight="21.78px">Recent Transaction</Typography>
+                <Typography borderRadius="40px" padding="8px 16px" bgcolor="#EEE5FF" color="#7F3DFF" fontSize="14px">See All</Typography>
+            </Box>
 
             <StyledBottomNavigationContainer>
                 <BottomNavigation />
