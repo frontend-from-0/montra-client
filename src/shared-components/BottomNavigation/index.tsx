@@ -70,6 +70,7 @@ export const BottomNavigation: React.FC = () => {
           <Typography fontSize='small'>Transaction</Typography>
         </StyledIconButton>
       </StyledDivLeftSide>
+
       <StyledDivMidSide>
         <StyledIconButton
           active={activeTab === MenuOptions.ADDBUTTON}
@@ -85,6 +86,7 @@ export const BottomNavigation: React.FC = () => {
           />
         </StyledIconButton>
       </StyledDivMidSide>
+
       <StyledDivRightSide>
         <StyledIconButton
           active={activeTab === MenuOptions.BUDGET}

@@ -22,7 +22,7 @@ export const Title3 = ({ children }: Title3Props) => {
       <Typography variant='h5' sx={{ color: 'white' }}>
         {children}
       </Typography>
-      <Typography style={{ color: colors.red[100] }}>s</Typography>
+      <Typography style={{ color: colors.red[100] }}></Typography>
     </StyledDivHeader>
   );
 };
