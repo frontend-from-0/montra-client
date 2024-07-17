@@ -42,12 +42,7 @@ export const AppRouter = () => {
         <Route index element={<div>Launch screen</div>} />
       </Route>
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
-      <Route
-        path='/'
-        element={
-          <Homepage />
-        }
-      />
+      <Route path='/' element={<Homepage />} />
     </Routes>
   );
 };
