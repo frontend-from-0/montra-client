@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 import { MenuOptions, useAppContext } from 'src/context/AppContext';
+import { Link } from 'react-router-dom';
 
 const StyledDivBottomNavigation = styled('div')({
   display: 'flex',
@@ -93,13 +94,15 @@ export const BottomNavigation: React.FC = () => {
           <DataSaverOffOutlinedIcon fontSize='large' />
           <Typography fontSize='small'>Budget</Typography>
         </StyledIconButton>
-        <StyledIconButton
-          active={activeTab === MenuOptions.PROFILE}
-          onClick={() => handleButtonClick('profile')}
-        >
-          <AccountCircleOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Profile</Typography>
-        </StyledIconButton>
+        <Link to={'/profile'}>
+          <StyledIconButton
+            active={activeTab === MenuOptions.PROFILE}
+            onClick={() => handleButtonClick('profile')}
+          >
+            <AccountCircleOutlinedIcon fontSize='large' />
+            <Typography fontSize='small'>Profile</Typography>
+          </StyledIconButton>
+        </Link>
       </StyledDivRightSide>
     </StyledDivBottomNavigation>
   );

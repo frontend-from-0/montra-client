@@ -1,5 +1,13 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { MenuOptions, AppContextType } from './AppContextTypes';
+import { MenuOptions } from './AppContextTypes';
+import { allUsers, User } from 'src/UsersData';
+
+export interface AppContextType {
+  activeTab: MenuOptions | null;
+  setActiveTab: React.Dispatch<React.SetStateAction<MenuOptions | null>>;
+  users: User[];
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
+}
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -7,9 +15,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [activeTab, setActiveTab] = useState<MenuOptions | null>(null);
-
+  const [users, setUsers] = useState<User[]>(allUsers);
+  console.log(users);
   return (
-    <AppContext.Provider value={{ activeTab, setActiveTab }}>
+    <AppContext.Provider value={{ activeTab, setActiveTab, users, setUsers }}>
       {children}
     </AppContext.Provider>
   );
@@ -22,4 +31,5 @@ export const useAppContext = () => {
   }
   return context;
 };
+
 export { MenuOptions };

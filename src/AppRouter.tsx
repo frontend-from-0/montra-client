@@ -4,6 +4,7 @@ import { Introduction } from './modules/onboarding/introduction';
 import { BottomNavigation } from './shared-components/BottomNavigation';
 import { Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { Profile } from './modules/profile/Profile';
 
 const StyledPageContentDiv = styled('div')({
   overflow: 'auto',
@@ -75,6 +76,18 @@ export const AppRouter = () => {
             <StyledBottomNavigationContainer>
               <BottomNavigation />
             </StyledBottomNavigationContainer>
+          </Stack>
+        }
+      />
+      <Route
+        path='/profile'
+        element={
+          <Stack
+            justifyContent='space-between'
+            sx={{ minHeight: '100vh', position: 'relative' }}
+          >
+            <Profile />
+            <BottomNavigation />
           </Stack>
         }
       />
