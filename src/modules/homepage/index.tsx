@@ -1,11 +1,7 @@
-import { Avatar, Box, IconButton, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Container, IconButton, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { BottomNavigation } from '../../shared-components/BottomNavigation';
 import { Link } from 'react-router-dom';
-import DateTime from '../../shared-components/DateTime/index';
-import WifiIcon from '@mui/icons-material/Wifi';
-import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-import BatteryFullIcon from '@mui/icons-material/BatteryFull';
 import personImage from '../../assets/illustrations/05.png';
 import { ArrowDropDown } from '@mui/icons-material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -16,6 +12,9 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import { ReactComponent as Graphic } from '../../assets/illustrations/graphic.svg';
+import { colors } from 'src/styles/colors';
+import { Regular3 } from '../../shared-components/Typography/Regular3/index';
+import { theme } from 'src/styles/theme';
 
 const StyledPageContentDiv = styled('div')({
   overflow: 'auto',
@@ -44,40 +43,17 @@ const StyledRectangle = styled(Box)({
 
 export const Homepage = () => {
   return (
-    <Stack sx={{ minHeight: '100vh', position: 'relative', width: '375px' }}>
+    <Container component="main" sx={{ position: 'relative' }} maxWidth="xs">
       <StyledRectangle>
         <Box
           display='flex'
           justifyContent='space-between'
           alignItems='center'
-          maxWidth='375px'
-          height='44px'
-          padding='0 16px'
-        >
-          <Typography variant='body2' fontWeight='700'>
-            <DateTime />
-          </Typography>
-          <Box display='flex' alignItems='center' gap='4px'>
-            <SignalCellularAltIcon fontSize='small' />
-            <WifiIcon fontSize='small' />
-            <BatteryFullIcon
-              fontSize='small'
-              sx={{ transform: 'rotate(90deg)' }}
-            />
-          </Box>
-        </Box>
-
-        <Box
-          display='flex'
-          justifyContent='space-between'
-          alignItems='center'
-          maxWidth='375px'
-          height='64px'
-          padding='0 16px'
+          padding='8px 16px'
         >
           <Box
             sx={{
-              border: '2px solid #7F3DFF',
+              border: `2px solid ${colors.violet[100]}`,
               borderRadius: '50%',
               padding: '2px',
             }}
@@ -85,49 +61,48 @@ export const Homepage = () => {
             <Avatar alt='user image' src={personImage} />
           </Box>
 
-          <Box display='flex' flexDirection='row' alignItems='center'>
+          <Stack direction='row' alignItems="center">
             <IconButton>
               <ArrowDropDown />
             </IconButton>
-            <Typography>October</Typography>
-          </Box>
+            <Regular3 >
+              October
+            </Regular3>
+          </Stack>
 
-          <Box sx={{ color: '#7F3DFF' }}>
-            <NotificationsIcon />
-          </Box>
+          <NotificationsIcon style={{ color: colors.violet[100] }} />
         </Box>
 
-        <Typography sx={{ color: '#91919F', fontSize: '14px' }}>
+        <Regular3 style={{ color: colors.dark[25] }}>
           Account Balance
-        </Typography>
+        </Regular3>
+
         <Typography
-          sx={{ color: '#161719', fontSize: '40px', fontWeight: '600' }}
+          sx={{ color: colors.dark[75], fontSize: '40px', fontWeight: '600' }}
         >
           $9400
         </Typography>
 
-        <Box display='flex' flexDirection='row' justifyContent='space-between'>
+        <Stack display='flex' flexDirection='row' justifyContent='space-between'>
           <Box
-            width='164px'
-            height='80px'
-            borderRadius='28px'
+            borderRadius= {theme.shape.borderRadius * 7}
             bgcolor='#00A86B'
             marginLeft='16px'
-            display='flex'
+            display='inline-flex'
             flexDirection='row'
             alignItems='center'
+            padding="10px 15px 10px 0px"
           >
             <Box
-              width='44px'
-              height='44px'
-              borderRadius='16px'
+              borderRadius= {theme.shape.borderRadius * 4}
               bgcolor='#fff'
-              color='#00A86B'
+              color= {colors.green[100]}
               display='flex'
               flexDirection='column'
               alignItems='center'
               justifyContent='center'
               marginLeft='16px'
+              padding="0px 12px"
             >
               <ArrowDownwardIcon />
               <CameraAltIcon />
@@ -140,19 +115,16 @@ export const Homepage = () => {
             </Box>
           </Box>
           <Box
-            width='164px'
-            height='80px'
-            borderRadius='28px'
+            borderRadius= {theme.shape.borderRadius * 7}
             bgcolor='#FD3C4A'
             marginRight='16px'
             display='flex'
             flexDirection='row'
             alignItems='center'
+            paddingRight="15px"
           >
             <Box
-              width='44px'
-              height='44px'
-              borderRadius='16px'
+              borderRadius= {theme.shape.borderRadius * 4}
               bgcolor='#fff'
               color='#FD3C4A'
               display='flex'
@@ -160,6 +132,7 @@ export const Homepage = () => {
               alignItems='center'
               justifyContent='center'
               marginLeft='16px'
+              padding="0px 12px"
             >
               <ArrowUpwardIcon />
               <CameraAltIcon />
@@ -171,7 +144,7 @@ export const Homepage = () => {
               </Typography>
             </Box>
           </Box>
-        </Box>
+        </Stack>
 
         {/* <StyledPageContentDiv>
                     <div>
@@ -348,7 +321,7 @@ export const Homepage = () => {
             padding='3px'
           >
             <Typography fontSize='16px' color='#292B2D'>
-              Shopping
+              Subscription
             </Typography>
             <Typography fontSize='13px' color='#91919F'>
               Disney+ Annual..
@@ -425,6 +398,6 @@ export const Homepage = () => {
       <StyledBottomNavigationContainer>
         <BottomNavigation />
       </StyledBottomNavigationContainer>
-    </Stack>
+    </Container>
   );
 };
