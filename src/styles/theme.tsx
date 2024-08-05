@@ -27,4 +27,5 @@ export const theme = createTheme({
   shape: {
     borderRadius: 4,
   },
+  spacing: 4,
 });
