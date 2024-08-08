@@ -1,7 +1,7 @@
 import { Expense } from './modules/expense/Expense';
 import { Routes, Route } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
-import { Homepage } from './modules/homepage/index';
+import { Home } from './modules/homepage/index';
 
 export const AppRouter = () => {
   return (
@@ -38,11 +38,10 @@ export const AppRouter = () => {
       </Route>
       <Route path='/expense'>
         <Route path='new' element={<Expense />} />
-
         <Route index element={<div>Launch screen</div>} />
       </Route>
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
-      <Route path='/' element={<Homepage />} />
+      <Route path='/' element={<Home />} />
     </Routes>
   );
 };

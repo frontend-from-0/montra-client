@@ -3,6 +3,9 @@ import { PriceSection } from './PriceSection';
 import { Form } from './Form';
 import { colors } from 'src/styles/colors';
 import { Title3 } from '../../shared-components/Typography/Title3';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box } from '@mui/material';
+import { theme } from '../../styles/theme';
 
 const StyledDiv = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -30,7 +33,19 @@ export const Expense = () => {
   return (
     <StyledDiv>
       <StyledDivUpperSide>
-        <Title3>Expense</Title3>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: theme.spacing(3),
+            marginLeft: theme.spacing(3),
+            gap: '120px',
+          }}
+        >
+          <ArrowBackIcon fontSize='large' sx={{ color: 'white' }} />
+          <Title3 color={colors.light[100]}>Expense</Title3>
+        </Box>
         <PriceSection />
       </StyledDivUpperSide>
       <StyledDivBottomSide>

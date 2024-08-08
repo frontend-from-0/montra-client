@@ -11,23 +11,18 @@ import { BottomNavigation } from '../../shared-components/BottomNavigation';
 import personImage from '../../assets/illustrations/05.png';
 import { ArrowDropDown } from '@mui/icons-material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import { colors } from 'src/styles/colors';
 import { Regular3 } from '../../shared-components/Typography/Regular3/index';
-import { IncomeExpenseCard } from './IncomeExpense';
+import { IncomeExpenseCard } from './IncomeExpenseCard';
 import { SpendFrequency } from './SpendFrequency';
-import { RecentTransaction } from '../../shared-components/Bars/RecentTransaction';
+import { TitleWithCta } from '../../shared-components/Bars/TitleWithCta';
 import { TransactionCard } from '../../shared-components/Card/TransactionCard';
 import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeriodTabs';
-
-const StyledPageContentDiv = styled('div')({
-  overflow: 'auto',
-  maxHeight: 'calc(100vh - 70px)',
-});
+import { theme } from 'src/styles/theme';
+import { TransactionType } from 'src/types/Category';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',
@@ -39,47 +34,42 @@ const StyledBottomNavigationContainer = styled('div')({
   backgroundColor: '#fff',
 });
 
-const StyledRectangle = styled(Box)({
+const StyledGradientContainer = styled(Box)({
   textAlign: 'center',
-  width: '375px',
-  height: '312px',
-  gap: '0px',
-  borderRadius: '0px 0px 32px 32px',
+  borderRadius: `0px 0px ${theme.shape.borderRadius * 8} ${theme.shape.borderRadius * 8}`,
   background:
     'linear-gradient(183.33deg, #FFF6E6 9.56%, rgba(248, 237, 216, 0) 124.27%)',
 });
 
-export const Homepage = () => {
+export const Home = () => {
   return (
-    <Container component='main' maxWidth='xs'>
-      <StyledRectangle>
-        <Box
-          display='flex'
+    <Container component='main'>
+      <StyledGradientContainer>
+        <Stack
+          direction='row'
           justifyContent='space-between'
           alignItems='center'
-          padding='8px 16px'
+          sx={{ padding: `${theme.spacing(2)} ${theme.spacing(4)}` }}
         >
           <Box
             sx={{
-              border: `2px solid ${colors.violet[100]}`,
-              borderRadius: '50%',
-              padding: '2px',
+              border: `${theme.spacing(0.5)} solid ${colors.violet[100]}`,
+              borderRadius: theme.shape.borderRadius * 2,
+              padding: theme.spacing(0.5),
             }}
           >
             <Avatar alt='user image' src={personImage} />
           </Box>
 
           <Stack direction='row' alignItems='center'>
-            <IconButton>
-              <ArrowDropDown />
-            </IconButton>
-            <Regular3>October</Regular3>
+            <ArrowDropDown />
+            <Regular3 color={colors.dark[100]}>October</Regular3>
           </Stack>
 
           <NotificationsIcon style={{ color: colors.violet[100] }} />
-        </Box>
+        </Stack>
 
-        <Regular3 style={{ color: colors.dark[25] }}>Account Balance</Regular3>
+        <Regular3 color={colors.dark[25]}>Account Balance</Regular3>
 
         <Typography
           sx={{ color: colors.dark[75], fontSize: '40px', fontWeight: '600' }}
@@ -88,39 +78,34 @@ export const Homepage = () => {
         </Typography>
 
         <Stack
-          display='flex'
-          flexDirection='row'
+          direction='row'
           justifyContent='space-around'
-          mt='15px'
+          mt={theme.spacing(4)}
         >
           <IncomeExpenseCard
-            children={<ArrowDownwardIcon />}
-            bgcolor={colors.green[100]}
-            color={colors.green[100]}
+            transactionType={TransactionType.income}
             content='Income'
             amount='$5000'
           />
           <IncomeExpenseCard
-            children={<ArrowUpwardIcon />}
-            bgcolor={colors.red[100]}
-            color={colors.red[100]}
+            transactionType={TransactionType.expense}
             content='Expenses'
             amount='$1200'
           />
         </Stack>
-      </StyledRectangle>
+      </StyledGradientContainer>
 
       <SpendFrequency />
 
       <TimePeriodTabs />
 
-      <RecentTransaction />
+      <TitleWithCta title='Recent Transaction' label='See All' />
 
       <TransactionCard
         bgcolor={colors.yellow[20]}
-        children={
+        icon={
           <LocalMallIcon
-            sx={{ width: '40px', height: '40px', color: '#FCAC12' }}
+            sx={{ width: '40px', height: '40px', color: colors.yellow[100] }}
           />
         }
         spendingtype='Shopping'
@@ -135,9 +120,9 @@ export const Homepage = () => {
 
       <TransactionCard
         bgcolor={colors.violet[20]}
-        children={
+        icon={
           <EventRepeatIcon
-            sx={{ width: '40px', height: '40px', color: '#7F3DFF' }}
+            sx={{ width: '40px', height: '40px', color: colors.violet[100] }}
           />
         }
         spendingtype='Subscription'
@@ -152,9 +137,9 @@ export const Homepage = () => {
 
       <TransactionCard
         bgcolor={colors.red[20]}
-        children={
+        icon={
           <RestaurantIcon
-            sx={{ width: '40px', height: '40px', color: '#FD3C4A' }}
+            sx={{ width: '40px', height: '40px', color: colors.red[100] }}
           />
         }
         spendingtype='Food'

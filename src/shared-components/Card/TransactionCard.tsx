@@ -1,9 +1,11 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import { Regular2 } from '../../shared-components/Typography/Regular2';
 import { ReactNode } from 'react';
+import { theme } from 'src/styles/theme';
 
 interface TransactionCardProps {
   bgcolor: string;
-  children: ReactNode;
+  icon: ReactNode;
   spendingtype: string;
   content: string;
   amount: string;
@@ -20,7 +22,7 @@ const truncateText = (text: string, maxLength: number = 16) => {
 
 export const TransactionCard: React.FC<TransactionCardProps> = ({
   bgcolor,
-  children,
+  icon,
   spendingtype,
   content,
   amount,
@@ -31,53 +33,49 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({
   amountcolor,
 }) => {
   return (
-    <Box display='flex' flexDirection='row' padding='20px' width='375px'>
+    <Stack direction='row' padding={theme.spacing(5)}>
       <Box
         width='60px'
         height='60px'
         bgcolor={bgcolor}
-        borderRadius='16px'
+        borderRadius={theme.shape.borderRadius}
         display='flex'
         alignItems='center'
         justifyContent='center'
       >
-        {children}
+        {icon}
       </Box>
-      <Box
-        display='flex'
-        flexDirection='row'
+
+      <Stack
+        direction='row'
         flexGrow={1}
         justifyContent='space-between'
-        padding='0px 9px'
+        sx={{ padding: `0px ${theme.spacing(2)}` }}
       >
-        <Box
-          display='flex'
-          flexDirection='column'
+        <Stack
+          direction='column'
           justifyContent='space-between'
-          padding='3px'
+          padding={theme.spacing(1)}
         >
-          <Typography fontSize='16px' color={spendingtypecolor}>
-            {spendingtype}
-          </Typography>
-          <Typography fontSize='13px' color={contentcolor}>
+          <Regular2 color={spendingtypecolor}>{spendingtype}</Regular2>
+          <Typography fontSize='small' color={contentcolor}>
             {truncateText(content)}
           </Typography>
-        </Box>
-        <Box
-          display='flex'
-          flexDirection='column'
+        </Stack>
+
+        <Stack
+          direction='column'
           justifyContent='space-between'
-          padding='3px'
+          padding={theme.spacing(1)}
           alignItems='end'
         >
-          <Typography fontSize='16px' fontWeight='600' color={amountcolor}>
-            {amount}
-          </Typography>
-          <Typography fontSize='13px' fontWeight='500' color={timecolor}>
+          <Regular2 color={amountcolor}>{amount}</Regular2>
+
+          <Typography fontSize='small' fontWeight='500' color={timecolor}>
             {time}
           </Typography>
-        </Box>
-      </Box>
-    </Box>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 };

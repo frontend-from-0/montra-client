@@ -1,13 +1,13 @@
-import { Typography, SxProps } from '@mui/material';
+import { Typography } from '@mui/material';
 
 interface Regular3Props {
   children: string | JSX.Element;
-  style?: React.CSSProperties;
+  color: string;
 }
 
-export const Regular3 = ({ children, style = {} }: Regular3Props) => {
+export const Regular3 = ({ children, color }: Regular3Props) => {
   return (
-    <Typography fontSize='14px' variant='body2' style={style}>
+    <Typography variant='body2' fontSize='14px' color={color}>
       {children}
     </Typography>
   );
