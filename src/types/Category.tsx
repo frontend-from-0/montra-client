@@ -15,3 +15,8 @@ export enum Category {
   subscription = 'Substriction',
   loan = 'Loan',
 }
+
+export enum TransactionType {
+  income = 'Income',
+  expense = 'Expense',
+}

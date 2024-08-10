@@ -1,21 +1,8 @@
 import { Expense } from './modules/expense/Expense';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
-import { BottomNavigation } from './shared-components/BottomNavigation';
-import { Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Home } from './modules/homepage/index';
 
-const StyledPageContentDiv = styled('div')({
-  overflow: 'auto',
-  maxHeight: 'calc(100vh - 70px)',
-});
-
-const StyledBottomNavigationContainer = styled('div')({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
-});
 export const AppRouter = () => {
   return (
     <Routes>
@@ -51,33 +38,10 @@ export const AppRouter = () => {
       </Route>
       <Route path='/expense'>
         <Route path='new' element={<Expense />} />
-
         <Route index element={<div>Launch screen</div>} />
       </Route>
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
-      <Route
-        path='/'
-        element={
-          <Stack
-            justifyContent='space-between'
-            sx={{ minHeight: '100vh', position: 'relative' }}
-          >
-            <StyledPageContentDiv>
-              <div>
-                <Link to='/onboarding/introduction'>
-                  Onboarding introduction
-                </Link>
-              </div>
-              <div>
-                <Link to='/expense/new'>Add new expense</Link>
-              </div>
-            </StyledPageContentDiv>
-            <StyledBottomNavigationContainer>
-              <BottomNavigation />
-            </StyledBottomNavigationContainer>
-          </Stack>
-        }
-      />
+      <Route path='/' element={<Home />} />
     </Routes>
   );
 };

@@ -16,8 +16,7 @@ export const Header = () => {
   return (
     <StyledDivHeader>
       <ArrowBackIcon fontSize='large' sx={{ color: 'white' }} />
-      <Title3>Expense</Title3>
-      <Regular1 style={{ color: colors.red[100] }}>s</Regular1>
+      <Title3 color={colors.light[100]}>Expense</Title3>
     </StyledDivHeader>
   );
 };
