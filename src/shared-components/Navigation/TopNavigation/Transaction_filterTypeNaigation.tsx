@@ -1,18 +1,29 @@
-import { Badge, Stack, Typography } from '@mui/material';
+import { Badge, Stack, styled, Typography } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
 
-interface TransactionTypeNavigationProps {
+interface Transaction_filterTypeNavigationProps {
   month: string;
   badgeContent: number;
 }
 
-export const TransactionTypeNavigation = ({
+const CustomBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: colors.violet[100],
+    color: colors.light[100],
+    borderRadius: '50%',
+    right: theme.spacing(3),
+    top: theme.spacing(3),
+    padding: theme.spacing(2),
+  },
+}));
+
+export const Transaction_filterTypeNavigation = ({
   month,
   badgeContent,
-}: TransactionTypeNavigationProps) => {
+}: Transaction_filterTypeNavigationProps) => {
   return (
     <Stack direction='row' justifyContent='space-between'>
       <Stack
@@ -24,7 +35,7 @@ export const TransactionTypeNavigation = ({
         <ExpandMoreIcon sx={{ color: colors.violet[100] }} />
         <Typography fontSize={theme.spacing(3.5)}>{month}</Typography>
       </Stack>
-      <Badge badgeContent={badgeContent}>
+      <CustomBadge badgeContent={badgeContent} overlap='circular'>
         <FilterListIcon
           sx={{
             padding: theme.spacing(1),
@@ -34,7 +45,7 @@ export const TransactionTypeNavigation = ({
             height: theme.spacing(10),
           }}
         />
-      </Badge>
+      </CustomBadge>
     </Stack>
   );
 };
