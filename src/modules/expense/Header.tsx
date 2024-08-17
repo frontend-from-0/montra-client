@@ -1,8 +1,6 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled, Theme } from '@mui/material/styles';
-import { Title3 } from '@shared-components/Typography/Title3';
+import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
-import { Regular1 } from '../../shared-components/Typography/Regular1';
 
 const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -15,8 +13,7 @@ const StyledDivHeader = styled(`div`)(({ theme }: { theme: Theme }) => ({
 export const Header = () => {
   return (
     <StyledDivHeader>
-      <ArrowBackIcon fontSize='large' sx={{ color: 'white' }} />
-      <Title3 color={colors.light[100]}>Expense</Title3>
+      <HalfTypeNavigation title='Expense' color={colors.light[100]} />
     </StyledDivHeader>
   );
 };

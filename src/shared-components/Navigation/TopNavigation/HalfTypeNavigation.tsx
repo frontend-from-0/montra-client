@@ -1,29 +1,29 @@
 import { Box, Stack } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Title3 } from '../../Typography/Title3/index';
-import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 
-interface FullTypeNavigationProps {
-  text: string;
+interface HalfTypeNavigationProps {
+  title: string;
+  color: string;
 }
 
-export const FullTypeNavigation = ({ text }: FullTypeNavigationProps) => {
+export const HalfTypeNavigation = ({
+  title,
+  color,
+}: HalfTypeNavigationProps) => {
   return (
     <Stack
       direction='row'
-      justifyContent='space-between'
+      alignItems='center'
       padding={theme.spacing(4)}
+      color={color}
     >
       <Box>
         <KeyboardBackspaceIcon />
       </Box>
-      <Box>
-        <Title3 color={colors.dark[100]}>{text}</Title3>
-      </Box>
-      <Box>
-        <MoreHorizIcon />
+      <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
+        <Title3 color={color}>{title}</Title3>
       </Box>
     </Stack>
   );

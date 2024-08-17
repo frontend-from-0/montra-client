@@ -1,16 +1,7 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  IconButton,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { BottomNavigation } from '../../shared-components/BottomNavigation';
 import personImage from '../../assets/illustrations/05.png';
-import { ArrowDropDown } from '@mui/icons-material';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
@@ -23,6 +14,7 @@ import { TransactionCard } from '../../shared-components/Card/TransactionCard';
 import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeriodTabs';
 import { theme } from 'src/styles/theme';
 import { TransactionType } from 'src/types/Category';
+import { HomeNavigation } from '../../shared-components/Navigation/TopNavigation/HomeNavigation';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',
@@ -45,29 +37,7 @@ export const Home = () => {
   return (
     <Container component='main'>
       <StyledGradientContainer>
-        <Stack
-          direction='row'
-          justifyContent='space-between'
-          alignItems='center'
-          sx={{ padding: `${theme.spacing(2)} ${theme.spacing(4)}` }}
-        >
-          <Box
-            sx={{
-              border: `${theme.spacing(0.5)} solid ${colors.violet[100]}`,
-              borderRadius: theme.shape.borderRadius * 2,
-              padding: theme.spacing(0.5),
-            }}
-          >
-            <Avatar alt='user image' src={personImage} />
-          </Box>
-
-          <Stack direction='row' alignItems='center'>
-            <ArrowDropDown />
-            <Regular3 color={colors.dark[100]}>October</Regular3>
-          </Stack>
-
-          <NotificationsIcon style={{ color: colors.violet[100] }} />
-        </Stack>
+        <HomeNavigation month='October' personImage={personImage} />
 
         <Regular3 color={colors.dark[25]}>Account Balance</Regular3>
 
