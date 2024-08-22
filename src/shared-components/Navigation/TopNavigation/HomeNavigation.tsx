@@ -25,7 +25,7 @@ export const HomeNavigation = ({ month, personImage }: HomeNavigationProps) => {
           padding: theme.spacing(0.5),
         }}
       >
-        <Avatar alt='user image' src={personImage} />
+        <Avatar alt='Profile picture' src={personImage} />
       </Box>
 
       <Stack direction='row' alignItems='center'>

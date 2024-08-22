@@ -18,13 +18,13 @@ export const HalfTypeNavigation = ({
       alignItems='center'
       padding={theme.spacing(4)}
       color={color}
+      justifyContent='space-between'
     >
-      <Box>
-        <KeyboardBackspaceIcon />
-      </Box>
-      <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
-        <Title3 color={color}>{title}</Title3>
-      </Box>
+      <KeyboardBackspaceIcon />
+
+      <Title3 color={color}>{title}</Title3>
+
+      <Box></Box>
     </Stack>
   );
 };

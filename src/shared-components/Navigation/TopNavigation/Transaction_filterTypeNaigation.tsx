@@ -5,7 +5,7 @@ import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
 
 interface Transaction_filterTypeNavigationProps {
-  month: string;
+  interval: string;
   badgeContent: number;
 }
 
@@ -21,7 +21,7 @@ const CustomBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export const Transaction_filterTypeNavigation = ({
-  month,
+  interval,
   badgeContent,
 }: Transaction_filterTypeNavigationProps) => {
   return (
@@ -33,7 +33,7 @@ export const Transaction_filterTypeNavigation = ({
         padding={`${theme.spacing(2)} ${theme.spacing(4)} ${theme.spacing(2)} ${theme.spacing(2)}`}
       >
         <ExpandMoreIcon sx={{ color: colors.violet[100] }} />
-        <Typography fontSize={theme.spacing(3.5)}>{month}</Typography>
+        <Typography fontSize={theme.spacing(3.5)}>{interval}</Typography>
       </Stack>
       <CustomBadge badgeContent={badgeContent} overlap='circular'>
         <FilterListIcon

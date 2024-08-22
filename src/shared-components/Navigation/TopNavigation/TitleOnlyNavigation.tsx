@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
 
 interface TitleOnlyNavigationProps {
-  text: string;
+  title: string;
 }
 
-export const TitleOnlyNavigation = ({ text }: TitleOnlyNavigationProps) => {
-  return <Typography textAlign='center'>{text}</Typography>;
+export const TitleOnlyNavigation = ({ title }: TitleOnlyNavigationProps) => {
+  return <Typography textAlign='center'>{title}</Typography>;
 };

@@ -5,12 +5,12 @@ import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
 
 interface TransactionTypeNavigationProps {
-  month: string;
+  interval: string;
   badgeContent: number;
 }
 
 export const TransactionTypeNavigation = ({
-  month,
+  interval,
   badgeContent,
 }: TransactionTypeNavigationProps) => {
   return (
@@ -22,7 +22,7 @@ export const TransactionTypeNavigation = ({
         padding={`${theme.spacing(2)} ${theme.spacing(4)} ${theme.spacing(2)} ${theme.spacing(2)}`}
       >
         <ExpandMoreIcon sx={{ color: colors.violet[100] }} />
-        <Typography fontSize={theme.spacing(3.5)}>{month}</Typography>
+        <Typography fontSize={theme.spacing(3.5)}>{interval}</Typography>
       </Stack>
       <Badge badgeContent={badgeContent}>
         <FilterListIcon
