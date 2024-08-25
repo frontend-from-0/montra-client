@@ -16,7 +16,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<MenuOptions | null>(null);
   const [users, setUsers] = useState<User[]>(allUsers);
-  console.log(users);
   return (
     <AppContext.Provider value={{ activeTab, setActiveTab, users, setUsers }}>
       {children}
