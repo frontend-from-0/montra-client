@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -7,7 +7,6 @@ import { styled, Theme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
-import { categories } from './ExpenseCategories';
 import { colors } from 'src/styles/colors';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -26,6 +25,29 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
 import { Regular1 } from '../../shared-components/Typography/Regular1';
+import { useSelector, useDispatch } from 'react-redux';
+//import { Regular1 } from '../../shared-components/Regular1';
+import {
+  setCategory,
+  setDescription,
+  selectedWallet,
+  selectedFrequency,
+  setSelectedEndAfter,
+  setDate,
+} from '../expense/expenseFormSlice';
+import { Category } from 'src/types/Category';
+import { PaymentFrequency } from 'src/types/PaymentFrequency';
+
+interface RootState {
+  newExpense: {
+    category: Category[];
+    description: string;
+    wallet: string;
+    frequency: string;
+    endAfter: string;
+    date: Dayjs | null;
+  };
+}
 
 const StyledForm = styled(`form`)(({ theme }: { theme: Theme }) => ({
   display: 'flex',
@@ -99,24 +121,10 @@ const MenuProps = {
 };
 
 export const Form = () => {
-  const [category, setCategory] = React.useState<string[]>([]);
-  const [textValue, setTextValue] = React.useState<string>('');
-  const [selectedWallet, setSelectedWallet] = React.useState<string>('');
-  const [showAttachmentComponent, setShowAttachmentComponent] =
-    React.useState(false);
-  const [showContinueButton, setShowContinueButton] = React.useState(false);
-  const [switchChecked, setSwitchChecked] = React.useState(false);
-  const [toggleContinueButton, setToggleContinueButton] = React.useState(false);
-  const [selectedFrequency, setSelectedFrequency] = React.useState<string>('');
-  const [selectedEndAfter, setSelectedEndAfter] = React.useState<string>('');
-  const [showPopup, setShowPopup] = React.useState(false);
-  const [showRepeatDetails, setShowRepeatDetails] = React.useState(false);
-  const [date, setDate] = React.useState<Dayjs | null>(dayjs('2022-04-17'));
-  const [showSummarizeSection, setShowSummarizeSection] = React.useState(false);
-  const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
-    React.useState(false);
+  const { category, description, wallet, frequency, endAfter, date } =
+    useSelector((state: RootState) => state.newExpense);
 
-  const frequencyOptions = ['Yearly', 'Weekly', 'Monthly', 'Yearly'];
+  const dispatch = useDispatch();
 
   const handlePopupOpen = () => setShowPopup(true);
   const handlePopupClose = () => setShowPopup(false);
@@ -125,15 +133,19 @@ export const Form = () => {
     const {
       target: { value },
     } = event;
-    setCategory(typeof value === 'string' ? value.split(',') : value);
+    dispatch(setCategory(event.target.value as string[]));
   };
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTextValue(event.target.value);
+    dispatch(setDescription(event.target.value));
   };
 
   const handleChangeWalletOption = (event: SelectChangeEvent) => {
-    setSelectedWallet(event.target.value as string);
+    dispatch(selectedWallet(event.target.value as string));
+  };
+
+  const handleAttachmentComponent = () => {
+    setShowAttachmentComponent(!showAttachmentComponent);
   };
 
   const handleSwitchChecked = () => {
@@ -147,11 +159,11 @@ export const Form = () => {
   };
 
   const handleChangeFrequency = (event: SelectChangeEvent) => {
-    setSelectedFrequency(event.target.value as string);
+    dispatch(selectedFrequency(event.target.value as string));
   };
 
   const handleChangeEndAfter = (event: SelectChangeEvent) => {
-    setSelectedEndAfter(event.target.value as string);
+    dispatch(setSelectedEndAfter(event.target.value as string));
   };
 
   const handleFirstStepNextButton = () => {
@@ -161,7 +173,6 @@ export const Form = () => {
 
   const handleSecondStepNextButton = () => {
     setShowRepeatDetails(false);
-    //New continue button and summarize component will be added here.
     setShowSummarizeSection(true);
   };
 
@@ -173,6 +184,16 @@ export const Form = () => {
     setShowRepeatDetails(true);
     setShowSummarizeSection(false);
   };
+
+  const [showContinueButton, setShowContinueButton] = useState(false);
+  const [showAttachmentComponent, setShowAttachmentComponent] = useState(false);
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [toggleContinueButton, setToggleContinueButton] = useState(false);
+  const [showRepeatDetails, setShowRepeatDetails] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showSummarizeSection, setShowSummarizeSection] = useState(false);
+  const [repeatSectionContinueButton, setRepeatSectionContinueButton] =
+    useState(false);
 
   return (
     <StyledForm>
@@ -202,7 +223,7 @@ export const Form = () => {
           )}
           MenuProps={MenuProps}
         >
-          {categories.map((category) => (
+          {Object.values(Category).map((category) => (
             <MenuItem key={category} value={category}>
               {category}
             </MenuItem>
@@ -211,7 +232,7 @@ export const Form = () => {
       </FormControl>
       <TextField
         label='Description'
-        value={textValue}
+        value={description}
         onChange={handleChangeText}
         variant='outlined'
       />
@@ -220,7 +241,7 @@ export const Form = () => {
         <Select
           labelId='select-option'
           id='simple-select-option'
-          value={selectedWallet}
+          value={wallet}
           onChange={handleChangeWalletOption}
           input={<OutlinedInput id='select-single-option' label='Option' />}
         >
@@ -230,7 +251,7 @@ export const Form = () => {
         </Select>
       </FormControl>
       <Button
-        onClick={() => setShowAttachmentComponent(!showAttachmentComponent)}
+        onClick={handleAttachmentComponent}
         component='label'
         sx={{
           backgroundColor: colors.light[100],
@@ -240,17 +261,10 @@ export const Form = () => {
       >
         <AttachFileIcon sx={{ marginRight: '10px' }}></AttachFileIcon>
         Add attachment
-        {/* <input type='' hidden /> */}
       </Button>
       <StyledDiv>
         <StyledDivRepeatSection>
-          <Regular1
-          // variant='body1'
-          // fontWeight={500}
-          // sx={{ color: colors.dark[25] }}
-          >
-            Repeat
-          </Regular1>
+          <Regular1>Repeat</Regular1>
           <Regular1 sx={{ color: colors.light[20] }}>
             {switchChecked
               ? 'Repeat transaction, set your own time'
@@ -332,15 +346,15 @@ export const Form = () => {
             <Select
               labelId='select-frequency'
               id='simple-select-frequency'
-              value={selectedFrequency}
+              value={frequency}
               onChange={handleChangeFrequency}
               input={
                 <OutlinedInput id='select-single-frequency' label='frequency' />
               }
             >
-              {frequencyOptions.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
+              {Object.values(PaymentFrequency).map((frequency) => (
+                <MenuItem key={frequency} value={frequency}>
+                  {frequency}
                 </MenuItem>
               ))}
             </Select>
@@ -350,7 +364,7 @@ export const Form = () => {
             <Select
               labelId='select-end-after'
               id='simple-select-end-after'
-              value={selectedEndAfter}
+              value={endAfter}
               onChange={handleChangeEndAfter}
               input={
                 <OutlinedInput id='select-single-end-after' label='end-after' />
@@ -380,7 +394,7 @@ export const Form = () => {
               <Select
                 labelId='select-frequency'
                 id='simple-select-frequency'
-                value={selectedFrequency}
+                value={frequency}
                 onChange={handleChangeFrequency}
                 input={
                   <OutlinedInput
@@ -389,9 +403,9 @@ export const Form = () => {
                   />
                 }
               >
-                {frequencyOptions.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
+                {Object.values(PaymentFrequency).map((frequency) => (
+                  <MenuItem key={frequency} value={frequency}>
+                    {frequency}
                   </MenuItem>
                 ))}
               </Select>
@@ -410,7 +424,7 @@ export const Form = () => {
               <Select
                 labelId='select-end-after'
                 id='simple-select-end-after'
-                value={selectedEndAfter}
+                value={endAfter}
                 onChange={handleChangeEndAfter}
                 input={
                   <OutlinedInput
