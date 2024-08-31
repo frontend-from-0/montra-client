@@ -13,7 +13,11 @@ interface UserState {
   currency: string;
   language: string;
   theme: string;
-  notification: boolean;
+  notificationSettings: {
+    expenseAlert: boolean;
+    budget: boolean;
+    tipsArticle: boolean;
+  };
 }
 
 type UserAction =
@@ -23,16 +27,23 @@ type UserAction =
   | { type: 'SET_LANGUAGE'; payload: string }
   | { type: 'SET_THEME'; payload: string }
   | { type: 'SET_CURRENCY'; payload: string }
-  | { type: 'TOGGLE_NOTIFICATION' };
+  | {
+      type: 'TOGGLE_NOTIFICATION';
+      payload: 'expenseAlert' | 'budget' | 'tipsArticle';
+    };
 
-const initialState = {
+const initialState: UserState = {
   name: 'john',
   email: 'johndoe@gmail.com',
   isLoggedIn: false,
   currency: 'USD',
   language: 'en',
   theme: 'light',
-  notification: false,
+  notificationSettings: {
+    expenseAlert: false,
+    budget: false,
+    tipsArticle: false,
+  },
 };
 
 const UserContext = createContext<UserState | undefined>(undefined);
@@ -55,7 +66,13 @@ function userReducer(state: UserState, action: UserAction): UserState {
     case 'SET_CURRENCY':
       return { ...state, currency: action.payload };
     case 'TOGGLE_NOTIFICATION':
-      return { ...state, notification: !state.notification };
+      return {
+        ...state,
+        notificationSettings: {
+          ...state.notificationSettings,
+          [action.payload]: !state.notificationSettings[action.payload],
+        },
+      };
     default:
       return state;
   }
