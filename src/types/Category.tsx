@@ -21,4 +21,16 @@ export enum TransactionType {
   expense = 'Expense',
 }
 
-export interface Transaction {}
+export interface Transaction {
+  category: string;
+  description?: string;
+  attachments?: Array<{
+    attachmentType: 'camera' | 'image' | 'document';
+    url: string;
+  }>;
+  date: string | Date;
+  type: string;
+  wallet: string;
+  amount: string;
+  bank: string;
+}
