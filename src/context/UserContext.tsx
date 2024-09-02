@@ -5,30 +5,8 @@ import {
   ReactNode,
   Dispatch,
 } from 'react';
-
-enum Currency {
-  USD = 'USD',
-  IDR = 'IDR',
-  JPY = 'JPY',
-  RUB = 'RUB',
-  EUR = 'EUR',
-  WON = 'WON',
-}
-
-enum Language {
-  EN = 'EN',
-  ID = 'ID',
-  AR = 'AR',
-  ZH = 'ZH',
-  NL = 'NL',
-  FR = 'FR',
-  DE = 'DE',
-  IT = 'IT',
-  KO = 'KO',
-  PT = 'PT',
-  RU = 'RU',
-  ES = 'ES',
-}
+import { Currency } from 'src/types/Currency';
+import { Language } from 'src/types/Language';
 
 enum Theme {
   Dark = 'Dark',

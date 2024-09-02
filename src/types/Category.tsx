@@ -20,17 +20,3 @@ export enum TransactionType {
   income = 'Income',
   expense = 'Expense',
 }
-
-export interface Transaction {
-  category: string;
-  description?: string;
-  attachments?: Array<{
-    attachmentType: 'camera' | 'image' | 'document';
-    url: string;
-  }>;
-  date: string | Date;
-  type: string;
-  wallet: string;
-  amount: string;
-  bank: string;
-}
