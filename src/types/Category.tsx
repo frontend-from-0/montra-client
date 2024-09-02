@@ -20,3 +20,5 @@ export enum TransactionType {
   income = 'Income',
   expense = 'Expense',
 }
+
+export interface Transaction {}
