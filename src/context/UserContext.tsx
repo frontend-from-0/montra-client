@@ -6,13 +6,52 @@ import {
   Dispatch,
 } from 'react';
 
+enum Currency {
+  USD = 'USD',
+  IDR = 'IDR',
+  JPY = 'JPY',
+  RUB = 'RUB',
+  EUR = 'EUR',
+  WON = 'WON',
+}
+
+enum Language {
+  EN = 'EN',
+  ID = 'ID',
+  AR = 'AR',
+  ZH = 'ZH',
+  NL = 'NL',
+  FR = 'FR',
+  DE = 'DE',
+  IT = 'IT',
+  KO = 'KO',
+  PT = 'PT',
+  RU = 'RU',
+  ES = 'ES',
+}
+
+enum Theme {
+  Dark = 'Dark',
+  Light = 'Light',
+}
+
+enum UserActionType {
+  SET_USER = 'SET_USER',
+  LOG_IN = 'LOG_IN',
+  LOG_OUT = 'LOG_OUT',
+  SET_LANGUAGE = 'SET_LANGUAGE',
+  SET_THEME = 'SET_THEME',
+  SET_CURRENCY = 'SET_CURRENCY',
+  TOGGLE_NOTIFICATION = 'TOGGLE_NOTIFICATION',
+}
+
 interface UserState {
   name: string;
   email: string;
   isLoggedIn: boolean;
-  currency: string;
-  language: string;
-  theme: string;
+  currency: Currency;
+  language: Language;
+  theme: Theme;
   notificationSettings: {
     expenseAlert: boolean;
     budget: boolean;
@@ -20,25 +59,42 @@ interface UserState {
   };
 }
 
+type SetUserAction = {
+  type: UserActionType.SET_USER;
+  payload: Partial<UserState>;
+};
+type LogInAction = { type: UserActionType.LOG_IN };
+type LogOutAction = { type: UserActionType.LOG_OUT };
+type SetLanguageAction = {
+  type: UserActionType.SET_LANGUAGE;
+  payload: Language;
+};
+type SetThemeAction = { type: UserActionType.SET_THEME; payload: Theme };
+type SetCurrencyAction = {
+  type: UserActionType.SET_CURRENCY;
+  payload: Currency;
+};
+type ToggleNotificationAction = {
+  type: UserActionType.TOGGLE_NOTIFICATION;
+  payload: keyof UserState['notificationSettings'];
+};
+
 type UserAction =
-  | { type: 'SET_USER'; payload: Partial<UserState> }
-  | { type: 'LOG_IN' }
-  | { type: 'LOG_OUT' }
-  | { type: 'SET_LANGUAGE'; payload: string }
-  | { type: 'SET_THEME'; payload: string }
-  | { type: 'SET_CURRENCY'; payload: string }
-  | {
-      type: 'TOGGLE_NOTIFICATION';
-      payload: 'expenseAlert' | 'budget' | 'tipsArticle';
-    };
+  | SetUserAction
+  | LogInAction
+  | LogOutAction
+  | SetLanguageAction
+  | SetThemeAction
+  | SetCurrencyAction
+  | ToggleNotificationAction;
 
 const initialState: UserState = {
   name: 'john',
   email: 'johndoe@gmail.com',
   isLoggedIn: false,
-  currency: 'USD',
-  language: 'en',
-  theme: 'light',
+  currency: Currency.USD,
+  language: Language.EN,
+  theme: Theme.Light,
   notificationSettings: {
     expenseAlert: false,
     budget: false,
@@ -53,19 +109,19 @@ const UserDispatchContext = createContext<Dispatch<UserAction> | undefined>(
 
 function userReducer(state: UserState, action: UserAction): UserState {
   switch (action.type) {
-    case 'SET_USER':
+    case UserActionType.SET_USER:
       return { ...state, ...action.payload };
-    case 'LOG_IN':
+    case UserActionType.LOG_IN:
       return { ...state, isLoggedIn: true };
-    case 'LOG_OUT':
+    case UserActionType.LOG_OUT:
       return { ...state, isLoggedIn: false };
-    case 'SET_LANGUAGE':
+    case UserActionType.SET_LANGUAGE:
       return { ...state, language: action.payload };
-    case 'SET_THEME':
+    case UserActionType.SET_THEME:
       return { ...state, theme: action.payload };
-    case 'SET_CURRENCY':
+    case UserActionType.SET_CURRENCY:
       return { ...state, currency: action.payload };
-    case 'TOGGLE_NOTIFICATION':
+    case UserActionType.TOGGLE_NOTIFICATION:
       return {
         ...state,
         notificationSettings: {
