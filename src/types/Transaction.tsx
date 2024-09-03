@@ -23,18 +23,17 @@ enum Currency {
   WON = 'WON',
 }
 
+interface Attachment {
+  type: AttachmentType;
+  url: string;
+}
+
 export interface Transaction {
   category: Category;
   description?: string;
-  attachments?: Array<{
-    attachmentType:
-      | AttachmentType.Camera
-      | AttachmentType.Document
-      | AttachmentType.Image;
-    url: string;
-  }>;
+  attachments?: Attachment[];
   date: string | Date;
-  accountType: AccountType.Personal;
+  accountType: AccountType;
   wallet: string;
   amountWithCurrency: {
     amount: number;
