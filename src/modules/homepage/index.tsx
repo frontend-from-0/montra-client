@@ -15,7 +15,6 @@ import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeri
 import { theme } from 'src/styles/theme';
 import { TransactionType } from 'src/types/Category';
 import { HomeNavigation } from '../../shared-components/Navigation/TopNavigation/HomeNavigation';
-import { ListItemsTime } from '../../shared-components/Card/ListItems/LisItemsTime';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',
@@ -122,8 +121,6 @@ export const Home = () => {
         amountcolor={colors.red[100]}
         timecolor={colors.dark[25]}
       />
-
-      <ListItemsTime title='Title' description='Description' />
 
       <StyledBottomNavigationContainer>
         <BottomNavigation />

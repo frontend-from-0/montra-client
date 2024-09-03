@@ -9,13 +9,15 @@ import {
 } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { colors } from 'src/styles/colors';
+import { CheckBox } from '@mui/icons-material';
 
-interface ListItemsProps {
+export const ListItems = ({
+  title,
+  description,
+}: {
   title: string;
   description: string;
-}
-
-export const ListItems = ({ title, description }: ListItemsProps) => {
+}) => {
   return (
     <List>
       <ListItem>

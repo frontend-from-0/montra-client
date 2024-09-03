@@ -7,12 +7,13 @@ import {
 } from '@mui/material';
 import { colors } from 'src/styles/colors';
 
-interface ListItemsTimeProps {
+export const ListItemsTime = ({
+  title,
+  description,
+}: {
   title: string;
   description: string;
-}
-
-export const ListItemsTime = ({ title, description }: ListItemsTimeProps) => {
+}) => {
   const currentTime = new Date().toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
