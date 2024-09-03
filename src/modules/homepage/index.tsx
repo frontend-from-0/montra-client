@@ -10,11 +10,12 @@ import { Regular3 } from '../../shared-components/Typography/Regular3/index';
 import { IncomeExpenseCard } from './IncomeExpenseCard';
 import { SpendFrequency } from './SpendFrequency';
 import { TitleWithCta } from '../../shared-components/Bars/TitleWithCta';
-import { TransactionCard } from '../../shared-components/Card/TransactionCard';
+import { TransactionCard } from '../../shared-components/Card/TransactionCard/TransactionCard';
 import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeriodTabs';
 import { theme } from 'src/styles/theme';
 import { TransactionType } from 'src/types/Category';
 import { HomeNavigation } from '../../shared-components/Navigation/TopNavigation/HomeNavigation';
+import { ListItemsTime } from '../../shared-components/Card/ListItems/LisItemsTime';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',
@@ -121,6 +122,8 @@ export const Home = () => {
         amountcolor={colors.red[100]}
         timecolor={colors.dark[25]}
       />
+
+      <ListItemsTime title='Title' description='Description' />
 
       <StyledBottomNavigationContainer>
         <BottomNavigation />
