@@ -1,6 +1,5 @@
 import {
   Checkbox,
-  List,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
@@ -22,20 +21,18 @@ export const ListItemSelect = ({
   };
 
   return (
-    <List>
-      <ListItem>
-        <ListItemText primary={title} />
-        <ListItemSecondaryAction>
-          {isSelected ? (
-            <Checkbox
-              icon={<RadioButtonUncheckedIcon />}
-              checkedIcon={<CheckCircleIcon />}
-              checked={isSelected}
-              onChange={handleSelectChange}
-            />
-          ) : null}
-        </ListItemSecondaryAction>
-      </ListItem>
-    </List>
+    <ListItem>
+      <ListItemText primary={title} />
+      <ListItemSecondaryAction>
+        {isSelected ? (
+          <Checkbox
+            icon={<RadioButtonUncheckedIcon />}
+            checkedIcon={<CheckCircleIcon />}
+            checked={isSelected}
+            onChange={handleSelectChange}
+          />
+        ) : null}
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 };

@@ -1,5 +1,4 @@
 import {
-  List,
   ListItem,
   ListItemSecondaryAction,
   ListItemText,
@@ -8,7 +7,7 @@ import {
 import { colors } from 'src/styles/colors';
 import { formatTime } from 'src/utils/timeUtils';
 
-export const ListItemsNotification = ({
+export const ListItemNotification = ({
   title,
   description,
   time,
@@ -19,13 +18,11 @@ export const ListItemsNotification = ({
 }) => {
   const formattedTime = formatTime(time);
   return (
-    <List>
-      <ListItem>
-        <ListItemText primary={title} secondary={description || undefined} />
-        <ListItemSecondaryAction>
-          <Typography color={colors.dark[25]}>{formattedTime}</Typography>
-        </ListItemSecondaryAction>
-      </ListItem>
-    </List>
+    <ListItem>
+      <ListItemText primary={title} secondary={description || undefined} />
+      <ListItemSecondaryAction>
+        <Typography color={colors.dark[25]}>{formattedTime}</Typography>
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 };
