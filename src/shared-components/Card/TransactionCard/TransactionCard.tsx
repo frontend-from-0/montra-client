@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import { Regular2 } from '../../shared-components/Typography/Regular2';
+import { Regular2 } from '../../Typography/Regular2';
 import { ReactNode } from 'react';
 import { theme } from 'src/styles/theme';
 
