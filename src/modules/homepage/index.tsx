@@ -15,11 +15,6 @@ import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeri
 import { theme } from 'src/styles/theme';
 import { TransactionType } from 'src/types/Category';
 import { HomeNavigation } from '../../shared-components/Navigation/TopNavigation/HomeNavigation';
-import { Settings } from '../settings/SettingsPage';
-import { SecurityPage } from '../settings/SecurityPage';
-import { CurrencyPage } from '../settings/CurrencyPage';
-import { ThemePage } from '../settings/ThemePage';
-import { NotificationPage } from '../settings/NotificationPage';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',
@@ -126,12 +121,6 @@ export const Home = () => {
         amountcolor={colors.red[100]}
         timecolor={colors.dark[25]}
       />
-
-      <Settings />
-      <SecurityPage />
-      <CurrencyPage />
-      <ThemePage />
-      <NotificationPage />
 
       <StyledBottomNavigationContainer>
         <BottomNavigation />
