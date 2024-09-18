@@ -1,8 +1,8 @@
 export enum Currency {
-  USD = 'USD',
-  IDR = 'IDR',
-  JPY = 'JPY',
-  RUB = 'RUB',
-  EUR = 'EUR',
-  WON = 'WON',
+  USD = 'United States (USD)',
+  IDR = 'Indonesia (IDR)',
+  JPY = 'Japan (JPY)',
+  RUB = 'Russia (RUB)',
+  EUR = 'Germany (EUR)',
+  WON = 'Korea (WON)',
 }

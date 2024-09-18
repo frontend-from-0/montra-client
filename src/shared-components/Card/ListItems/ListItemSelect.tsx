@@ -21,7 +21,7 @@ export const ListItemSelect = ({
   };
 
   return (
-    <ListItem>
+    <ListItem button onClick={handleSelectChange}>
       <ListItemText primary={title} />
       <ListItemSecondaryAction>
         {isSelected ? (
