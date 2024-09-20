@@ -1,10 +1,9 @@
-import { Box, Container } from '@mui/material';
+import { Container, List } from '@mui/material';
 import { ListItemSetting } from '../../shared-components/Card/ListItems/ListItemSetting';
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { useUser } from 'src/context/UserContext';
-import { Link, Outlet } from 'react-router-dom';
-import { title } from 'process';
+import { Link } from 'react-router-dom';
 
 export const SettingsPage = () => {
   const user = useUser();
@@ -22,19 +21,20 @@ export const SettingsPage = () => {
   return (
     <Container>
       <HalfTypeNavigation title='Settings' color={colors.dark[100]} />
-      {SettingPageItems.map((item, index) => (
-        <Link
-          to={`/settings/${item.title.toLowerCase()}`}
-          style={{ textDecoration: 'none', color: 'inherit' }}
-        >
-          <Box mb={index === 4 ? 10 : 0} key={item.title}>
+      <List>
+        {SettingPageItems.map((item) => (
+          <Link
+            key={item.title}
+            to={`/settings/${item.title.toLowerCase()}`}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
             <ListItemSetting
               title={item.title}
               description={item.description || ''}
             />
-          </Box>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </List>
     </Container>
   );
 };

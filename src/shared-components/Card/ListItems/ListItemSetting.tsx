@@ -1,6 +1,7 @@
 import {
   Box,
   ListItem,
+  ListItemButton,
   ListItemSecondaryAction,
   ListItemText,
   Typography,
@@ -17,7 +18,7 @@ export const ListItemSetting = ({
   description: string;
 }) => {
   return (
-    <Box display='flex' alignItems='center' padding={theme.spacing(3)}>
+    <ListItemButton alignItems='center' sx={{ padding: theme.spacing(3) }}>
       <ListItemText
         primary={
           <Box
@@ -35,6 +36,6 @@ export const ListItemSetting = ({
       />
 
       <ChevronRightIcon sx={{ color: colors.violet[100] }} />
-    </Box>
+    </ListItemButton>
   );
 };
