@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { ListItemSwitch } from '../../shared-components/Card/ListItems/ListItemSwitch';
@@ -40,6 +40,7 @@ export const NotificationPage = () => {
   return (
     <Container>
       <HalfTypeNavigation title='Notification' color={colors.dark[100]} />
+      <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', mt: -1 }} />
       {Object.values(NotificationPageItems).map((item) => (
         <ListItemSwitch
           title={item.title}

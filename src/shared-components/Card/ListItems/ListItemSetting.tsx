@@ -1,10 +1,4 @@
-import {
-  Box,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { Box, ListItemButton, ListItemText, Typography } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
@@ -17,7 +11,7 @@ export const ListItemSetting = ({
   description: string;
 }) => {
   return (
-    <Box display='flex' alignItems='center' padding={theme.spacing(3)}>
+    <ListItemButton alignItems='center' sx={{ padding: theme.spacing(3) }}>
       <ListItemText
         primary={
           <Box
@@ -35,6 +29,6 @@ export const ListItemSetting = ({
       />
 
       <ChevronRightIcon sx={{ color: colors.violet[100] }} />
-    </Box>
+    </ListItemButton>
   );
 };

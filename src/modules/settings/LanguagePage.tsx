@@ -1,4 +1,4 @@
-import { Container, List } from '@mui/material';
+import { Box, Container, List } from '@mui/material';
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { Language } from 'src/types/Language';
@@ -25,6 +25,7 @@ export const LanguagePage = () => {
   return (
     <Container>
       <HalfTypeNavigation title='Language' color={colors.dark[100]} />
+      <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', mt: -1 }} />
       <List>
         {Object.values(Language).map((lan) => (
           <ListItemSelect

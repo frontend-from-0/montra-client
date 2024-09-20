@@ -1,4 +1,4 @@
-import { Container, List, ListItem } from '@mui/material';
+import { Box, Container, List, ListItem } from '@mui/material';
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { Currency } from 'src/types/Currency';
@@ -25,6 +25,7 @@ export const CurrencyPage = () => {
   return (
     <Container>
       <HalfTypeNavigation title='Currency' color={colors.dark[100]} />
+      <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', mt: -1 }} />
       <List>
         {Object.values(Currency).map((cur) => (
           <ListItemSelect

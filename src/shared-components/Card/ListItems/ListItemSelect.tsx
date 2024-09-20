@@ -1,6 +1,7 @@
 import {
   Checkbox,
   ListItem,
+  ListItemButton,
   ListItemSecondaryAction,
   ListItemText,
 } from '@mui/material';
@@ -21,7 +22,7 @@ export const ListItemSelect = ({
   };
 
   return (
-    <ListItem button onClick={handleSelectChange}>
+    <ListItemButton onClick={handleSelectChange}>
       <ListItemText primary={title} />
       <ListItemSecondaryAction>
         {isSelected ? (
@@ -33,6 +34,6 @@ export const ListItemSelect = ({
           />
         ) : null}
       </ListItemSecondaryAction>
-    </ListItem>
+    </ListItemButton>
   );
 };

@@ -46,12 +46,13 @@ export const AppRouter = () => {
         <Route path='new' element={<Expense />} />
         <Route index element={<div>Launch screen</div>} />
       </Route>
-      <Route path='settings' element={<SettingsPage />}>
+      <Route path='settings'>
         <Route path='currency' element={<CurrencyPage />} />
         <Route path='language' element={<LanguagePage />} />
         <Route path='notification' element={<NotificationPage />} />
         <Route path='security' element={<SecurityPage />} />
         <Route path='theme' element={<ThemePage />} />
+        <Route index element={<SettingsPage />} />
       </Route>
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
       <Route path='/' element={<Home />} />

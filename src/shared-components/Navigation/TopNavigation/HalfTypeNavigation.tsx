@@ -2,6 +2,7 @@ import { Box, Stack } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Title3 } from '../../Typography/Title3/index';
 import { theme } from 'src/styles/theme';
+import { useNavigate } from 'react-router-dom';
 
 interface HalfTypeNavigationProps {
   title: string;
@@ -12,6 +13,8 @@ export const HalfTypeNavigation = ({
   title,
   color,
 }: HalfTypeNavigationProps) => {
+  const navigate = useNavigate();
+
   return (
     <Stack
       direction='row'
@@ -20,7 +23,10 @@ export const HalfTypeNavigation = ({
       color={color}
       justifyContent='space-between'
     >
-      <KeyboardBackspaceIcon />
+      <KeyboardBackspaceIcon
+        onClick={() => navigate(-1)}
+        sx={{ cursor: 'pointer' }}
+      />
 
       <Title3 color={color}>{title}</Title3>
 
