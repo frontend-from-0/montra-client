@@ -4,17 +4,18 @@ import { colors } from 'src/styles/colors';
 import { ListItemSelect } from '../../shared-components/Card/ListItems/ListItemSelect';
 import { useState } from 'react';
 import { Security } from 'src/types/Security';
-import { UserActionType, useUserDispatch } from 'src/context/UserContext';
+import {
+  UserActionType,
+  useUser,
+  useUserDispatch,
+} from 'src/context/UserContext';
 
 export const SecurityPage = () => {
-  const [selectedSecurity, setSelectedSecurity] = useState<Security | null>(
-    null,
-  );
+  const { security } = useUser() || {};
 
   const dispatch = useUserDispatch();
 
   const handleSelectedSecurity = (security: Security) => {
-    setSelectedSecurity(security);
     dispatch?.({
       type: UserActionType.SET_SECURITY,
       payload: security,
@@ -29,7 +30,7 @@ export const SecurityPage = () => {
         <ListItemSelect
           key={sec}
           title={sec}
-          isSelected={selectedSecurity === sec}
+          isSelected={security === sec}
           setIsSelected={() => handleSelectedSecurity(sec)}
         />
       ))}

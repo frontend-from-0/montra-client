@@ -4,18 +4,15 @@ import { colors } from 'src/styles/colors';
 import { Language } from 'src/types/Language';
 import { ListItemSelect } from '../../shared-components/Card/ListItems/ListItemSelect';
 import { useState } from 'react';
-import { useUserDispatch } from 'src/context/UserContext';
+import { useUser, useUserDispatch } from 'src/context/UserContext';
 import { UserActionType } from '../../context/UserContext';
 
 export const LanguagePage = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
-    null,
-  );
+  const { language } = useUser() || {};
 
   const dispatch = useUserDispatch();
 
   const handleSelectedLanguage = (language: Language) => {
-    setSelectedLanguage(language);
     dispatch?.({
       type: UserActionType.SET_LANGUAGE,
       payload: language,
@@ -31,7 +28,7 @@ export const LanguagePage = () => {
           <ListItemSelect
             key={lan}
             title={lan}
-            isSelected={selectedLanguage === lan}
+            isSelected={language === lan}
             setIsSelected={() => handleSelectedLanguage(lan)}
           />
         ))}

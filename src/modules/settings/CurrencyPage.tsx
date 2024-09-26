@@ -4,18 +4,15 @@ import { colors } from 'src/styles/colors';
 import { Currency } from 'src/types/Currency';
 import { ListItemSelect } from '../../shared-components/Card/ListItems/ListItemSelect';
 import { useState } from 'react';
-import { useUserDispatch } from 'src/context/UserContext';
+import { useUser, useUserDispatch } from 'src/context/UserContext';
 import { UserActionType } from '../../context/UserContext';
 
 export const CurrencyPage = () => {
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency | null>(
-    null,
-  );
+  const { currency } = useUser() || {};
 
   const dispatch = useUserDispatch();
 
   const handleSelectedCurrency = (currency: Currency) => {
-    setSelectedCurrency(currency);
     dispatch?.({
       type: UserActionType.SET_CURRENCY,
       payload: currency,
@@ -31,7 +28,7 @@ export const CurrencyPage = () => {
           <ListItemSelect
             key={cur}
             title={cur}
-            isSelected={selectedCurrency === cur}
+            isSelected={currency === cur}
             setIsSelected={() => handleSelectedCurrency(cur)}
           />
         ))}

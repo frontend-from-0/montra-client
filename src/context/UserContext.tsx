@@ -9,10 +9,10 @@ import { Currency } from 'src/types/Currency';
 import { Language } from 'src/types/Language';
 import { Security } from 'src/types/Security';
 
-enum Theme {
+export enum Theme {
   Dark = 'Dark',
   Light = 'Light',
-  UseDeviceTheme = 'Use device theme',
+  DeviceTheme = 'Device Theme',
 }
 
 export enum UserActionType {
@@ -81,7 +81,7 @@ const initialState: UserState = {
   isLoggedIn: false,
   currency: Currency.USD,
   language: Language.EN,
-  theme: Theme.Light,
+  theme: Theme.DeviceTheme,
   security: Security.Fingerprint,
   notificationSettings: {
     expenseAlert: false,
