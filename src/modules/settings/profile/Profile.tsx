@@ -1,21 +1,17 @@
 import { useAppContext } from 'src/context/AppContext';
 import styled from 'styled-components';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import SettingsIcon from '@mui/icons-material/Settings';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { colors } from 'src/styles/colors';
+import { Regular3 } from 'src/shared-components/Typography/Regular3';
+import { Regular2 } from 'src/shared-components/Typography/Regular2';
+import { Regular1 } from 'src/shared-components/Typography/Regular1';
 
-const StyledDivProfile = styled('div')`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f6f6f6;
-  height: 100vh;
-`;
 const StyledDivUserDetailsSection = styled('div')`
   width: 100%;
   display: flex;
@@ -42,29 +38,28 @@ const StyledDivEditProfileButton = styled('button')`
     background-color: #f1f1fa;
   }
 `;
-const StyledDivAccountButtonGroup = styled('div')`
+const StyledMenuContainer = styled('nav')`
   width: 90%;
   background-color: #fff;
   border-radius: 20px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
 `;
 
-const StyledAccountButtons = styled('button')`
+const StyledMenuItem = styled('button')`
   display: flex;
   align-items: center;
-  width: 100%;
+  gap: 10px;
   border: none;
   border-bottom: 2px solid #f6f6f6;
   background-color: transparent;
   cursor: pointer;
   padding: 20px;
 `;
-const StyledAccountButtonsArea = styled('div')`
+const StyledIcon = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,6 +71,7 @@ const StyledAccountButtonsArea = styled('div')`
 const StyledLogoutButton = styled('button')`
   display: flex;
   align-items: center;
+  gap: 10px;
   width: 100%;
   border: none;
   background-color: transparent;
@@ -93,13 +89,13 @@ const StyledAccountLogoutButtonArea = styled('div')`
 `;
 
 export const Profile = () => {
-  const { users } = useAppContext();
+  const { user } = useAppContext();
   return (
-    <StyledDivProfile>
-      {users.map((user) => (
-        <StyledDivUserDetailsSection key={user.id}>
+    <Stack>
+      {user.map((u) => (
+        <StyledDivUserDetailsSection key={u.id}>
           <StyledDivProfilePicture>
-            {user.profilePicture ? (
+            {u.profilePicture ? (
               <img
                 style={{
                   width: '100%',
@@ -107,8 +103,8 @@ export const Profile = () => {
                   borderRadius: '50%',
                   objectFit: 'cover',
                 }}
-                src={user.profilePicture}
-                alt={`${user.name} profile`}
+                src={u.profilePicture}
+                alt={`${u.name} profile`}
               />
             ) : (
               <PermIdentityIcon
@@ -124,13 +120,9 @@ export const Profile = () => {
           </StyledDivProfilePicture>
 
           <StyledDivUserInfo>
-            <Typography
-              style={{ fontWeight: '500', fontSize: '14px', color: '91919F' }}
-            >
-              {user.username}
-            </Typography>
+            <Regular3 color={'91919F'}>{u.username}</Regular3>
             <Typography style={{ fontWeight: '600', fontSize: '24px' }}>
-              {user.name} {user.surname}
+              {u.name} {u.surname}
             </Typography>
           </StyledDivUserInfo>
 
@@ -139,9 +131,9 @@ export const Profile = () => {
           </StyledDivEditProfileButton>
         </StyledDivUserDetailsSection>
       ))}
-      <StyledDivAccountButtonGroup>
-        <StyledAccountButtons>
-          <StyledAccountButtonsArea>
+      <StyledMenuContainer>
+        <StyledMenuItem>
+          <StyledIcon>
             <AccountBalanceWalletIcon
               style={{
                 width: '32px',
@@ -149,15 +141,11 @@ export const Profile = () => {
                 color: colors.violet[100],
               }}
             />
-          </StyledAccountButtonsArea>
-          <Typography
-            style={{ fontWeight: '500', marginLeft: '10px', fontSize: '16px' }}
-          >
-            Account
-          </Typography>
-        </StyledAccountButtons>
-        <StyledAccountButtons>
-          <StyledAccountButtonsArea>
+          </StyledIcon>
+          <Regular2 color={'black'}>Account</Regular2>
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <StyledIcon>
             <SettingsIcon
               style={{
                 width: '32px',
@@ -165,15 +153,13 @@ export const Profile = () => {
                 color: colors.violet[100],
               }}
             />
-          </StyledAccountButtonsArea>
-          <Typography
-            style={{ fontWeight: '500', marginLeft: '10px', fontSize: '16px' }}
-          >
+          </StyledIcon>
+          <Regular1 sx={{ color: 'black' }} id='settings-title'>
             Settings
-          </Typography>
-        </StyledAccountButtons>
-        <StyledAccountButtons>
-          <StyledAccountButtonsArea>
+          </Regular1>
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <StyledIcon>
             <IosShareIcon
               style={{
                 width: '32px',
@@ -181,13 +167,11 @@ export const Profile = () => {
                 color: colors.violet[100],
               }}
             />
-          </StyledAccountButtonsArea>
-          <Typography
-            style={{ fontWeight: '500', marginLeft: '10px', fontSize: '16px' }}
-          >
+          </StyledIcon>
+          <Regular1 sx={{ color: 'black' }} id='logout-title'>
             Export Data
-          </Typography>
-        </StyledAccountButtons>
+          </Regular1>
+        </StyledMenuItem>
         <StyledLogoutButton>
           <StyledAccountLogoutButtonArea>
             <LogoutIcon
@@ -198,13 +182,11 @@ export const Profile = () => {
               }}
             />
           </StyledAccountLogoutButtonArea>
-          <Typography
-            style={{ fontWeight: '500', marginLeft: '10px', fontSize: '16px' }}
-          >
+          <Regular1 sx={{ color: 'black' }} id='logout-title'>
             Logout
-          </Typography>
+          </Regular1>
         </StyledLogoutButton>
-      </StyledDivAccountButtonGroup>
-    </StyledDivProfile>
+      </StyledMenuContainer>
+    </Stack>
   );
 };

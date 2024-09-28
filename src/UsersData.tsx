@@ -1,4 +1,4 @@
-import { profilePic } from 'src/assets/illustrations/aytam-zaker-EcdtLQW8JiI-unsplash.jpg';
+import profilePic from 'src/assets/illustrations/05.png';
 
 export interface User {
   id: string;
@@ -10,7 +10,7 @@ export interface User {
   profilePicture?: string | null;
 }
 
-export const allUsers: User[] = [
+export const currentUser: User[] = [
   {
     id: '38177592-87b7-4574-81a6-05673176db84',
     name: 'Iriana',

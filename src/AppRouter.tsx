@@ -1,16 +1,16 @@
 import { Expense } from './modules/expense/Expense';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Introduction } from './modules/onboarding/introduction';
-<<<<<<< HEAD
-import { BottomNavigation } from './shared-components/BottomNavigation';
-import { Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Profile } from './modules/profile/Profile';
-=======
+import { Profile } from './modules/settings/profile/Profile';
+import { Stack } from '@mui/material';
+import { BottomNavigation } from './shared-components/BottomNavigation';
 import { Home } from './modules/homepage/index';
->>>>>>> main
 
 export const AppRouter = () => {
+  const StyledPageContentDiv = styled('div')({});
+  const StyledBottomNavigationContainer = styled('div')({});
+
   return (
     <Routes>
       <Route path='onboarding'>
@@ -48,7 +48,6 @@ export const AppRouter = () => {
         <Route index element={<div>Launch screen</div>} />
       </Route>
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
-<<<<<<< HEAD
       <Route
         path='/'
         element={
@@ -84,9 +83,7 @@ export const AppRouter = () => {
           </Stack>
         }
       />
-=======
       <Route path='/' element={<Home />} />
->>>>>>> main
     </Routes>
   );
 };
