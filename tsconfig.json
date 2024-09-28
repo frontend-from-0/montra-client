@@ -22,5 +22,11 @@
       "@assets/*": ["src/assets/*"]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.png",
+    "src/**/*.jpg"
+  ]
 }

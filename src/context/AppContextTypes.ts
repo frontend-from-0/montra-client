@@ -5,8 +5,3 @@ export enum MenuOptions {
   BUDGET = 'budget',
   PROFILE = 'profile',
 }
-
-export interface AppContextType {
-  activeTab: MenuOptions | null;
-  setActiveTab: (option: MenuOptions) => void;
-}
