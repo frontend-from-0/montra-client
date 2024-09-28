@@ -7,29 +7,33 @@ import {
 } from 'react';
 import { Currency } from 'src/types/Currency';
 import { Language } from 'src/types/Language';
+import { Security } from 'src/types/Security';
 
-enum Theme {
+export enum Theme {
   Dark = 'Dark',
   Light = 'Light',
+  DeviceTheme = 'Device Theme',
 }
 
-enum UserActionType {
+export enum UserActionType {
   SET_USER = 'SET_USER',
   LOG_IN = 'LOG_IN',
   LOG_OUT = 'LOG_OUT',
   SET_LANGUAGE = 'SET_LANGUAGE',
   SET_THEME = 'SET_THEME',
   SET_CURRENCY = 'SET_CURRENCY',
+  SET_SECURITY = 'SET_SECURITY',
   TOGGLE_NOTIFICATION = 'TOGGLE_NOTIFICATION',
 }
 
-interface UserState {
+export interface UserState {
   name: string;
   email: string;
   isLoggedIn: boolean;
   currency: Currency;
   language: Language;
   theme: Theme;
+  security: Security;
   notificationSettings: {
     expenseAlert: boolean;
     budget: boolean;
@@ -48,6 +52,10 @@ type SetLanguageAction = {
   payload: Language;
 };
 type SetThemeAction = { type: UserActionType.SET_THEME; payload: Theme };
+type SetSecurityAction = {
+  type: UserActionType.SET_SECURITY;
+  payload: Security;
+};
 type SetCurrencyAction = {
   type: UserActionType.SET_CURRENCY;
   payload: Currency;
@@ -64,7 +72,8 @@ type UserAction =
   | SetLanguageAction
   | SetThemeAction
   | SetCurrencyAction
-  | ToggleNotificationAction;
+  | ToggleNotificationAction
+  | SetSecurityAction;
 
 const initialState: UserState = {
   name: 'john',
@@ -72,7 +81,8 @@ const initialState: UserState = {
   isLoggedIn: false,
   currency: Currency.USD,
   language: Language.EN,
-  theme: Theme.Light,
+  theme: Theme.DeviceTheme,
+  security: Security.Fingerprint,
   notificationSettings: {
     expenseAlert: false,
     budget: false,
@@ -99,6 +109,8 @@ function userReducer(state: UserState, action: UserAction): UserState {
       return { ...state, theme: action.payload };
     case UserActionType.SET_CURRENCY:
       return { ...state, currency: action.payload };
+    case UserActionType.SET_SECURITY:
+      return { ...state, security: action.payload };
     case UserActionType.TOGGLE_NOTIFICATION:
       return {
         ...state,
