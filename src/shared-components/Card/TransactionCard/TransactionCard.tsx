@@ -16,7 +16,7 @@ interface TransactionCardProps {
   amountcolor: string;
 }
 
-const truncateText = (text: string, maxLength: number = 16) => {
+export const truncateText = (text: string, maxLength: number = 16) => {
   return text.length > maxLength ? text.slice(0, maxLength) + '..' : text;
 };
 
