@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 import { MenuOptions, useAppContext } from 'src/context/AppContext';
+import { Link } from 'react-router-dom';
 
 const StyledDivBottomNavigation = styled('div')({
   display: 'flex',
@@ -59,15 +60,22 @@ export const BottomNavigation: React.FC = () => {
           active={activeTab === MenuOptions.HOME}
           onClick={() => handleButtonClick('home')}
         >
-          <HomeIcon fontSize='large' />
-          <Typography fontSize='small'>Home</Typography>
+          <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <HomeIcon fontSize='large' />
+            <Typography fontSize='small'>Home</Typography>
+          </Link>
         </StyledIconButton>
         <StyledIconButton
           active={activeTab === MenuOptions.TRANSACTION}
           onClick={() => handleButtonClick('transaction')}
         >
-          <SyncAltOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Transaction</Typography>
+          <Link
+            to={'/transaction'}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <SyncAltOutlinedIcon fontSize='large' />
+            <Typography fontSize='small'>Transaction</Typography>
+          </Link>
         </StyledIconButton>
       </StyledDivLeftSide>
 
@@ -92,15 +100,25 @@ export const BottomNavigation: React.FC = () => {
           active={activeTab === MenuOptions.BUDGET}
           onClick={() => handleButtonClick('budget')}
         >
-          <DataSaverOffOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Budget</Typography>
+          <Link
+            to={'/budget'}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <DataSaverOffOutlinedIcon fontSize='large' />
+            <Typography fontSize='small'>Budget</Typography>
+          </Link>
         </StyledIconButton>
         <StyledIconButton
           active={activeTab === MenuOptions.PROFILE}
           onClick={() => handleButtonClick('profile')}
         >
-          <AccountCircleOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Profile</Typography>
+          <Link
+            to={'/profile'}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <AccountCircleOutlinedIcon fontSize='large' />
+            <Typography fontSize='small'>Profile</Typography>
+          </Link>
         </StyledIconButton>
       </StyledDivRightSide>
     </StyledDivBottomNavigation>

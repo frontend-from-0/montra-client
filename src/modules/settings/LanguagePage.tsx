@@ -3,7 +3,6 @@ import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNaviga
 import { colors } from 'src/styles/colors';
 import { Language } from 'src/types/Language';
 import { ListItemSelect } from '../../shared-components/Card/ListItems/ListItemSelect';
-import { useState } from 'react';
 import { useUser, useUserDispatch } from 'src/context/UserContext';
 import { UserActionType } from '../../context/UserContext';
 
