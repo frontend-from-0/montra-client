@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { theme } from 'src/styles/theme';
 import { Regular2 } from '../../Typography/Regular2/index';
 
-interface profilePageCardsProps {
+interface ProfilePageCardsProps {
   bgcolor: string;
   icon: ReactNode;
   profileActions: string;
@@ -15,7 +15,7 @@ export const ProfilePageCards = ({
   icon,
   profileActions,
   profileActionsColor,
-}: profilePageCardsProps) => {
+}: ProfilePageCardsProps) => {
   return (
     <Stack direction='row' alignItems='center' gap={theme.spacing(3)}>
       <Box

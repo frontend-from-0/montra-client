@@ -6,16 +6,6 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { theme } from 'src/styles/theme';
 import { Primary } from '../../shared-components/Button/Large/Primary';
 
-const StyledBottomNavigationContainer = styled('div')({
-  position: 'sticky',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  width: '375px',
-  zIndex: '1000',
-  backgroundColor: '#fff',
-});
-
 export const Budget = () => {
   return (
     <Stack sx={{ backgroundColor: colors.violet[100] }}>
@@ -54,9 +44,8 @@ export const Budget = () => {
           </Typography>
         </Stack>
         <Primary btnText='Create a budget' />
-        <StyledBottomNavigationContainer>
-          <BottomNavigation />
-        </StyledBottomNavigationContainer>
+
+        <BottomNavigation />
       </Stack>
     </Stack>
   );

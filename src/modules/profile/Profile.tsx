@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Stack, Typography } from '@mui/material';
+import { Avatar, Box, Stack, Typography } from '@mui/material';
 import { BottomNavigation } from '../../shared-components/BottomNavigation/index';
 import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
@@ -8,8 +8,8 @@ import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalance
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { ProfilePageCards } from '../../shared-components/Card/ProfilePageCards/profilePageCards';
-import { Link } from 'react-router-dom';
+import { ProfilePageCards } from '../../shared-components/Card/ProfilePageCards/ProfilePageCards';
+import { LinkTo } from '../../shared-components/LinkTo';
 
 export const Profile = () => {
   return (
@@ -77,17 +77,14 @@ export const Profile = () => {
             padding: theme.spacing(4),
           }}
         >
-          <Link
-            to='/profile/settings'
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
+          <LinkTo to='/profile/settings'>
             <ProfilePageCards
               bgcolor={colors.violet[20]}
               icon={<SettingsOutlinedIcon sx={{ color: colors.violet[100] }} />}
               profileActions='Settings'
               profileActionsColor={colors.dark[100]}
             />
-          </Link>
+          </LinkTo>
         </Box>
 
         <Box

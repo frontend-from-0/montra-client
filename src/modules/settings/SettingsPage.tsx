@@ -3,7 +3,7 @@ import { ListItemSetting } from '../../shared-components/Card/ListItems/ListItem
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { useUser } from 'src/context/UserContext';
-import { Link } from 'react-router-dom';
+import { LinkTo } from '../../shared-components/LinkTo';
 
 export const SettingsPage = () => {
   const user = useUser();
@@ -24,16 +24,15 @@ export const SettingsPage = () => {
       <Box sx={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)', mt: -1 }} />
       <List>
         {SettingPageItems.map((item) => (
-          <Link
+          <LinkTo
             key={item.title}
-            to={`/settings/${item.title.toLowerCase()}`}
-            style={{ textDecoration: 'none', color: 'inherit' }}
+            to={`/profile/settings/${item.title.toLowerCase()}`}
           >
             <ListItemSetting
               title={item.title}
               description={item.description || ''}
             />
-          </Link>
+          </LinkTo>
         ))}
       </List>
     </Container>

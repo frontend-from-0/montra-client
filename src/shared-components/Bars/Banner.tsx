@@ -14,7 +14,7 @@ export const Banner = ({ bannerText }: BannerProps) => {
       justifyContent='space-between'
       bgcolor={colors.violet[20]}
       padding={theme.spacing(2)}
-      borderRadius='8px'
+      borderRadius={theme.shape.borderRadius * 2}
     >
       <Typography sx={{ color: colors.violet[100] }}>{bannerText}</Typography>
       <ChevronRightIcon sx={{ color: colors.violet[100] }} />

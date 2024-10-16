@@ -12,16 +12,6 @@ import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 
-const StyledBottomNavigationContainer = styled('div')({
-  position: 'sticky',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  width: '375px',
-  zIndex: '1000',
-  backgroundColor: '#fff',
-});
-
 export const Transaction = () => {
   return (
     <Container component='main'>
@@ -120,9 +110,8 @@ export const Transaction = () => {
         amountcolor={colors.red[100]}
         timecolor={colors.dark[25]}
       />
-      <StyledBottomNavigationContainer>
-        <BottomNavigation />
-      </StyledBottomNavigationContainer>
+
+      <BottomNavigation />
     </Container>
   );
 };
