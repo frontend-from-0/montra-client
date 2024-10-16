@@ -16,16 +16,6 @@ import { theme } from 'src/styles/theme';
 import { TransactionType } from 'src/types/Category';
 import { HomeNavigation } from '../../shared-components/Navigation/TopNavigation/HomeNavigation';
 
-const StyledBottomNavigationContainer = styled('div')({
-  position: 'sticky',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  width: '375px',
-  zIndex: '1000',
-  backgroundColor: '#fff',
-});
-
 const StyledGradientContainer = styled(Box)({
   textAlign: 'center',
   borderRadius: `0px 0px ${theme.shape.borderRadius * 8} ${theme.shape.borderRadius * 8}`,
@@ -122,9 +112,7 @@ export const Home = () => {
         timecolor={colors.dark[25]}
       />
 
-      <StyledBottomNavigationContainer>
-        <BottomNavigation />
-      </StyledBottomNavigationContainer>
+      <BottomNavigation />
     </Container>
   );
 };

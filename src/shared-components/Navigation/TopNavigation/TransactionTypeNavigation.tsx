@@ -6,30 +6,28 @@ import { colors } from 'src/styles/colors';
 
 interface TransactionTypeNavigationProps {
   interval: string;
-  badgeContent: number;
 }
 
 export const TransactionTypeNavigation = ({
   interval,
-  badgeContent,
 }: TransactionTypeNavigationProps) => {
   return (
     <Stack direction='row' justifyContent='space-between'>
       <Stack
         direction='row'
         borderRadius={theme.shape.borderRadius}
-        border={`${theme.spacing(0.25)} solid ${colors.light[60]}`}
+        border={`${theme.spacing(0.25)} solid ${colors.light[40]}`}
         padding={`${theme.spacing(2)} ${theme.spacing(4)} ${theme.spacing(2)} ${theme.spacing(2)}`}
       >
         <ExpandMoreIcon sx={{ color: colors.violet[100] }} />
         <Typography fontSize={theme.spacing(3.5)}>{interval}</Typography>
       </Stack>
-      <Badge badgeContent={badgeContent}>
+      <Badge>
         <FilterListIcon
           sx={{
             padding: theme.spacing(1),
-            border: `${theme.spacing(0.25)} solid ${colors.light[60]}`,
-            borderRadius: theme.shape.borderRadius * 2,
+            border: `${theme.spacing(0.25)} solid ${colors.light[40]}`,
+            borderRadius: '8px',
             width: theme.spacing(10),
             height: theme.spacing(10),
           }}
