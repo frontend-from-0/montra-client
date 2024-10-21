@@ -2,7 +2,6 @@ import { Box, Container } from '@mui/material';
 import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNavigation/HalfTypeNavigation';
 import { colors } from 'src/styles/colors';
 import { ListItemSelect } from '../../shared-components/Card/ListItems/ListItemSelect';
-import { useState } from 'react';
 import { Security } from 'src/types/Security';
 import {
   UserActionType,

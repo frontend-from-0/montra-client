@@ -8,6 +8,17 @@ import { Typography } from '@mui/material';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 import { MenuOptions, useAppContext } from 'src/context/AppContext';
+import { LinkTo } from '../LinkTo';
+
+const StyledBottomNavigationContainer = styled('div')({
+  position: 'sticky',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  width: '375px',
+  zIndex: '1000',
+  backgroundColor: '#fff',
+});
 
 const StyledDivBottomNavigation = styled('div')({
   display: 'flex',
@@ -53,56 +64,66 @@ export const BottomNavigation: React.FC = () => {
   };
 
   return (
-    <StyledDivBottomNavigation>
-      <StyledDivLeftSide>
-        <StyledIconButton
-          active={activeTab === MenuOptions.HOME}
-          onClick={() => handleButtonClick('home')}
-        >
-          <HomeIcon fontSize='large' />
-          <Typography fontSize='small'>Home</Typography>
-        </StyledIconButton>
-        <StyledIconButton
-          active={activeTab === MenuOptions.TRANSACTION}
-          onClick={() => handleButtonClick('transaction')}
-        >
-          <SyncAltOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Transaction</Typography>
-        </StyledIconButton>
-      </StyledDivLeftSide>
+    <StyledBottomNavigationContainer>
+      <StyledDivBottomNavigation>
+        <StyledDivLeftSide>
+          <StyledIconButton
+            active={activeTab === MenuOptions.HOME}
+            onClick={() => handleButtonClick('home')}
+          >
+            <LinkTo to='/'>
+              <HomeIcon fontSize='large' />
+              <Typography fontSize='small'>Home</Typography>
+            </LinkTo>
+          </StyledIconButton>
+          <StyledIconButton
+            active={activeTab === MenuOptions.TRANSACTION}
+            onClick={() => handleButtonClick('transaction')}
+          >
+            <LinkTo to='/transaction'>
+              <SyncAltOutlinedIcon fontSize='large' />
+              <Typography fontSize='small'>Transaction</Typography>
+            </LinkTo>
+          </StyledIconButton>
+        </StyledDivLeftSide>
 
-      <StyledDivMidSide>
-        <StyledIconButton
-          active={activeTab === MenuOptions.ADDBUTTON}
-          onClick={() => handleButtonClick('addButton')}
-        >
-          <AddCircleIcon
-            sx={{
-              fontSize: 60,
-              position: 'absolute',
-              marginTop: '-20px',
-              color: theme.palette.primary.main,
-            }}
-          />
-        </StyledIconButton>
-      </StyledDivMidSide>
+        <StyledDivMidSide>
+          <StyledIconButton
+            active={activeTab === MenuOptions.ADDBUTTON}
+            onClick={() => handleButtonClick('addButton')}
+          >
+            <AddCircleIcon
+              sx={{
+                fontSize: 60,
+                position: 'absolute',
+                marginTop: '-20px',
+                color: theme.palette.primary.main,
+              }}
+            />
+          </StyledIconButton>
+        </StyledDivMidSide>
 
-      <StyledDivRightSide>
-        <StyledIconButton
-          active={activeTab === MenuOptions.BUDGET}
-          onClick={() => handleButtonClick('budget')}
-        >
-          <DataSaverOffOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Budget</Typography>
-        </StyledIconButton>
-        <StyledIconButton
-          active={activeTab === MenuOptions.PROFILE}
-          onClick={() => handleButtonClick('profile')}
-        >
-          <AccountCircleOutlinedIcon fontSize='large' />
-          <Typography fontSize='small'>Profile</Typography>
-        </StyledIconButton>
-      </StyledDivRightSide>
-    </StyledDivBottomNavigation>
+        <StyledDivRightSide>
+          <StyledIconButton
+            active={activeTab === MenuOptions.BUDGET}
+            onClick={() => handleButtonClick('budget')}
+          >
+            <LinkTo to='/budget'>
+              <DataSaverOffOutlinedIcon fontSize='large' />
+              <Typography fontSize='small'>Budget</Typography>
+            </LinkTo>
+          </StyledIconButton>
+          <StyledIconButton
+            active={activeTab === MenuOptions.PROFILE}
+            onClick={() => handleButtonClick('profile')}
+          >
+            <LinkTo to='/profile'>
+              <AccountCircleOutlinedIcon fontSize='large' />
+              <Typography fontSize='small'>Profile</Typography>
+            </LinkTo>
+          </StyledIconButton>
+        </StyledDivRightSide>
+      </StyledDivBottomNavigation>
+    </StyledBottomNavigationContainer>
   );
 };
