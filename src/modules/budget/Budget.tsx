@@ -1,10 +1,10 @@
-import { Stack, styled, Typography } from '@mui/material';
-import { BottomNavigation } from '../../shared-components/BottomNavigation/index';
+import { Stack, Typography } from '@mui/material';
+import { BottomNavigation } from '../../shared-components/Navigation/BottomNavigation/index';
 import { colors } from 'src/styles/colors';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { theme } from 'src/styles/theme';
-import { Primary } from '../../shared-components/Button/Large/Primary';
+import { Primary } from '../../shared-components/Navigation/Button/Large/Primary';
 
 export const Budget = () => {
   return (

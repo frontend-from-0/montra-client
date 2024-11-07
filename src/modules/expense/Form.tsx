@@ -15,7 +15,7 @@ import Stack from '@mui/material/Stack';
 import CameraAltRoundedIcon from '@mui/icons-material/CameraAltRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import InsertDriveFileRoundedIcon from '@mui/icons-material/InsertDriveFileRounded';
-import { AttachmentOptionsButtons } from '../../shared-components/Button';
+import { AttachmentOptionsButtons } from '../../shared-components/Navigation/Button';
 import Switch from '@mui/material/Switch';
 import { theme } from 'src/styles/theme';
 import Modal from '@mui/material/Modal';

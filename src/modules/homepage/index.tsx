@@ -1,6 +1,6 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { BottomNavigation } from '../../shared-components/BottomNavigation';
+import { BottomNavigation } from '../../shared-components/Navigation/BottomNavigation/index';
 import personImage from '../../assets/illustrations/05.png';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
@@ -9,7 +9,7 @@ import { colors } from 'src/styles/colors';
 import { Regular3 } from '../../shared-components/Typography/Regular3/index';
 import { IncomeExpenseCard } from './IncomeExpenseCard';
 import { SpendFrequency } from './SpendFrequency';
-import { TitleWithCta } from '../../shared-components/Bars/TitleWithCta';
+import { TitleWithCta } from '../../shared-components/Navigation/Bars/TitleWithCta';
 import { TransactionCard } from '../../shared-components/Card/TransactionCard/TransactionCard';
 import { TimePeriodTabs } from '../../shared-components/Navigation/Tabs/TimePeriodTabs';
 import { theme } from 'src/styles/theme';

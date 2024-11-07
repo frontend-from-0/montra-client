@@ -8,7 +8,7 @@ import { Typography } from '@mui/material';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 import { MenuOptions, useAppContext } from 'src/context/AppContext';
-import { LinkTo } from '../LinkTo';
+import { LinkTo } from '../../LinkTo';
 
 const StyledBottomNavigationContainer = styled('div')({
   position: 'sticky',

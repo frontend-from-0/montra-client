@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
-import { BottomNavigation } from './shared-components/BottomNavigation/index';
+import { BottomNavigation } from './shared-components/Navigation/BottomNavigation/index';
 import { AppProvider } from './context/AppContext';
 import { AppRouter } from './AppRouter';
 

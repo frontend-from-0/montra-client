@@ -1,8 +1,8 @@
-import { Container, Stack, styled } from '@mui/material';
-import { BottomNavigation } from '../../shared-components/BottomNavigation/index';
-import { Banner } from '../../shared-components/Bars/Banner';
+import { Container, Stack } from '@mui/material';
+import { BottomNavigation } from '../../shared-components/Navigation/BottomNavigation/index';
+import { Banner } from '../../shared-components/Navigation/Bars/Banner';
 import { TransactionTypeNavigation } from '../../shared-components/Navigation/TopNavigation/TransactionTypeNavigation';
-import { TitleOnly } from '../../shared-components/Bars/TitleOnly';
+import { TitleOnly } from '../../shared-components/Navigation/Bars/TitleOnly';
 import { TransactionCard } from '../../shared-components/Card/TransactionCard/TransactionCard';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';

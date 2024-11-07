@@ -1,5 +1,5 @@
 import { Avatar, Box, Stack, Typography } from '@mui/material';
-import { BottomNavigation } from '../../shared-components/BottomNavigation/index';
+import { BottomNavigation } from '../../shared-components/Navigation/BottomNavigation/index';
 import { theme } from 'src/styles/theme';
 import { colors } from 'src/styles/colors';
 import personImage from '../../assets/illustrations/05.png';
