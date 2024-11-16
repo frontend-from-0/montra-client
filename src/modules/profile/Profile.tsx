@@ -8,7 +8,7 @@ import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalance
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { ProfilePageCards } from '../../shared-components/Card/ProfilePageCards/ProfilePageCards';
+import { ProfilePageCards } from '../../shared-components/Card/ProfilePageCards/profilePageCards';
 import { LinkTo } from '../../shared-components/LinkTo';
 
 export const Profile = () => {

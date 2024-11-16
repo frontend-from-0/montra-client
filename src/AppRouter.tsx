@@ -8,7 +8,7 @@ import { LanguagePage } from './modules/settings/LanguagePage';
 import { NotificationPage } from './modules/settings/NotificationPage';
 import { SecurityPage } from './modules/settings/SecurityPage';
 import { ThemePage } from './modules/settings/ThemePage';
-import { Transaction } from './modules/transaction/Transaction';
+import { Transaction } from './modules/transaction/transaction';
 import { Budget } from './modules/budget/Budget';
 import { Profile } from './modules/profile/Profile';
 

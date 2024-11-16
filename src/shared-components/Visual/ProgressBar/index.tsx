@@ -1,30 +1,24 @@
 import { Box, LinearProgress } from '@mui/material';
+import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 
 interface ProgressBarProps {
-  trackColor: string;
+  color: string;
   progressValue: number;
-  railColor: string;
-  height: number;
 }
 
-export const ProgressBar = ({
-  trackColor,
-  progressValue,
-  railColor,
-  height,
-}: ProgressBarProps) => {
+export const ProgressBar = ({ color, progressValue }: ProgressBarProps) => {
   return (
     <Box>
       <LinearProgress
         variant='determinate'
         value={progressValue}
         sx={{
-          backgroundColor: railColor,
-          height: height,
+          backgroundColor: colors.light[20],
+          height: '12px',
           borderRadius: theme.shape.borderRadius * 6,
           '& .MuiLinearProgress-bar': {
-            backgroundColor: trackColor,
+            backgroundColor: color,
             borderRadius: theme.shape.borderRadius * 6,
           },
         }}
