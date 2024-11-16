@@ -1,46 +1,36 @@
-import { Box } from '@mui/material';
+import { useTheme } from '@mui/material';
 import Slider from '@mui/material/Slider';
-import { theme } from 'src/styles/theme';
+import { colors } from 'src/styles/colors';
 
 interface CustomSliderProps {
   defaultValue: number;
   color: string;
-  thumbbgcolor: string;
-  trackcolor: string;
-  railcolor: string;
 }
 
-export const CustomSlider = ({
-  defaultValue,
-  color,
-  thumbbgcolor,
-  trackcolor,
-  railcolor,
-}: CustomSliderProps) => {
+export const CustomSlider = ({ defaultValue, color }: CustomSliderProps) => {
+  const theme = useTheme();
   return (
-    <Box sx={{ width: 343 }}>
-      <Slider
-        defaultValue={defaultValue}
-        valueLabelDisplay='auto'
-        aria-label='Default'
-        sx={{
-          color: color,
-          '& .MuiSlider-thumb': {
-            bgcolor: thumbbgcolor,
-            width: 54,
-            height: 30,
-            border: '4px solid #fff',
-            borderRadius: theme.shape.borderRadius * 6,
-            position: 'relative',
-          },
-          '& .MuiSlider-track': {
-            bgcolor: trackcolor,
-          },
-          '& .MuiSlider-rail': {
-            bgcolor: railcolor,
-          },
-        }}
-      />
-    </Box>
+    <Slider
+      defaultValue={defaultValue}
+      valueLabelDisplay='auto'
+      aria-label='Default'
+      sx={{
+        color: color,
+        '& .MuiSlider-thumb': {
+          bgcolor: color,
+          width: 54,
+          height: 30,
+          border: `${theme.spacing()} solid ${colors.light[100]}`,
+          borderRadius: theme.shape.borderRadius * 6,
+          position: 'relative',
+        },
+        '& .MuiSlider-track': {
+          bgcolor: color,
+        },
+        '& .MuiSlider-rail': {
+          bgcolor: colors.light[20],
+        },
+      }}
+    />
   );
 };

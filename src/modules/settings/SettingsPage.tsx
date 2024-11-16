@@ -36,6 +36,7 @@ export const SettingsPage = () => {
           </LinkTo>
         ))}
       </List>
+      <CustomSlider defaultValue={40} color={colors.violet[100]} />
     </Container>
   );
 };
