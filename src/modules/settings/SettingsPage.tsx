@@ -4,7 +4,6 @@ import { HalfTypeNavigation } from '../../shared-components/Navigation/TopNaviga
 import { colors } from 'src/styles/colors';
 import { useUser } from 'src/context/UserContext';
 import { LinkTo } from '../../shared-components/LinkTo';
-import { CustomSlider } from '../../shared-components/Form/Control/Slider';
 
 export const SettingsPage = () => {
   const user = useUser();
@@ -36,7 +35,6 @@ export const SettingsPage = () => {
           </LinkTo>
         ))}
       </List>
-      <CustomSlider defaultValue={40} color={colors.violet[100]} />
     </Container>
   );
 };
