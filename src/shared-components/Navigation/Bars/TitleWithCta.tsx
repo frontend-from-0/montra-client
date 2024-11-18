@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material';
-import { Title3 } from '../Typography/Title3';
+import { Title3 } from '../../Typography/Title3';
 import { colors } from 'src/styles/colors';
 import { theme } from 'src/styles/theme';
 

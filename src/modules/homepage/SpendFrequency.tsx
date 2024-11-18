@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mui/material';
 import { ReactComponent as Graphic } from '../../assets/illustrations/graphic.svg';
-import { TitleOnly } from '../../shared-components/Bars/TitleOnly';
+import { TitleOnly } from '../../shared-components/Navigation/Bars/TitleOnly';
 import { theme } from 'src/styles/theme';
 
 export const SpendFrequency = () => {
