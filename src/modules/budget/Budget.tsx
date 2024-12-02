@@ -5,6 +5,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { theme } from 'src/styles/theme';
 import { Primary } from '../../shared-components/Navigation/Button/Large/Primary';
+import { Link } from 'react-router-dom';
 
 export const Budget = () => {
   return (
@@ -43,8 +44,18 @@ export const Budget = () => {
             Let's make one so you in control.
           </Typography>
         </Stack>
-        <Primary btnText='Create a budget' />
-
+        <Link
+          to='/budget/createBudget'
+          style={{
+            textDecoration: 'none',
+            color: 'inherit',
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'center',
+          }}
+        >
+          <Primary btnText='Create a budget' />
+        </Link>
         <BottomNavigation />
       </Stack>
     </Stack>

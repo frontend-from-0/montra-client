@@ -5,20 +5,16 @@ import { theme } from 'src/styles/theme';
 interface CustomSliderProps {
   defaultValue: number;
   color: string;
-  thumbbgcolor: string;
-  trackcolor: string;
   railcolor: string;
 }
 
 export const CustomSlider = ({
   defaultValue,
   color,
-  thumbbgcolor,
-  trackcolor,
   railcolor,
 }: CustomSliderProps) => {
   return (
-    <Box sx={{ width: 343 }}>
+    <Box sx={{ margin: `${theme.spacing(0)} ${theme.spacing(6)}` }}>
       <Slider
         defaultValue={defaultValue}
         valueLabelDisplay='auto'
@@ -26,15 +22,11 @@ export const CustomSlider = ({
         sx={{
           color: color,
           '& .MuiSlider-thumb': {
-            bgcolor: thumbbgcolor,
             width: 54,
             height: 30,
             border: '4px solid #fff',
             borderRadius: theme.shape.borderRadius * 6,
             position: 'relative',
-          },
-          '& .MuiSlider-track': {
-            bgcolor: trackcolor,
           },
           '& .MuiSlider-rail': {
             bgcolor: railcolor,

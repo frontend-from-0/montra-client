@@ -11,6 +11,7 @@ import { ThemePage } from './modules/settings/ThemePage';
 import { Transaction } from './modules/transaction/transaction';
 import { Budget } from './modules/budget/Budget';
 import { Profile } from './modules/profile/Profile';
+import { CreateBudget } from './modules/budget/CreateBudget';
 
 export const AppRouter = () => {
   return (
@@ -62,6 +63,7 @@ export const AppRouter = () => {
 
       <Route path='/transaction' element={<Transaction />} />
       <Route path='/budget' element={<Budget />} />
+      <Route path='/budget/createBudget' element={<CreateBudget />} />
       <Route path='/profile' element={<Profile />} />
       {/* Links displayed on the main page are for convinience during development process since real navigation is not yet implemented in the application. */}
       <Route path='/' element={<Home />} />
